@@ -1,0 +1,5 @@
+/*
+main.js
+main scripts goes here
+TODO
+*/
