@@ -10,20 +10,25 @@
 		<h1>CSS3 Patternz</h1>
 	</header>
 	<aside>
-			<label><span>Opacity: </span><input id="opacity" type="range" value="0" min="-1000" max="1000" /><output  type="text">0</output></label>
-			<label><span>Width: </span><input id="width" type="range" value="0" min="-1000" max="1000" /><output>0</output></label>
-			<label><span>Gap: </span><input id="gap" type="range" value="0" min="-1000" max="1000" /><output>0</output></label>
-			<label><span>Offset: </span><input id="offset" type="range" value="0" min="-360" max="360" /><output>0</output></label>
+		<div class="layer">
+			<div class="controls">
+				<a href="#remove" title="Remove this layer" >Remove</a>
+			</div>
+			<div class="maniptool">
+				
+			</div>
+		</div>
+		<input type="button" value="Add New Layer" id="add" />
 	</aside>
 	<footer>
 		<div class="resize handle"></div>
 		<h2>Output Code:</h2>
 		<div class="options">
-			<h5>prefixes:</h5>
-			<label><input type="checkbox" checked="checked" id="prefixCheckbox-webkit" />-webkit-</label>
-			<label><input type="checkbox" checked="checked" id="prefixCheckbox-moz" />-moz-</label>
-			<label><input type="checkbox" checked="checked" id="prefixCheckbox-ms" />-ms-</label>
-			<label><input type="checkbox" checked="checked" id="prefixCheckbox-o" />-o-</label>
+			<h5>prefixes: </h5>
+			<label title="Supports Safari Chrome and iOS" ><input type="checkbox" checked="checked" id="prefixCheckbox-webkit" />-webkit-</label>
+			<label title="Supports Firefox" ><input type="checkbox" checked="checked" id="prefixCheckbox-moz" />-moz-</label>
+			<label title="Supports IE9+" ><input type="checkbox" checked="checked" id="prefixCheckbox-ms" />-ms-</label>
+			<label title="Supports Opera" ><input type="checkbox" checked="checked" id="prefixCheckbox-o" />-o-</label>
 		</div>
 		<textarea id="output"></textarea>
 	</footer>

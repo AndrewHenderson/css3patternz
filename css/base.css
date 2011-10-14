@@ -79,6 +79,9 @@ aside {
 	background: -moz-linear-gradient(top,#EEE,#E0E0E0);
 	background: -o-linear-gradient(top,#EEE,#E0E0E0);
 }
+aside .layer{}
+	aside .layer .controls{text-align: right;}
+aside #add{width:100%; text-align: center;}
 
 /* =Content
 -------------------------------------------------------------*/
@@ -89,10 +92,11 @@ aside {
 -------------------------------------------------------------*/
 
 footer { background:#2d2d2d;color:#fff;border-top:1px solid #222; }
+	footer .resize.handle{height: 5px; background:silver; cursor: row-resize;}
 	footer h2 { color:#fff; margin-left:14px; display: inline-block;}
 	footer p { margin:0;padding:0; }
 	footer .options{font-size: 10px; display: inline-block;}
-		footer .options h5{display: inline-block;}
-		footer .options label{}
+		footer .options h5{display: inline-block; font-weight: bold;}
+		footer .options label{cursor: default;}
 			footer .options label input{height: 10px;}
-	footer textarea#output{width:99.5%; height: 70px; margin:5px 0; resize:none; background:black; color:silver;}
+	footer textarea#output{width:100%; height: 70px; margin:5px 0; border:none; resize:none; background:black; color:silver; padding:5px;}
