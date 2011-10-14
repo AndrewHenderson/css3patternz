@@ -36,4 +36,4 @@ $('footer .resize.handle').bind('mousedown', function(mde){
 			$(window).unbind('mousemove');
 		})
 	})
-})
+});
