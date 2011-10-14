@@ -16,7 +16,16 @@
 			<label><span>Offset: </span><input id="offset" type="range" value="0" min="-360" max="360" /><output>0</output></label>
 	</aside>
 	<footer>
+		<div class="resize handle"></div>
 		<h2>Output Code:</h2>
+		<div class="options">
+			<h5>prefixes:</h5>
+			<label><input type="checkbox" checked="checked" id="prefixCheckbox-webkit" />-webkit-</label>
+			<label><input type="checkbox" checked="checked" id="prefixCheckbox-moz" />-moz-</label>
+			<label><input type="checkbox" checked="checked" id="prefixCheckbox-ms" />-ms-</label>
+			<label><input type="checkbox" checked="checked" id="prefixCheckbox-o" />-o-</label>
+		</div>
+		<textarea id="output"></textarea>
 	</footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script src="js/ui.js"></script>

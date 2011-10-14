@@ -60,7 +60,7 @@ h2{font-size:14px;}
 -------------------------------------------------------------*/
 
 header {height:60px;}
-aside{ width:250px; float:left;}
+aside{ width:350px; float:left;}
 footer {height:100px; width:100%;position:fixed;bottom:0; }
 
 /* =Header
@@ -89,5 +89,10 @@ aside {
 -------------------------------------------------------------*/
 
 footer { background:#2d2d2d;color:#fff;border-top:1px solid #222; }
-footer h2 { color:#fff; margin-left:14px; }
-footer p { margin:0;padding:0; }
+	footer h2 { color:#fff; margin-left:14px; display: inline-block;}
+	footer p { margin:0;padding:0; }
+	footer .options{font-size: 10px; display: inline-block;}
+		footer .options h5{display: inline-block;}
+		footer .options label{}
+			footer .options label input{height: 10px;}
+	footer textarea#output{width:99.5%; height: 70px; margin:5px 0; resize:none; background:black; color:silver;}
