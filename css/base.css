@@ -58,7 +58,7 @@ h2{font-size:14px;}
 
 /* =Layout
 -------------------------------------------------------------*/
-
+body, html{height: 100%;}
 header {height:60px;}
 aside{ width:350px; float:left;}
 footer {height:100px; width:100%;position:fixed;bottom:0; }
@@ -73,14 +73,19 @@ header h1 { color:#fff;margin-left:14px;}
 -------------------------------------------------------------*/
 
 aside {
-	padding:20px;
+	overflow-y:scroll; 
 	background: -o-linear-gradient(top,#EEE,#E0E0E0);
 	background: -webkit-gradient(linear,left top,left bottom,from(#EEE),to(#E0E0E0));
 	background: -moz-linear-gradient(top,#EEE,#E0E0E0);
 	background: -o-linear-gradient(top,#EEE,#E0E0E0);
 }
-aside .layer{}
+aside .layer{border:1px solid silver;}
 	aside .layer .controls{text-align: right;}
+	aside .maniptool{}
+		aside .maniptool .preview{height:200px; width:200px; border:1px solid black;}
+		aside .maniptool .inspectrom{height:30px; width:300px; border:1px solid #444;}
+	
+
 aside #add{width:100%; text-align: center;}
 
 /* =Content
