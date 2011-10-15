@@ -47,10 +47,9 @@ $('footer .resize.handle').bind('mousedown', function(mde){
 		})
 	})
 });
-<<<<<<< HEAD
-=======
+
 
 window.onresize = function  () {
   setAsideHeight();
 }
->>>>>>> scrollable aside
+
