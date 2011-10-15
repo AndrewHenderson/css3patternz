@@ -79,8 +79,9 @@ aside {
 	background: -moz-linear-gradient(top,#EEE,#E0E0E0);
 	background: -o-linear-gradient(top,#EEE,#E0E0E0);
 }
-aside .layer{border:1px solid silver;}
+aside .layer{border:1px solid silver; margin:10px;}
 	aside .layer .controls{text-align: right;}
+		aside .layer .controls a{margin: 4px;display: inline-block;}
 	aside .maniptool{}
 		aside .maniptool .preview{height:200px; width:200px; border:1px solid black;}
 		aside .maniptool .inspectrom{height:30px; width:300px; border:1px solid #444;}
