@@ -95,7 +95,7 @@ footer { height:100px; width:100%; position:fixed; bottom:0; }
 	cursor: pointer;
 	padding:5px 10px;
 }
-	.button:hover {
+	.button:hover, .button.hover {
 		background-image: #ff5db1; /* Old browsers */
 		background-image: -moz-linear-gradient(top, #ff5db1 0%, #ef017c 100%); /* FF3.6+ */
 		background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff5db1), color-stop(100%,#ef017c)); /* Chrome,Safari4+ */
@@ -135,7 +135,6 @@ aside #add{ width:96%; text-align: center; margin:0 2% }
 /* =Content
 -------------------------------------------------------------*/
 
-
 /* =Footer
 -------------------------------------------------------------*/
 
@@ -143,6 +142,7 @@ footer { background:#2d2d2d; color:#fff; border-top:1px solid #aaa; }
 	footer .resize.handle { height: 5px; background:silver; cursor: row-resize; }
 	footer h2 { color:#fff; margin-left:14px; display: inline-block; }
 	footer p { margin:0; padding:0; }
+	footer #output-header { padding:5px 0; }
 	footer .options{ font-size: 13px; display: inline-block; }
 		footer .options h5 { display: inline-block; font-weight: bold; }
 		footer .options label { cursor: default; }
@@ -150,3 +150,5 @@ footer { background:#2d2d2d; color:#fff; border-top:1px solid #aaa; }
 	footer #output { width:100%; height: 70px; margin:0; border:none; resize:none; background:black; color:silver; padding:5px; }
 
 #github { position: absolute; top: 0; right: 0; border: 0; }
+
+#clip_container { position:absolute; margin-left: 355px; top:17px; }

@@ -26,15 +26,20 @@
 	</aside>
 	<footer>
 		<div class="resize handle"></div>
-		<h2>Output Code:</h2>
-		<div class="options">
-			<h5>prefixes: </h5>
-			<label title="Supports Safari Chrome and iOS" ><input type="checkbox" checked="checked" id="prefixCheckbox-webkit" />-webkit-</label>
-			<label title="Supports Firefox" ><input type="checkbox" checked="checked" id="prefixCheckbox-moz" />-moz-</label>
-			<label title="Supports IE9+" ><input type="checkbox" checked="checked" id="prefixCheckbox-ms" />-ms-</label>
-			<label title="Supports Opera" ><input type="checkbox" checked="checked" id="prefixCheckbox-o" />-o-</label>
+		<div id="output-header">
+			<h2>Output Code:</h2>
+			<div class="options">
+				<h5>prefixes: </h5>
+				<label title="Supports Safari Chrome and iOS" ><input type="checkbox" checked="checked" id="prefixCheckbox-webkit" />-webkit-</label>
+				<label title="Supports Firefox" ><input type="checkbox" checked="checked" id="prefixCheckbox-moz" />-moz-</label>
+				<label title="Supports IE9+" ><input type="checkbox" checked="checked" id="prefixCheckbox-ms" />-ms-</label>
+				<label title="Supports Opera" ><input type="checkbox" checked="checked" id="prefixCheckbox-o" />-o-</label>
+			</div>
+			<div id="clip_container">
+				<a id="clip_button" class="button">Copy To Clipboard...</a>
+			</div>
 		</div>
-		<div id="output">
+		<div id="output" onChange="clip.setText(this.value)">
 			<pre class="brush: css">
 					/* Placehoder Code */
 				 	background: -o-linear-gradient(top,#EEE,#E0E0E0);
