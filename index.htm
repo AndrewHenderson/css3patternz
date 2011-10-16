@@ -2,24 +2,26 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>CSS3 Patternz</title>
-<link type="text/css" rel="stylesheet" href="css/base.css" />
+<link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
+<title>CSS Patternz</title>
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/shCore.css" />
 </head>
 <body>
 	<header>
-		<h1>CSS3 Patternz</h1>
+		<h1><span>CSS</span>patternz</h1>
 	</header>
 	<aside>
 		<div class="layer">
 			<div class="controls">
-				<a href="#removelayer" title="Remove this layer" >Remove</a>
+				<a href="#removelayer" title="Remove this layer" class="button">Remove</a>
 			</div>
 			<div class="maniptool">
 				<div class="preview"></div>
 				<div class="inspectrom"></div>
 			</div>
 		</div>
-		<input type="button" value="Add New Layer" id="add" />
+		<input type="button" title="Add New Layer" value="Add New Layer" id="add" class="button" />
 	</aside>
 	<footer>
 		<div class="resize handle"></div>
@@ -31,10 +33,35 @@
 			<label title="Supports IE9+" ><input type="checkbox" checked="checked" id="prefixCheckbox-ms" />-ms-</label>
 			<label title="Supports Opera" ><input type="checkbox" checked="checked" id="prefixCheckbox-o" />-o-</label>
 		</div>
-		<textarea id="output"></textarea>
+		<div id="output">
+			<pre class="brush: css">
+					/* Placehoder Code */
+				 	background: -o-linear-gradient(top,#EEE,#E0E0E0);
+					background: -webkit-gradient(linear,left top,left bottom,from(#EEE),to(#E0E0E0));
+					background: -moz-linear-gradient(top,#EEE,#E0E0E0);
+					background: -o-linear-gradient(top,#EEE,#E0E0E0);
+					background: -webkit-gradient(linear,left top,left bottom,from(#EEE),to(#E0E0E0));
+					background: -moz-linear-gradient(top,#EEE,#E0E0E0);
+					background: -o-linear-gradient(top,#EEE,#E0E0E0);
+					background: -webkit-gradient(linear,left top,left bottom,from(#EEE),to(#E0E0E0));
+					background: -moz-linear-gradient(top,#EEE,#E0E0E0);
+			</pre>
+		</div>
 	</footer>
+	<a id="github" href="https://github.com/ahendy/css3patternz"><img src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script src="js/plugins.js"></script>
 <script src="js/ui.js"></script>
 <script src="js/main.js"></script>
+<script>
+     SyntaxHighlighter.all()
+</script>
+
+<!--[if lt IE 9 ]>
+  <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+  <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+<![endif]-->
+
 <body>
 </html>
