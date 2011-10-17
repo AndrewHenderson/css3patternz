@@ -3,7 +3,7 @@ main.js
 */
 
 var patternz = {
-  layers : [],
+	layers : [],
 	activeLayerIndex : 0,
 	activeLayer : null,
 	output : '',
@@ -36,6 +36,8 @@ var patternz = {
 		changeStripColor: function(stripIndex, color){}
 	},
 	generate: function(){
+		var startStr = "linear-gradient(",
+			result;
 		
 	},
 	init : function () {
