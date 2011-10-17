@@ -17,9 +17,11 @@ function setAsideHeight(){
  	setAsideHeight();
 
 	$("#generate").click(function(){
+		
+		$("#output").html('<pre class="brush: css"></pre>');
 
 		var pattern = $("body").attr("style");
-		$("pre").html(pattern);
+		$("#output pre").html(pattern);
 		
 		SyntaxHighlighter.all();
 		
