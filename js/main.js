@@ -19,6 +19,9 @@ var patternz = {
 		this.layers.push(layer);
 		this.changeActiveLayer(this.activeLayerIndex++);
 	},
+	removeLayer : function(){
+		//TODO
+	},
 	changeActiveLayer : function (layerIndex) {
 	  this.activeLayer = this.layers[layerIndex];
 	},
@@ -39,17 +42,17 @@ var patternz = {
 			startStr = "linear-gradient(",
 			result;
 		result = startStr + this.layers[li].angle + 'deg';
-		for(var i = 0; i< this.activeLayer.strips.length; i++){
+		for(var i = 0; i< this.layers[li].strips.length; i++){
 			result = result 
 			    + ' , '
-			    + this.activeLayer.background + ' '
-			    + this.activeLayer.strips[i].start + 'px, '
-			    + this.activeLayer.strips[i].color + ' '
-				+ this.activeLayer.strips[i].start + 'px, '
-				+ this.activeLayer.strips[i].color + ' '
-				+ this.activeLayer.strips[i].end + 'px, '
-				+ this.activeLayer.background + ' '
-				+ this.activeLayer.strips[i].end + 'px';
+			    + this.layers[li].background + ' '
+			    + this.layers[li].strips[i].start + 'px, '
+			    + this.layers[li].strips[i].color + ' '
+				+ this.layers[li].strips[i].start + 'px, '
+				+ this.layers[li].strips[i].color + ' '
+				+ this.layers[li].strips[i].end + 'px, '
+				+ this.layers[li].background + ' '
+				+ this.layers[li].strips[i].end + 'px';
 		}
 		return result += ')';
 	},
@@ -113,16 +116,22 @@ var patternz = {
 	init : function () {
 	  if(this.layers.length == 0) { this.addLayer();}
 	  this.changeActiveLayer(0);
+	},
+	clean : function(){
+		this.layers = [];
+		this.init();
 	}
 };
 
 
 //API useage - remove later
 patternz.init();
-patternz.addStrip('red', 10, 30);
-patternz.addStrip('blue', 50, 80);
+patternz.addStrip('green', 35, 40);
+patternz.addStrip('rgba(255, 215, 0, 0.5)', 40, 60);
+patternz.addStrip('green', 60, 65);
 patternz.addLayer(90);
-patternz.addStrip('red', 10, 30);
-patternz.addStrip('blue', 50, 80);
+patternz.addStrip('silver', 35, 40);
+patternz.addStrip('yellow', 40, 60);
+patternz.addStrip('gray', 60, 65);
 
 document.body.setAttribute('style', 'background-size:100px 100px; background-image: ' + patternz.generate() );
