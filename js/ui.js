@@ -16,9 +16,15 @@ function setAsideHeight(){
 	
  	setAsideHeight();
 
-	SyntaxHighlighter.defaults['gutter'] = false;
-    SyntaxHighlighter.all();
-	
+	$("#generate").click(function(){
+
+		var pattern = $("body").attr("style");
+		$("pre").html(pattern);
+		
+		SyntaxHighlighter.all();
+		
+	});
+    
  });
  
 // footer resizable
