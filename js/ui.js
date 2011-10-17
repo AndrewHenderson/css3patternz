@@ -16,51 +16,8 @@ function setAsideHeight(){
 	
  	setAsideHeight();
 
-	// copy to clipboard
-	
-	var clip = new ZeroClipboard.Client();
-
-    clip.setText( '' ); // will be set later on mouseDown
-    clip.setHandCursor( true );
-    clip.setCSSEffects( true );
-
-    clip.addEventListener( 'load', function(client) {
-            // alert( "movie is loaded" );
-    } );
-
-    clip.addEventListener( 'complete', function(client, text) {
-            alert("Copied text to clipboard: " + text );
-    } );
-
-    clip.addEventListener( 'mouseOver', function(client) {
-            // alert("mouse over"); 
-    } );
-
-    clip.addEventListener( 'mouseOut', function(client) { 
-            // alert("mouse out"); 
-    } );
-
-    clip.addEventListener( 'mouseDown', function(client) { 
-            // set text to copy here
-            clip.setText( $('#output .content').text );
-
-            // alert("mouse down"); 
-    } );
-
-    clip.addEventListener( 'mouseUp', function(client) { 
-            // alert("mouse up"); 
-    } );
-	
-	clip.glue( 'clip_button' );
-	
-	$("#ZeroClipboardMovie_1").parents("div").hover(
-	  function () {
-	    $("#clip_button").addClass("hover");
-	  },
-	  function () {
-	    $("#clip_button").removeClass("hover");
-	  }
-	);
+	SyntaxHighlighter.defaults['gutter'] = false;
+    SyntaxHighlighter.all();
 	
  });
  
