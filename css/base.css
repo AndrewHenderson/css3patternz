@@ -153,7 +153,7 @@ aside .layer{ border:1px solid silver; margin:10px; }
 		aside .layer .controls a{ margin: 4px;display: inline-block; }
 	aside .maniptool{}
 		aside .maniptool .previewWrapper{float:left;font-size: 12px;margin: 0 5px;}
-		aside .maniptool .preview{ height: 100px; width:100px; border:1px solid black; margin: 5px 0; background: white;}
+		aside .maniptool .preview{ height: 100px; width:100px; border:1px solid black; margin: 5px 0; background: white; background: url(../img/empty-background.png);}
 		aside .maniptool .layerOptions label{display:inline-block; width: 55px;}
 		aside .maniptool .layerOptions input{width:50px; margin:0 0 10px 0;}
 		aside .maniptool .layerOptions{width: 55px; float:left; margin:0 5px; font-size:10px;}
