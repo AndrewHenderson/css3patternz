@@ -149,14 +149,15 @@ aside {
 }
 aside .layer{ border:1px solid silver; margin:10px; }
 	aside .layer .controls{ text-align: right; }
+		aside .layer .controls h3{width: 218px; text-align:left; display:inline-block;font-weight: bold;text-shadow: 0 1px white;padding: 5px 0;}
 		aside .layer .controls a{ margin: 4px;display: inline-block; }
 	aside .maniptool{}
 		aside .maniptool .previewWrapper{float:left;font-size: 12px;margin: 0 5px;}
-		aside .maniptool .preview{ height:60px; width:100px; border:1px solid black; margin:10px }
+		aside .maniptool .preview{ height: 100px; width:100px; border:1px solid black; margin: 5px 0; background: white;}
 		aside .maniptool .layerOptions label{display:inline-block; width: 55px;}
 		aside .maniptool .layerOptions input{width:50px; margin:0 0 10px 0;}
 		aside .maniptool .layerOptions{width: 55px; float:left; margin:0 5px; font-size:10px;}
-		aside .maniptool .inspectrom{ height:30px; width:250px; border:1px solid #444; margin:10px;}
+		aside .maniptool .inspectrom{ height:30px; border: 1px solid #eee; margin: 5px; border-radius: 5px;}
 	
 aside #add{ width:96%; text-align: center; margin:0 2% }
 
