@@ -113,6 +113,14 @@ var patternz = {
 
 		return result.join(';\n');
 	},
+	outputLayerCode: function(layerIndex){
+		var rawCode = this.generateLayerCode(layerIndex),
+			bgSizeWidth =  this.layers[layerIndex].width + 'px',
+			bgSizeHeight =  this.layers[layerIndex].height + 'px';
+		if(true){ // browser is webkit TODO
+			return  '-webkit-' + rawCode + ' ' + bgSizeWidth + ' ' + bgSizeHeight;
+		}
+	},
 	init : function () {
 	  if(this.layers.length == 0) { this.addLayer();}
 	  this.changeActiveLayer(0);

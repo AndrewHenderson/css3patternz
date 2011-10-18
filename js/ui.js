@@ -45,3 +45,10 @@ window.onresize = function  () {
   setAsideHeight();
 }
 
+//Layers
+
+	//temp layer binding
+	for(var i=0; i<patternz.layers.length; i++){
+		$($('.layer .layerOutput')[i]).css('background', patternz.outputLayerCode(i));
+	}
+
