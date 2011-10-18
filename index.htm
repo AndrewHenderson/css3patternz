@@ -18,7 +18,16 @@
 				<a href="#removelayer" title="Remove this layer" class="button">Remove</a>
 			</div>
 			<div class="maniptool">
-				<div class="preview"></div>
+				<div class="layerOptions">
+					<label>Width: <input class="layerOptions-width" type="number" min="10" max="250" value="100"/></label>
+					<label>Height: <input class="layerOptions-height" type="number" min="10" max="250" value="100"/></label>
+					<label>Angle: <input class="layerOptions-angle" type="number" min="-360" max="3600" value="0"/></label>
+				</div>
+				<div class="previewWrapper">
+					<label>Layer Preview:</label>
+					<div class="preview"></div>
+				</div>
+				<div class="clear"></div>
 				<div class="inspectrom"></div>
 			</div>
 		</div>

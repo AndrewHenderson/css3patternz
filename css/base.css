@@ -55,7 +55,7 @@ table {
 body { font-family:arial; }
 h1 { font:bold 30px/30px 'Michroma' sans-serif;text-shadow: #fff 1px 1px; }
 h2 { font-size:16px; line-height:30px; }
-
+.clear{clear: both; height: 0;}
 /* =Layout
 -------------------------------------------------------------*/
 
@@ -127,8 +127,12 @@ aside .layer{ border:1px solid silver; margin:10px; }
 	aside .layer .controls{ text-align: right; }
 		aside .layer .controls a{ margin: 4px;display: inline-block; }
 	aside .maniptool{}
-		aside .maniptool .preview{ height:200px; width:200px; border:1px solid black; }
-		aside .maniptool .inspectrom{ height:30px; width:300px; border:1px solid #444; }
+		aside .maniptool .previewWrapper{float:left;font-size: 12px;margin: 0 5px;}
+		aside .maniptool .preview{ height:60px; width:100px; border:1px solid black; margin:10px }
+		aside .maniptool .layerOptions label{display:inline-block; width: 55px;}
+		aside .maniptool .layerOptions input{width:50px; margin:0 0 10px 0;}
+		aside .maniptool .layerOptions{width: 55px; float:left; margin:0 5px; font-size:10px;}
+		aside .maniptool .inspectrom{ height:30px; width:250px; border:1px solid #444; margin:10px;}
 	
 aside #add{ width:96%; text-align: center; margin:0 2% }
 
