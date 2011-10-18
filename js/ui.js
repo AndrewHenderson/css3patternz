@@ -5,8 +5,8 @@
  */
  
 //setAsideHeight
-function setAsideHeight(){
-	$('aside').height(innerHeight - 60 - $('footer').height());
+function setHeights(){
+	$('aside, #pattern').height(innerHeight - 60 - $('footer').height());
 }
 
 
@@ -14,17 +14,13 @@ function setAsideHeight(){
 // document load
  $(document).ready(function(){
 	
- 	setAsideHeight();
+ 	setHeights();
 
 	$("#generate").click(function(){
-		
 		$("#output").html('<pre class="brush: css"></pre>');
-
-		var pattern = $("body").attr("style");
+		var pattern = $("#pattern").attr("style");
 		$("#output pre").html(pattern);
-		
-		SyntaxHighlighter.all();
-		
+		SyntaxHighlighter.all();	
 	});
     
  });

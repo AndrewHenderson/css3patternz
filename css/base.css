@@ -105,13 +105,37 @@ footer { height:100px; width:100%; position:fixed; bottom:0; }
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5db1', endColorstr='#ef017c',GradientType=0 ); /* IE6-9 */
 		background-image: linear-gradient(top, #ff5db1 0%,#ef017c 100%);
 	}
+	.button.alt {
+		background: rgb(255,0,0); /* Old browsers */
+		background: -moz-linear-gradient(top, rgb(255,0,0) 0%, rgb(214,0,0) 40%, rgb(188,5,5) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(255,0,0)), color-stop(40%,rgb(214,0,0)), color-stop(100%,rgb(188,5,5))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, rgb(255,0,0) 0%,rgb(214,0,0) 40%,rgb(188,5,5) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, rgb(255,0,0) 0%,rgb(214,0,0) 40%,rgb(188,5,5) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, rgb(255,0,0) 0%,rgb(214,0,0) 40%,rgb(188,5,5) 100%); /* IE10+ */
+		background: linear-gradient(top, rgb(255,0,0) 0%,rgb(214,0,0) 40%,rgb(188,5,5) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0000', endColorstr='#bc0505',GradientType=0 ); /* IE6-9 */
+	}
+		.button.alt:hover {
+			background: rgb(157,213,58); /* Old browsers */
+			background: -moz-linear-gradient(top, rgb(157,213,58) 0%, rgb(85,165,9) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(157,213,58)), color-stop(100%,rgb(85,165,9))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, rgb(157,213,58) 0%,rgb(85,165,9) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, rgb(157,213,58) 0%,rgb(85,165,9) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, rgb(157,213,58) 0%,rgb(85,165,9) 100%); /* IE10+ */
+			background: linear-gradient(top, rgb(157,213,58) 0%,rgb(85,165,9) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd53a', endColorstr='#55a509',GradientType=0 ); /* IE6-9 */
+		}
 
 /* =Header
 -------------------------------------------------------------*/
 
 header { background:#2d2d2d; border-bottom:1px solid #222; }
-header h1 { color:hotpink; }
+header h1 { color:hotpink; float:left; }
   header h1 span { color:#00B2E3; }
+nav { margin: 7px 0 0 5px; float:left; }
+  nav a { float:left; margin-left:8px; }
+#social { margin:10px 0 0 13px; float:left; }
+  #social > div { float:left; }
 
 /* =Controls
 -------------------------------------------------------------*/
@@ -139,6 +163,8 @@ aside #add{ width:96%; text-align: center; margin:0 2% }
 /* =Content
 -------------------------------------------------------------*/
 
+#pattern { margin-left:351px; }
+
 /* =Footer
 -------------------------------------------------------------*/
 
@@ -151,6 +177,15 @@ footer { background:#2d2d2d; color:#fff; border-top:1px solid #aaa; }
 		footer .options h5 { display: inline-block; font-weight: bold; }
 		footer .options label { cursor: default; }
 			footer .options label input { height: 10px; }
-	footer #output { width:100%; height: 70px; margin:0; border:none; resize:none; background:black; color:silver; padding:5px; overflow:scroll; }
+	footer #output { width:100%; height: 70px; margin:0; border:none; resize:none; background:black; color:silver; padding:5px 0; overflow:scroll; }
 
 #github { position: absolute; top: 0; right: 0; border: 0; }
+
+
+/* =Non-semantic helper classes
+-------------------------------------------------------------*/
+
+/* Contain floats */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }

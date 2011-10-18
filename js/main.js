@@ -134,4 +134,10 @@ patternz.addStrip('silver', 35, 40);
 patternz.addStrip('yellow', 40, 60);
 patternz.addStrip('gray', 60, 65);
 
-document.body.setAttribute('style', 'background-size:100px 100px; background-image: ' + patternz.generate() );
+document.getElementById("pattern").setAttribute('style', 'background-size:100px 100px; background-image: ' + patternz.generate() );
+
+
+// save preset
+$("#save").click(function(){
+	var preset = prompt("Choose a name for this preset.");
+});

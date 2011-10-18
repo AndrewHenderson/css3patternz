@@ -9,13 +9,51 @@
 <script src="js/modernizr.custom.js"></script>
 </head>
 <body>
-	<header>
+	
+	<div id="fb-root"></div>
+	<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '251397934904082', // App ID
+	      channelURL : '//www.csspatternz.com', // Channel File
+	      status     : true, // check login status
+	      cookie     : true, // enable cookies to allow the server to access the session
+	      oauth      : true, // enable OAuth 2.0
+	      xfbml      : true  // parse XFBML
+	    });
+
+	    // Additional initialization code here
+	  };
+
+	  // Load the SDK Asynchronously
+	  (function(d){
+	     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+	     js = d.createElement('script'); js.id = id; js.async = true;
+	     js.src = "//connect.facebook.net/en_US/all.js";
+	     d.getElementsByTagName('head')[0].appendChild(js);
+	   }(document));
+	</script>
+	
+	<header class="clearfix">
 		<h1><span>CSS</span>patternz</h1>
+		<nav class="clearfix">
+			<a href="#" class="button">About</a>
+			<a href="#" class="button">Presets</a>
+			<a href="https://github.com/ahendy/css3patternz" class="button">GitHub</a>
+		</nav>
+		<div id="social" class="clearfix">
+			<div class="facebook-button">
+				<div class="fb-like" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div>
+			</div>
+			<div class="twitter-button">
+				<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="CSSpatternz">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+			</div>
+		</div>
 	</header>
 	<aside>
 		<div class="layer">
 			<div class="controls">
-				<a href="#removelayer" title="Remove this layer" class="button">Remove</a>
+				<a href="#removelayer" title="Remove this layer" class="button alt">Remove</a>
 			</div>
 			<div class="maniptool">
 				<div class="layerOptions">
@@ -33,6 +71,7 @@
 		</div>
 		<input type="button" title="Add New Layer" value="Add New Layer" id="add" class="button" />
 	</aside>
+	<div id="pattern"></div>
 	<footer>
 		<div class="resize handle"></div>
 		<div id="output-header">
@@ -46,13 +85,13 @@
 				<label title="W3C Standard" ><input type="checkbox" checked="checked" id="prefixCheckbox-w3c" />None(W3C)</label>
 			</div>
 			<input type="button" value="Generate Code" id="generate" class="button" />
+			<input type="button" value="Save Preset" id="save" class="button" />
 		</div>
 		<div id="output">
 			<pre class="brush: css">
 			</pre>
 		</div>
 	</footer>
-	<a id="github" href="https://github.com/ahendy/css3patternz"><img src="img/github.png" alt="Fork me on GitHub"></a>
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script src="js/plugins.js"></script>
@@ -63,6 +102,16 @@
   <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
   <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 <![endif]-->
+
+<!-- Begin Facebook Like -->
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=251397934904082";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- End Facebook Like -->
 
 <body>
 </html>
