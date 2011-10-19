@@ -182,4 +182,3 @@ var defaultPattern = [{
 patternz.layers = defaultPattern;
 document.getElementById("pattern").setAttribute('style', 'background: ' + patternz.generate() );
 
-
