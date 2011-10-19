@@ -67,9 +67,3 @@ window.onresize = function  () {
 		domLayer.find('.preview').width(apiLayer.width).height(apiLayer.height);
 	}
 	// layers loading
-	
-
-// save preset
-$("#save").click(function(){
-	var preset = prompt("Choose a name for this preset.");
-});
