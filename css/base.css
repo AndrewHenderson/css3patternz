@@ -160,7 +160,7 @@ aside .layer{ border:1px solid silver; margin:10px; }
 		aside .maniptool .layerOptions{width: 55px; float:left; margin:0 5px; font-size:10px;}
 		aside .maniptool .inspectrom{ height:30px; border: 1px solid #eee; margin: 5px; border-radius: 5px;}
 	
-aside #add{ width:96%; text-align: center; margin:0 2% }
+aside #add{ width:96%; text-align: center; margin:0 2% 20px; }
 
 /* =Content
 -------------------------------------------------------------*/
