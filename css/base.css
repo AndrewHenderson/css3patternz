@@ -176,6 +176,7 @@ footer { background:#2d2d2d; color:#fff; border-top:1px solid #aaa; }
 	footer p { margin:0; padding:0; }
 	footer #output-header { padding:5px 0; }
 	footer .options{ font-size: 13px; display: inline-block; }
+			footer .options label { -webkit-user-select: none; }
 		footer .options h5 { display: inline-block; font-weight: bold; }
 		footer .options label { cursor: default; }
 			footer .options label input { height: 10px; }

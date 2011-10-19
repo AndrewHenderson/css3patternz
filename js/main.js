@@ -141,4 +141,5 @@ patternz.addStrip('silver', 35, 40);
 patternz.addStrip('yellow', 40, 60);
 patternz.addStrip('gray', 60, 65);
 
-document.getElementById("pattern").setAttribute('style', 'background-image: ' + patternz.generate() );
+
+document.getElementById("pattern").setAttribute('style', 'background-size:100px 100px; background: ' + patternz.generate() );
