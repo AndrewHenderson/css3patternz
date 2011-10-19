@@ -54,7 +54,25 @@ window.onresize = function  () {
 }
 
 //Layers
-
+	// layers loading
+	
+	/*
+	 * How I will create new layers:
+	 * 
+	 * We will have a hidden layer div that have default values on it
+	 * then we will clone it as a new layer.  
+	 * $('#defauleLayer').clone().show();
+	 * 
+	 * to load all layers from API we will first create all neccessery layer divs:
+	 * 
+	 * for(var i=0; i<patternz.layers.length; i++){
+	 * $('aside').append($('#defauleLayer').clone().show());
+	 * }
+	 * 
+	 * and then load them with API data:
+	 * 
+	 */
+	
 	//temp layer binding
 	for(var i=0; i<patternz.layers.length; i++){
 		var domLayer = $($('.layer')[i]),
@@ -66,4 +84,4 @@ window.onresize = function  () {
 		domLayer.find('.layerName').text(apiLayer.name);
 		domLayer.find('.preview').width(apiLayer.width).height(apiLayer.height);
 	}
-	// layers loading
+
