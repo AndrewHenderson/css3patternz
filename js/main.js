@@ -132,7 +132,7 @@ var patternz = {
 };
 
 
-//Load sample pattern
+
 
 var defaultPattern = [{
 	angle: -60,
@@ -181,4 +181,5 @@ var defaultPattern = [{
 // patternz loading
 patternz.layers = defaultPattern;
 document.getElementById("pattern").setAttribute('style', 'background: ' + patternz.generate() );
+
 
