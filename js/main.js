@@ -184,17 +184,3 @@ patternz.layers = defaultPattern;
 document.getElementById("pattern").setAttribute('style', 'background: ' + patternz.generate() );
 
 
-=======
-//API useage - remove later
-patternz.init();
-patternz.addStrip('green', 35, 40);
-patternz.addStrip('rgba(255, 215, 0, 0.5)', 40, 60);
-patternz.addStrip('green', 60, 65);
-patternz.addLayer(90);
-patternz.addStrip('silver', 35, 40);
-patternz.addStrip('yellow', 40, 60);
-patternz.addStrip('gray', 60, 65);
-
-
-document.getElementById("pattern").setAttribute('style', 'background-size:100px 100px; background: ' + patternz.generate() );
->>>>>>> 7fe0cde46ae6096f786385439e633cf578c499d6
