@@ -4,25 +4,33 @@
  * Start Date: Oct 12, 2011
  */
  
-//setAsideHeight
+//setHeights
 function setHeights(){
 	$('aside, #pattern').height(innerHeight - 60 - $('footer').height());
 }
 
+// generate code
+function generateCode(){
+	$("#generate").click(function(){
+		var pattern = $("#pattern").attr("style");
+		$("#output").empty().html(pattern);	
+	});
+}
 
+// save preset
+function savePreset(){
+	$("#save").click(function(){
+		var preset = prompt("Choose a name for this preset.");
+	});
+}
 
 // document load
  $(document).ready(function(){
 	
  	setHeights();
+ 	generateCode();
+	savePreset();
 
-	$("#generate").click(function(){
-		$("#output").html('<pre class="brush: css"></pre>');
-		var pattern = $("#pattern").attr("style");
-		$("#output pre").html(pattern);
-		SyntaxHighlighter.all();	
-	});
-    
  });
  
 // footer resizable
@@ -32,7 +40,7 @@ $('footer .resize.handle').bind('mousedown', function(mde){
 		if(mme.pageY < innerHeight - 100 && mme.pageY > 150){
 			$('footer').height(currentHeight + mde.pageY - mme.pageY);
 			$('#output').height($('footer').height() - 40);
-			setAsideHeight();
+			setHeights();
 	    }
 		$(window).bind('mouseup', function(){
 			$(window).unbind('mousemove');
@@ -42,7 +50,7 @@ $('footer .resize.handle').bind('mousedown', function(mde){
 
 
 window.onresize = function  () {
-  setAsideHeight();
+  setHeights();
 }
 
 //Layers

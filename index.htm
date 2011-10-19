@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html itemscope itemtype="http://schema.org/CreativeWork">
 <head>
 <meta charset="utf-8" />
+<!-- schema.org -->
+<meta itemprop="name" content="CSSpatternz">
+<meta itemprop="description" content="A CSS3 Pattern Generator. Create endless combos of CSS3 patterns and get the code to back it up.">
+<!-- schema.org -->
 <link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
 <title>CSS Patternz</title>
 <link rel="stylesheet" href="css/base.css" />
-<link rel="stylesheet" href="css/shCore.css" />
-<script src="js/modernizr.custom.js"></script>
+<!-- <link rel="stylesheet" href="css/shCore.css" /> -->
+<script src="js/libs/modernizr.custom.js"></script>
 </head>
 <body>
 	
@@ -48,13 +52,16 @@
 			<div class="twitter-button">
 				<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="CSSpatternz">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 			</div>
+			<div class="googleplus-button">
+				<g:plusone size="tall" annotation="inline"></g:plusone>
+			</div>
 		</div>
 	</header>
 	<aside>
 		<div class="layer" data-layer-index="0">
 			<div class="controls">
 				<h3 class="layerName" contenteditable>Layer1</h3>
-				<a href="#removelayer" title="Remove this layer" class="button">Remove</a>
+				<a href="#removelayer" title="Remove this layer" class="button alt">Remove</a>
 				<div class="clear"></div>
 			</div>
 			<div class="maniptool">
@@ -76,7 +83,7 @@
 		<div class="layer" data-layer-index="1">
 			<div class="controls">
 				<h3 class="layerName" contenteditable>Layer2</h3>
-				<a href="#removelayer" title="Remove this layer" class="button">Remove</a>
+				<a href="#removelayer" title="Remove this layer" class="button alt">Remove</a>
 				<div class="clear"></div>
 			</div>
 			<div class="maniptool">
@@ -113,13 +120,14 @@
 			<input type="button" value="Generate Code" id="generate" class="button" />
 			<input type="button" value="Save Preset" id="save" class="button" />
 		</div>
-		<div id="output">
-			<pre class="brush: css">
-			</pre>
-		</div>
+		<textarea id="output">
+		</textarea>
 	</footer>
 	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.4.min.js"><\/script>')</script> -->
+<script src="js/libs/jquery-1.6.4.min.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 <script src="js/ui.js"></script>
@@ -138,6 +146,15 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <!-- End Facebook Like -->
+
+<!-- Google+ render call -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
 
 <body>
 </html>
