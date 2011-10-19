@@ -74,14 +74,25 @@ window.onresize = function  () {
 	 */
 	
 	//temp layer binding
-	for(var i=0; i<patternz.layers.length; i++){
-		var domLayer = $($('.layer')[i]),
-			apiLayer = patternz.layers[i];
-		domLayer.find('.layerOutput').css('background', patternz.outputLayerCode(i));
-		domLayer.find('.layerOptions-width').val(apiLayer.width);
-		domLayer.find('.layerOptions-height').val(apiLayer.height);
-		domLayer.find('.layerOptions-angle').val(apiLayer.angle);
-		domLayer.find('.layerName').text(apiLayer.name);
-		domLayer.find('.preview').width(apiLayer.width).height(apiLayer.height);
+	function bindLayersToAPI(){
+		for(var i=0; i<patternz.layers.length; i++){
+			var domLayer = $($('.layer')[i]),
+				apiLayer = patternz.layers[i];
+			domLayer.find('.layerOutput').css('background', patternz.outputLayerCode(i));
+			domLayer.find('.layerOptions-width').val(apiLayer.width);
+			domLayer.find('.layerOptions-height').val(apiLayer.height);
+			domLayer.find('.layerOptions-angle').val(apiLayer.angle);
+			domLayer.find('.layerName').text(apiLayer.name);
+			domLayer.find('.preview').width(apiLayer.width).height(apiLayer.height);
+			domLayer.attr('data-layer-index', i);
+		}
 	}
+
+	bindLayersToAPI();
+// Layer Options input bindings  WORST CODE I WROTE EVER
+$('.layerOptions-width').change(function(){
+	$(this).parent().parent().parent().parent().find('.preview').width($(this).val()); // should fix with jQuery .closest() I don't know why is not working here
+	patternz.layers[parseInt($(this).parent().parent().parent().parent().attr('data-layer-index'))].width = parseInt($(this).val());
+	bindLayersToAPI();
+});
 
