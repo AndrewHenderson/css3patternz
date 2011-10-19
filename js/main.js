@@ -58,6 +58,7 @@ var patternz = {
 		return result += ') ' + this.activeLayer.width + 'px ' + this.activeLayer.height + 'px';
 	},
 	generate : function(){
+		this.init();
 		var layersCode = [],
 			result = [];
 		//for every layer 
@@ -131,15 +132,52 @@ var patternz = {
 };
 
 
-//API useage - remove later
-patternz.init();
-patternz.addStrip('green', 35, 40);
-patternz.addStrip('rgba(255, 215, 0, 0.5)', 40, 60);
-patternz.addStrip('green', 60, 65);
-patternz.addLayer(90);
-patternz.addStrip('silver', 35, 40);
-patternz.addStrip('yellow', 40, 60);
-patternz.addStrip('gray', 60, 65);
 
 
-document.getElementById("pattern").setAttribute('style', 'background-size:100px 100px; background: ' + patternz.generate() );
+var defaultPattern = [{
+	angle: -60,
+	background: "transparent",
+	height: 200,
+	width: 80,
+	name: "Sample Layer 1",
+	strips:[{
+			color: 'silver',
+			end: 40,
+			start: 35
+		},
+		{
+			color: 'yellow',
+			end: 60,
+			start: 40
+		},
+		{
+			color: 'gray',
+			end: 65,
+			start: 60
+		}]},
+		{
+	angle: 0,
+	background: "transparent",
+	height: 100,
+	width: 100,
+	name: "Sample Layer 2",
+	strips:[{
+			color: 'green',
+			end: 40,
+			start: 25
+		},
+		{
+			color: "rgba(255, 215, 0, 0.5)",
+			end: 60,
+			start: 40
+		},
+		{
+			color: 'gray',
+			end: 65,
+			start: 60
+		}]
+	}];
+	
+// patternz loading
+patternz.layers = defaultPattern;
+document.getElementById("pattern").setAttribute('style', 'background: ' + patternz.generate() );
