@@ -197,5 +197,9 @@ patternz.addStrip('yellow', 40, 60);
 patternz.addStrip('gray', 60, 65);
 
 
+<<<<<<< HEAD
 document.getElementById("pattern").setAttribute('style', 'background-size:100px 100px; background: ' + patternz.generate() );
 */
+=======
+document.getElementById("pattern").setAttribute('style', 'background-size:100px 100px; background: ' + patternz.generate() );
+>>>>>>> 7fe0cde46ae6096f786385439e633cf578c499d6
