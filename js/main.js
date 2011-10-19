@@ -8,12 +8,13 @@ var patternz = {
 	activeLayer : null,
 	output : '',
 	prefixes: {webkit: true, moz: true, ms: true, o: true, w3c: true},
-	addLayer : function(degree){
+	addLayer : function(degree, width, height, name){
 		var layer = {
-				width: 100,
-				height: 100,
+				width: width || 100,
+				height: height || 100,
 				background: 'transparent',
 				angle: degree || 0,
+				name: name || 'Layer ' + this.layers.length,
 				strips: []
 		    };
 		this.layers.push(layer);
@@ -54,7 +55,7 @@ var patternz = {
 				+ this.layers[li].background + ' '
 				+ this.layers[li].strips[i].end + 'px';
 		}
-		return result += ')';
+		return result += ') ' + this.activeLayer.width + 'px ' + this.activeLayer.height + 'px';
 	},
 	generate : function(){
 		var layersCode = [],
@@ -114,11 +115,9 @@ var patternz = {
 		return result.join(';\n');
 	},
 	outputLayerCode: function(layerIndex){
-		var rawCode = this.generateLayerCode(layerIndex),
-			bgSizeWidth =  this.layers[layerIndex].width + 'px',
-			bgSizeHeight =  this.layers[layerIndex].height + 'px';
+		var rawCode = this.generateLayerCode(layerIndex);
 		if(true){ // browser is webkit TODO
-			return  '-webkit-' + rawCode + ' ' + bgSizeWidth + ' ' + bgSizeHeight;
+			return  '-webkit-' + rawCode;
 		}
 	},
 	init : function () {
@@ -142,10 +141,6 @@ patternz.addStrip('silver', 35, 40);
 patternz.addStrip('yellow', 40, 60);
 patternz.addStrip('gray', 60, 65);
 
-document.getElementById("pattern").setAttribute('style', 'background-size:100px 100px; background-image: ' + patternz.generate() );
+document.getElementById("pattern").setAttribute('style', 'background-image: ' + patternz.generate() );
 
 
-// save preset
-$("#save").click(function(){
-	var preset = prompt("Choose a name for this preset.");
-});

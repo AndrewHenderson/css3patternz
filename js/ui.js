@@ -49,6 +49,17 @@ window.onresize = function  () {
 
 	//temp layer binding
 	for(var i=0; i<patternz.layers.length; i++){
-		$($('.layer .layerOutput')[i]).css('background', patternz.outputLayerCode(i));
+		var domLayer = $($('.layer')[i]),
+			apiLayer = patternz.layers[i];
+		domLayer.find('.layerOutput').css('background', patternz.outputLayerCode(i));
+		domLayer.find('.layerOptions-width').val(apiLayer.width);
+		domLayer.find('.layerOptions-height').val(apiLayer.height);
+		domLayer.find('.layerOptions-angle').val(apiLayer.angle);
 	}
+	// layers loading
+	
 
+// save preset
+$("#save").click(function(){
+	var preset = prompt("Choose a name for this preset.");
+});
