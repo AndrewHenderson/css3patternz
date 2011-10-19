@@ -142,14 +142,13 @@ nav { margin: 7px 0 0 5px; float:left; }
 
 aside {
 	overflow-y:scroll; 
-	background: -o-linear-gradient(top,#EEE,#E0E0E0);
-	background: -webkit-gradient(linear,left top,left bottom,from(#EEE),to(#E0E0E0));
-	background: -moz-linear-gradient(top,#EEE,#E0E0E0);
+	background: #eee;
 	border-right:1px solid #aaa;
 }
 aside .layer{ border:1px solid silver; margin:10px; }
 	aside .layer .controls{ text-align: right; }
-		aside .layer .controls h3{width: 218px; text-align:left; display:inline-block;font-weight: bold;text-shadow: 0 1px white;padding: 5px 0;}
+		aside .layer .controls h3{ width: 218px; text-align:left; display:inline-block;font-weight: bold;text-shadow: 0 1px white;padding: 5px 0; border:1px solid #eee; border-radius:2px;}
+			aside .layer .controls h3:hover { border-color:#bbb; }
 		aside .layer .controls a{ margin: 4px;display: inline-block; }
 	aside .maniptool{}
 		aside .maniptool .previewWrapper{float:left;font-size: 12px;margin: 0 5px;}
