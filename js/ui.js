@@ -55,6 +55,8 @@ window.onresize = function  () {
 		domLayer.find('.layerOptions-width').val(apiLayer.width);
 		domLayer.find('.layerOptions-height').val(apiLayer.height);
 		domLayer.find('.layerOptions-angle').val(apiLayer.angle);
+		domLayer.find('.layerName').text(apiLayer.name);
+		domLayer.find('.preview').width(apiLayer.width).height(apiLayer.height);
 	}
 	// layers loading
 	
