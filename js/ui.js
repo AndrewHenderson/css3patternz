@@ -65,9 +65,3 @@ window.onresize = function  () {
 		domLayer.find('.layerOptions-angle').val(apiLayer.angle);
 	}
 	// layers loading
-	
-
-// save preset
-$("#save").click(function(){
-	var preset = prompt("Choose a name for this preset.");
-});
