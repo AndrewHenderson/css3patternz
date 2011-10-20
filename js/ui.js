@@ -3,11 +3,31 @@
  * Authors: Mohsen Nabiloo-Azimi (@mohsen____), Andrew Henderson (@AndrewHenderson)
  * Start Date: Oct 12, 2011
  */
+ var ui = {
+ 	elems:{
+ 		
+ 	},
+ 	bind: function(){
+ 		onresize = this.setHeight;
+ 	},
+	render: function(){
+		if($('#render').length == 0){
+			$('head').append($('<style>').text('#pattern{'+ patternz.generate() + '}').attr('type','text/css').attr('id', 'render'));
+		}
+		else{
+			$('#render').text('#pattern{ background: ' + patternz.generate() + '}');
+		}
+	},
+	setHeights: function(){
+		$('aside, #pattern').height(innerHeight - 60 - $('footer').height());
+	},
+	init: function(){
+		this.bind();
+		this.render();
+	}
+};
  
-//setHeights
-function setHeights(){
-	$('aside, #pattern').height(innerHeight - 60 - $('footer').height());
-}
+ui.init();
 
 // generate code
 function generateCode(){
@@ -27,7 +47,7 @@ function savePreset(){
 // document load
  $(document).ready(function(){
 	
- 	setHeights();
+ 	ui.setHeights();
  	generateCode();
 	savePreset();
 
@@ -40,7 +60,7 @@ $('footer .resize.handle').bind('mousedown', function(mde){
 		if(mme.pageY < innerHeight - 100 && mme.pageY > 150){
 			$('footer').height(currentHeight + mde.pageY - mme.pageY);
 			$('#output').height($('footer').height() - 40);
-			setHeights();
+			ui.setHeights();
 	    }
 		$(window).bind('mouseup', function(){
 			$(window).unbind('mousemove');
@@ -48,10 +68,6 @@ $('footer .resize.handle').bind('mousedown', function(mde){
 	})
 });
 
-
-window.onresize = function  () {
-  setHeights();
-}
 
 //Layers
 	// layers loading
@@ -84,7 +100,7 @@ window.onresize = function  () {
 			domLayer.find('.layerOptions-angle').val(apiLayer.angle);
 			domLayer.find('.layerName').text(apiLayer.name);
 			domLayer.find('.preview').width(apiLayer.width).height(apiLayer.height);
-			domLayer.attr('data-layer-index', i);
+			domLayer.attr('data-li', i);
 		}
 	}
 
@@ -95,4 +111,6 @@ $('.layerOptions-width').change(function(){
 	patternz.layers[parseInt($(this).parent().parent().parent().parent().attr('data-layer-index'))].width = parseInt($(this).val());
 	bindLayersToAPI();
 });
+
+
 

@@ -112,7 +112,9 @@ var patternz = {
 			layer.join(', ');
 			result.push(layer);
 		}
-
+		for(var i=0; i<result.length; i++){
+			result[i] = 'background: ' + result[i];
+		}
 		return result.join(';\n');
 	},
 	outputLayerCode: function(layerIndex){
@@ -180,4 +182,3 @@ var defaultPattern = [{
 	
 // patternz loading
 patternz.layers = defaultPattern;
-document.getElementById("pattern").setAttribute('style', 'background: ' + patternz.generate() );
