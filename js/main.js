@@ -77,7 +77,7 @@ var patternz = {
 				layer.push('-webkit-' + layersCode[i]);
 			}
 			layer.join(', ');
-			result.push(layer);
+			result.push('background: ' +layer);
 		}
 		
 		if(this.prefixes.moz){
@@ -86,7 +86,7 @@ var patternz = {
 				layer.push('-moz-' + layersCode[i]);
 			}
 			layer.join(', ');
-			result.push(layer);
+			result.push('background: ' +layer);
 		}
 		if(this.prefixes.ms){
 			var layer = [];
@@ -94,7 +94,7 @@ var patternz = {
 				layer.push('-ms-' + layersCode[i]);
 			}
 			layer.join(', ');
-			result.push(layer);
+			result.push('background: ' +layer);
 		}
 		if(this.prefixes.o){
 			var layer = [];
@@ -102,7 +102,7 @@ var patternz = {
 				layer.push('-o-' + layersCode[i]);
 			}
 			layer.join(', ');
-			result.push(layer);
+			result.push('background: ' +layer);
 		}
 		if(this.prefixes.w3c){
 			var layer = [];
@@ -110,12 +110,9 @@ var patternz = {
 				layer.push('' + layersCode[i]);
 			}
 			layer.join(', ');
-			result.push(layer);
+			result.push('background: ' +layer);
 		}
-		for(var i=0; i<result.length; i++){
-			result[i] = 'background: ' + result[i];
-		}
-		return result.join(';\n');
+		return result.join(';\n repeat scroll 0% 0%');
 	},
 	outputLayerCode: function(layerIndex){
 		var rawCode = this.generateLayerCode(layerIndex);
