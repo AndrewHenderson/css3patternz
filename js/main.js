@@ -55,7 +55,7 @@ var patternz = {
 				+ this.layers[li].background + ' '
 				+ this.layers[li].strips[i].end + 'px';
 		}
-		return result += ') ' + this.activeLayer.width + 'px ' + this.activeLayer.height + 'px';
+		return result += ') 0/' + this.activeLayer.width + 'px 0/' + this.activeLayer.height + 'px' ;
 	},
 	generate : function(){
 		this.init();
@@ -112,7 +112,7 @@ var patternz = {
 			layer.join(', ');
 			result.push('background: ' +layer);
 		}
-		return result.join(';\n repeat scroll 0% 0%');
+		return result.join(';\n');
 	},
 	outputLayerCode: function(layerIndex){
 		var rawCode = this.generateLayerCode(layerIndex);
