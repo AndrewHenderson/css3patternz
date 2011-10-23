@@ -55,12 +55,13 @@ var patternz = {
 				+ this.layers[li].background + ' '
 				+ this.layers[li].strips[i].end + 'px';
 		}
-		return result += ') 0/' + this.activeLayer.width + 'px 0/' + this.activeLayer.height + 'px' ;
+		return result += ')';
 	},
 	generate : function(){
 		this.init();
 		var layersCode = [],
-			result = [];
+			result = [],
+			bgSize = [];
 		//for every layer 
 		for(var i=0; i<this.layers.length; i++){
 			 layersCode.push(this.generateLayerCode(i)); // 
@@ -77,7 +78,7 @@ var patternz = {
 				layer.push('-webkit-' + layersCode[i]);
 			}
 			layer.join(', ');
-			result.push('background: ' +layer);
+			result.push('background-image: ' + layer);
 		}
 		
 		if(this.prefixes.moz){
@@ -86,7 +87,7 @@ var patternz = {
 				layer.push('-moz-' + layersCode[i]);
 			}
 			layer.join(', ');
-			result.push('background: ' +layer);
+			result.push('background-image: ' +layer);
 		}
 		if(this.prefixes.ms){
 			var layer = [];
@@ -94,7 +95,7 @@ var patternz = {
 				layer.push('-ms-' + layersCode[i]);
 			}
 			layer.join(', ');
-			result.push('background: ' +layer);
+			result.push('background-image: ' +layer);
 		}
 		if(this.prefixes.o){
 			var layer = [];
@@ -102,7 +103,7 @@ var patternz = {
 				layer.push('-o-' + layersCode[i]);
 			}
 			layer.join(', ');
-			result.push('background: ' +layer);
+			result.push('background-image: ' +layer);
 		}
 		if(this.prefixes.w3c){
 			var layer = [];
@@ -110,9 +111,17 @@ var patternz = {
 				layer.push('' + layersCode[i]);
 			}
 			layer.join(', ');
-			result.push('background: ' +layer);
+			result.push('background-image: ' +layer);
 		}
-		return result.join(';\n');
+		result = result.join(';\n');
+		
+		
+		for(var i=0; i<this.layers.length; i++){
+			bgSize.push(this.layers[i].width + 'px ' + this.layers[i].height + 'px ')
+		}
+		//TODO add vendor prefix background-size properties aka -moz-background-size and -webkit-background-size
+		bgSize = ';\nbackground-size:' + bgSize.join() + ';\n';
+		return result + bgSize;
 	},
 	outputLayerCode: function(layerIndex){
 		var rawCode = this.generateLayerCode(layerIndex);
