@@ -20,8 +20,8 @@ var patternz = {
 		this.layers.push(layer);
 		this.changeActiveLayer(this.activeLayerIndex++);
 	},
-	removeLayer : function(){
-		//TODO
+	removeLayer : function(layerIndex){
+		this.layers.splice(layerIndex, 1);
 	},
 	changeActiveLayer : function (layerIndex) {
 	  this.activeLayer = this.layers[layerIndex];
