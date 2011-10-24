@@ -129,6 +129,9 @@ var patternz = {
 			return  '-webkit-' + rawCode;
 		}
 	},
+	load: function(pattern){
+		this.layers = pattern;
+	},
 	init : function () {
 	  if(this.layers.length == 0) { this.addLayer();}
 	  this.changeActiveLayer(0);
@@ -143,7 +146,7 @@ var patternz = {
 
 
 var defaultPattern = [{
-	angle: -60,
+	angle: 90,
 	background: "transparent",
 	height: 140,
 	width: 80,
@@ -154,7 +157,7 @@ var defaultPattern = [{
 			start: 35
 		},
 		{
-			color: 'yellow',
+			color: 'rgba(255, 215, 0, 0.5)',
 			end: 60,
 			start: 40
 		},
@@ -187,4 +190,4 @@ var defaultPattern = [{
 	}];
 	
 // patternz loading
-patternz.layers = defaultPattern;
+patternz.load(defaultPattern); 
