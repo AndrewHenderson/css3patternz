@@ -31,7 +31,10 @@
 			$(this).parent().siblings(".maniptool").toggle("fast");
 		});
 		$(".remove").click(function(){
-			$(this).parents(".layer").fadeOut(700, function(){
+			var thisLayer = $(this).parents('.layer'),
+		 	    thisLayerIndex = parseInt(layer.attr('data-layer-index'),10);
+		 	patternz.removeLayer(thisLayerIndex)
+			thisLayer.fadeOut(700, function(){
 				$(this).remove();
 			});
 		});
