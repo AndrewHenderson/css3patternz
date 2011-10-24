@@ -6,10 +6,18 @@
  var ui = {
  	bind: function(){
  		onresize = this.setHeight;
- 		
+ 		$('#output-header .options input[type="checkbox"]').bind('chnage click', function(){
+ 			ui.prefixChange();
+ 			ui.render();
+ 		});
  	},
  	prefixChange: function(){
- 		
+ 		patternz.prefixes.webkit = $('#prefixCheckbox-webkit')[0].checked;
+ 		patternz.prefixes.moz = $('#prefixCheckbox-moz')[0].checked;
+ 		patternz.prefixes.ms = $('#prefixCheckbox-ms')[0].checked;
+ 		patternz.prefixes.o = $('#prefixCheckbox-o')[0].checked;
+ 		patternz.prefixes.w3c = $('#prefixCheckbox-w3c')[0].checked;
+ 		return patternz.prefixes;
  	},
 	render: function(){
 		if($('#render').length == 0){
