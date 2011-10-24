@@ -6,6 +6,10 @@
  var ui = {
  	bind: function(){
  		onresize = this.setHeight;
+ 		
+ 	},
+ 	prefixChange: function(){
+ 		
  	},
 	render: function(){
 		if($('#render').length == 0){
@@ -14,6 +18,7 @@
 		else{
 			$('#render').text('#pattern{ background: ' + patternz.generate() + '}');
 		}
+		$('#output').val( patternz.generate() );
 	},
 	setHeights: function(){
 		$('aside, #pattern').height(innerHeight - 60 - $('footer').height());
@@ -33,7 +38,7 @@
 			})
 		});
 	},
-	bindLayersToAPI: function (){
+	setLayersValues: function (){
 		for(var i=0; i<patternz.layers.length; i++){
 			var domLayer = $($('.layer')[i]),
 				apiLayer = patternz.layers[i];
@@ -51,7 +56,7 @@
 		this.render();
 		this.setHeights();
 		this.footerHeight();
-		this.bindLayersToAPI();
+		this.setLayersValues();
 	}
 };
 
