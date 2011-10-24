@@ -105,7 +105,7 @@ footer { height:100px; width:100%; position:fixed; bottom:0; }
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5db1', endColorstr='#ef017c',GradientType=0 ); /* IE6-9 */
 		background-image: linear-gradient(top, #ff5db1 0%,#ef017c 100%);
 	}
-	.button.alt {
+	.button.alt:hover {
 		background: rgb(255,0,0); /* Old browsers */
 		background: -moz-linear-gradient(top, rgb(255,0,0) 0%, rgb(214,0,0) 40%, rgb(188,5,5) 100%); /* FF3.6+ */
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(255,0,0)), color-stop(40%,rgb(214,0,0)), color-stop(100%,rgb(188,5,5))); /* Chrome,Safari4+ */
@@ -115,16 +115,6 @@ footer { height:100px; width:100%; position:fixed; bottom:0; }
 		background: linear-gradient(top, rgb(255,0,0) 0%,rgb(214,0,0) 40%,rgb(188,5,5) 100%); /* W3C */
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0000', endColorstr='#bc0505',GradientType=0 ); /* IE6-9 */
 	}
-		.button.alt:hover {
-			background: rgb(157,213,58); /* Old browsers */
-			background: -moz-linear-gradient(top, rgb(157,213,58) 0%, rgb(85,165,9) 100%); /* FF3.6+ */
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(157,213,58)), color-stop(100%,rgb(85,165,9))); /* Chrome,Safari4+ */
-			background: -webkit-linear-gradient(top, rgb(157,213,58) 0%,rgb(85,165,9) 100%); /* Chrome10+,Safari5.1+ */
-			background: -o-linear-gradient(top, rgb(157,213,58) 0%,rgb(85,165,9) 100%); /* Opera 11.10+ */
-			background: -ms-linear-gradient(top, rgb(157,213,58) 0%,rgb(85,165,9) 100%); /* IE10+ */
-			background: linear-gradient(top, rgb(157,213,58) 0%,rgb(85,165,9) 100%); /* W3C */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd53a', endColorstr='#55a509',GradientType=0 ); /* IE6-9 */
-		}
 
 /* =Header
 -------------------------------------------------------------*/
@@ -145,21 +135,66 @@ aside {
 	background: #eee;
 	border-right:1px solid #aaa;
 }
-aside .layer{ border:1px solid silver; margin:10px; }
-	aside .layer .controls{ text-align: right; }
-		aside .layer .controls h3{ width: 218px; text-align:left; display:inline-block;font-weight: bold;text-shadow: 0 1px white;padding: 5px 0; border:1px solid #eee; border-radius:2px;}
-			aside .layer .controls h3:hover { border-color:#bbb; }
-		aside .layer .controls a{ margin: 4px;display: inline-block; }
-	aside .maniptool{}
-		aside .maniptool .previewWrapper{float:left;font-size: 12px;margin: 0 5px;}
-		aside .maniptool .preview{ height: 100px; width:100px; border:1px solid black; margin: 5px 0; background: white; background: url(../img/empty-background.png);}
-		aside .maniptool .preview .layerOutput{width:100%; height:100%;}
-		aside .maniptool .layerOptions label{display:inline-block; width: 55px;}
-		aside .maniptool .layerOptions input{width:50px; margin:0 0 10px 0;}
-		aside .maniptool .layerOptions{width: 55px; float:left; margin:0 5px; font-size:10px;}
-		aside .maniptool .inspectrom{ height:30px; border: 1px solid #eee; margin: 5px; border-radius: 5px;}
+	aside .layer{ margin:10px 0; }
+		aside .layer .controls {
+		  cursor: pointer;
+		  display: block;
+		  background-color: #e6e6e6;
+		  background-repeat: no-repeat;
+		  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));
+		  background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+		  background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #e6e6e6);
+		  background-image: -ms-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+		  background-image: -o-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+		  background-image: linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+		  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+		  padding: 5px;
+		  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+		  color: #333;
+		  font-size: 13px;
+		  line-height: normal;
+		  border-top: 1px solid #ccc;
+		  border-bottom: 1px solid #bbb;
+		  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+		  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+		  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+		  -webkit-transition: 0.1s linear all;
+		  -moz-transition: 0.1s linear all;
+		  -ms-transition: 0.1s linear all;
+		  -o-transition: 0.1s linear all;
+		  transition: 0.1s linear all;
+		}
+			aside .layer .controls h3{ width: 180px; text-align:left; display:inline-block;font-weight: bold;text-shadow: 0 1px white;padding: 5px 0 5px 10px; border:1px solid transparent; border-radius:2px;}
+				aside .layer .controls h3:hover{ border-color:#bbb; background:#fff; }
+			aside .layer .controls a{ margin: 4px;display: inline-block; }
+			aside .layer .controls .button { float:right; padding:1px 6px; height:17px; margin-right:1px; margin-left:1px; }
+			aside .layer .controls .moveUp::after {
+				content: "";
+				float: right;
+				margin-top: 7px;
+				border-width: 0 4px 4px;
+				border-style: solid;
+				border-color: white transparent;
+			}
+			aside .layer .controls .moveDown::after {
+				content: "";
+				float: right;
+				margin-top: 7px;
+				border-bottom: none;
+				border-left: 4px solid transparent;
+				border-right: 4px solid transparent;
+				border-top: 4px solid white;
+			}
+		aside .maniptool{ border-width:0 0 1px 0; border-color:#ccc; border-style:solid; padding:10px; }
+			aside .maniptool .previewWrapper{float:left;font-size: 12px;margin: 0 5px;}
+			aside .maniptool .preview{ height: 100px; width:100px; border:1px solid black; margin: 5px 0; background: white; background: url(../img/empty-background.png);}
+			aside .maniptool .preview .layerOutput{width:100%; height:100%;}
+			aside .maniptool .layerOptions label{display:inline-block; width: 55px;}
+			aside .maniptool .layerOptions input{width:50px; margin:0 0 10px 0;}
+			aside .maniptool .layerOptions{width: 55px; float:left; margin:0 5px; font-size:10px;}
+			aside .maniptool .inspectrom{ height:30px; border: 1px solid #eee; margin: 5px; border-radius: 5px;}
 	
-aside #add{ width:96%; text-align: center; margin:0 2% 20px; } 
+		aside #add{ width:96%; text-align: center; margin:0 2% 20px; }
 
 /* =Content
 -------------------------------------------------------------*/

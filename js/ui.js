@@ -26,6 +26,24 @@
 	setHeights: function(){
 		$('aside, #pattern').height(innerHeight - 60 - $('footer').height());
 	},
+	controlButtons: function() {
+		$(".minimize").click(function(){
+			$(this).parent().siblings(".maniptool").toggle("fast");
+		});
+		$(".remove").click(function(){
+			$(this).parents(".layer").fadeOut(700, function(){
+				$(this).remove();
+			});
+		});
+		$(".moveUp").click(function(){
+			thisLayer = $(this).parents(".layer")
+			thisLayer.insertBefore(thisLayer.prev(".layer"));
+		});
+		$(".moveDown").click(function(){
+			thisLayer = $(this).parents(".layer")
+			thisLayer.insertAfter(thisLayer.next(".layer"));
+		});
+	},
 	footerHeight: function(){
 		$('footer .resize.handle').bind('mousedown', function(mde){
 		var currentHeight = $('footer').height();
@@ -58,6 +76,7 @@
 		this.bind();
 		this.render();
 		this.setHeights();
+		this.controlButtons();
 		this.footerHeight();
 		this.setLayersValues();
 	}
@@ -95,8 +114,13 @@
 
 // Layer Options input bindings  WORST CODE I WROTE EVER
 $('.layerOptions-width').bind('change click scroll keyup',function(){
-	$(this).parent().parent().parent().parent().find('.preview').width($(this).val()); // should fix with jQuery .closest() I don't know why is not working here
-	patternz.layers[parseInt($(this).parent().parent().parent().parent().attr('data-layer-index'))].width = parseInt($(this).val());
+	$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').width($(this).val());
+	patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].width = parseInt($(this).val());
+	bindLayersToAPI();
+});
+$('.layerOptions-height').bind('change click scroll keyup',function(){
+	$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').height($(this).val());
+	patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].height = parseInt($(this).val());
 	bindLayersToAPI();
 });
 
