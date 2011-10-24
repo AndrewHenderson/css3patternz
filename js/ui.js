@@ -20,12 +20,7 @@
  		return patternz.prefixes;
  	},
 	render: function(){
-		if($('#render').length == 0){
-			$('head').append($('<style>').text('#pattern{'+ patternz.generate() + '}').attr('type','text/css').attr('id', 'render'));
-		}
-		else{
-			$('#render').text('#pattern{ background: ' + patternz.generate() + '}');
-		}
+		$('#render').text('#pattern{'+ patternz.generate() + '}').attr('type','text/css');
 		$('#output').val( patternz.generate() );
 	},
 	setHeights: function(){
