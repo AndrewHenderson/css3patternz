@@ -6,7 +6,7 @@
  var ui = {
  	bind: function(){
  		onresize = this.setHeight;
- 		$('#output-header .options input[type="checkbox"]').bind('chnage click', function(){
+ 		$('#output-header .options input[type="checkbox"]').bind('change click', function(){
  			ui.prefixChange();
  			ui.render();
  		});
