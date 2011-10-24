@@ -32,7 +32,7 @@
 		});
 		$(".remove").click(function(){
 			var thisLayer = $(this).parents('.layer'),
-		 	    thisLayerIndex = parseInt(layer.attr('data-layer-index'),10);
+		 	    thisLayerIndex = parseInt(thisLayer.attr('data-layer-index'),10);
 		 	patternz.removeLayer(thisLayerIndex)
 			thisLayer.fadeOut(700, function(){
 				$(this).remove();
