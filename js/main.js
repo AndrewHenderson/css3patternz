@@ -145,7 +145,7 @@ var patternz = {
 var defaultPattern = [{
 	angle: -60,
 	background: "transparent",
-	height: 200,
+	height: 140,
 	width: 80,
 	name: "Sample Layer 1",
 	strips:[{

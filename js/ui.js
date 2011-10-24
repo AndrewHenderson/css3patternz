@@ -4,9 +4,6 @@
  * Start Date: Oct 12, 2011
  */
  var ui = {
- 	elems:{
- 		
- 	},
  	bind: function(){
  		onresize = this.setHeight;
  	},
@@ -21,23 +18,20 @@
 	setHeights: function(){
 		$('aside, #pattern').height(innerHeight - 60 - $('footer').height());
 	},
+	footerHeight: function(){
+		
+	},
 	init: function(){
 		this.bind();
 		this.render();
+		this.setHeight;
 	}
 };
  
-ui.init();
 
-// generate code
-function generateCode(){
-	$("#generate").click(function(){
-		var pattern = $("#pattern").attr("style");
-		$("#output").empty().html(pattern);	
-	});
-}
 
-// save preset
+
+// save preset TODO
 function savePreset(){
 	$("#save").click(function(){
 		var preset = prompt("Choose a name for this preset.");
@@ -46,11 +40,7 @@ function savePreset(){
 
 // document load
  $(document).ready(function(){
-	
- 	ui.setHeights();
- 	generateCode();
-	savePreset();
-
+	ui.init();
  });
  
 // footer resizable
@@ -106,7 +96,7 @@ $('footer .resize.handle').bind('mousedown', function(mde){
 
 	bindLayersToAPI();
 // Layer Options input bindings  WORST CODE I WROTE EVER
-$('.layerOptions-width').change(function(){
+$('.layerOptions-width').bind('change click scroll keyup',function(){
 	$(this).parent().parent().parent().parent().find('.preview').width($(this).val()); // should fix with jQuery .closest() I don't know why is not working here
 	patternz.layers[parseInt($(this).parent().parent().parent().parent().attr('data-layer-index'))].width = parseInt($(this).val());
 	bindLayersToAPI();
