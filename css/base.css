@@ -56,6 +56,7 @@ body { font-family:arial; }
 h1 { font:bold 30px/30px 'Michroma' sans-serif;text-shadow: #fff 1px 1px; }
 h2 { font-size:16px; line-height:30px; }
 .clear{clear: both; height: 0;}
+
 /* =Layout
 -------------------------------------------------------------*/
 
@@ -200,6 +201,12 @@ aside {
 -------------------------------------------------------------*/
 
 #pattern { margin-left:351px; }
+
+.alignLeft { float:left; margin-right:15px; }
+
+.vcard { padding:15px }
+	.vcard h2 { font-weight:bold; font-size:20px; }
+	.vcard p { margin:10px 0; }
 
 /* =Footer
 -------------------------------------------------------------*/
