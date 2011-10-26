@@ -39,10 +39,12 @@
 			});
 		});
 		$(".moveUp").click(function(){
+			//TODO make this animated
 			thisLayer = $(this).parents(".layer")
 			thisLayer.insertBefore(thisLayer.prev(".layer"));
 		});
 		$(".moveDown").click(function(){
+			//TODO make this animated
 			thisLayer = $(this).parents(".layer")
 			thisLayer.insertAfter(thisLayer.next(".layer"));
 		});
