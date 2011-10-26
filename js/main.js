@@ -23,9 +23,11 @@ var patternz = {
 	removeLayer : function(layerIndex){
 		this.layers.splice(layerIndex, 1);
 	},
-	shiftLayer: function (layerIndex, index) {
+	shiftLayer: function (index) {
 	  if(index == 'up'){
-	  	//this.
+	  	var temp = this.layers[index-1];
+	  	this.layers[index-1] = this.layers[index];
+	  	this.layers[index] = temp;
 	  }
 	},
 	changeActiveLayer : function (layerIndex) {
