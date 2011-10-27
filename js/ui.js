@@ -28,25 +28,29 @@
 	},
 	controlButtons: function() {
 		$(".minimize").click(function(){
-			$(this).parent().siblings(".maniptool").toggle("fast");
+			$(this).parent().siblings(".maniptool").toggle(500);
 		});
 		$(".remove").click(function(){
-			var thisLayer = $(this).parents('.layer'),
-		 	    thisLayerIndex = parseInt(thisLayer.attr('data-layer-index'),10);
+			thisLayer = $(this).parents('.layer'),
+		 	thisLayerIndex = parseInt(thisLayer.attr('data-layer-index'),10);
 		 	patternz.removeLayer(thisLayerIndex)
 			thisLayer.fadeOut(700, function(){
 				$(this).remove();
 			});
 		});
 		$(".moveUp").click(function(){
-			//TODO make this animated
 			thisLayer = $(this).parents(".layer")
-			thisLayer.insertBefore(thisLayer.prev(".layer"));
+			thisLayer.slideUp("slow", function(){
+				this_ = $(this)
+				this_.insertBefore(this_.prev(".layer")).delay(500).slideDown("slow");
+			});
 		});
 		$(".moveDown").click(function(){
-			//TODO make this animated
 			thisLayer = $(this).parents(".layer")
-			thisLayer.insertAfter(thisLayer.next(".layer"));
+			thisLayer.slideUp("slow", function(){
+				this_ = $(this)
+				this_.insertAfter(this_.next(".layer")).delay(500).slideDown("slow");
+			});
 		});
 	},
 	footerHeight: function(){
