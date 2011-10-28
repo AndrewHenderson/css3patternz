@@ -25,9 +25,10 @@ var patternz = {
 	},
 	shiftLayer: function (index) {
 	  if(index == 'up'){
-	  	var temp = this.layers[index-1];
-	  	this.layers[index-1] = this.layers[index];
-	  	this.layers[index] = temp;
+	  	var temp = this.layers[activeLayerIndex+1]
+	  	this.layers[activeLayerIndex+1] = this.activeLayer;
+	  	this.activeLayer = temp;
+	  	this.activeLayerIndex++;//TODO
 	  }
 	},
 	changeActiveLayer : function (layerIndex) {
