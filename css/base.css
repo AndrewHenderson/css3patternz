@@ -194,7 +194,8 @@ aside {
 			aside .maniptool .layerOptions label{display:inline-block; width: 55px;}
 			aside .maniptool .layerOptions input{width:50px; margin:0 0 10px 0;}
 			aside .maniptool .layerOptions{width: 55px; float:left; margin:0 5px; font-size:10px;}
-			aside .maniptool .inspectrom{ height:30px; border: 1px solid #eee; margin: 5px; border-radius: 5px;}
+			aside .maniptool .inspectrum{ height:30px; border: 1px solid #333; margin: 5px;}
+				aside .maniptool .inspectrum .view{height:100%;}
 	
 		aside #add{ width:96%; text-align: center; margin:10px 2% 20px; }
 

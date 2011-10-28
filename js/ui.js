@@ -65,6 +65,7 @@
 			domLayer.find('.layerName').text(apiLayer.name);
 			domLayer.find('.preview').width(apiLayer.width).height(apiLayer.height);
 			domLayer.attr('data-li', i);
+			domLayer.find('.inspectrum .view').css('background', patternz.generateInspectrum(i));
 		}
 	},
 	layers: function() {
