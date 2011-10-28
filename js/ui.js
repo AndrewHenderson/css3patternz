@@ -38,20 +38,6 @@
 				$(this).remove();
 			});
 		});
-		$(".moveUp").click(function(){
-			thisLayer = $(this).parents(".layer")
-			thisLayer.slideUp("slow", function(){
-				this_ = $(this)
-				this_.insertBefore(this_.prev(".layer")).delay(500).slideDown("slow");
-			});
-		});
-		$(".moveDown").click(function(){
-			thisLayer = $(this).parents(".layer")
-			thisLayer.slideUp("slow", function(){
-				this_ = $(this)
-				this_.insertAfter(this_.next(".layer")).delay(500).slideDown("slow");
-			});
-		});
 	},
 	footerHeight: function(){
 		$('footer .resize.handle').bind('mousedown', function(mde){

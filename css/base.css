@@ -61,7 +61,7 @@ h2 { font-size:16px; line-height:30px; }
 -------------------------------------------------------------*/
 
 body, html { height: 100%; }
-header { height:50px; padding:10px 0 0 15px; }
+header { height:50px; padding:3px 0 7px 15px; }
 aside { width:350px; float:left; }
 footer { height:100px; width:100%; position:fixed; bottom:0; }
 
@@ -121,12 +121,13 @@ footer { height:100px; width:100%; position:fixed; bottom:0; }
 -------------------------------------------------------------*/
 
 header { background:#2d2d2d; border-bottom:1px solid #222; }
-header h1, header h1 a { color:#FF69B4; float:left; text-decoration:none; }
+header h1 { height:26px; }
+header h1, header h1 a { color:#FF69B4; display:inline-block; text-decoration:none; }
   header h1 span { color:#00B2E3; }
-nav { margin: 7px 0 0 5px; float:left; }
-  nav a { float:left; margin-left:8px; }
-#social { margin:10px 0 0 13px; float:left; }
-  #social > div { float:left; }
+nav { margin: 0 0 0 5px; display:inline-block; }
+  nav a { display:inline-block; margin-left:3px; }
+#social { margin:10px 0 0 13px; display:inline-block; }
+  #social > div { display:inline-block; }
 
 /* =Controls
 -------------------------------------------------------------*/
@@ -138,7 +139,7 @@ aside {
 }
 	aside .layer{ }
 		aside .layer .controls {
-		  cursor: pointer;
+		  /* cursor: move; */
 		  display: block;
 		  background-color: #e6e6e6;
 		  background-repeat: no-repeat;
@@ -168,7 +169,7 @@ aside {
 			aside .layer .controls h3{ width: 180px; text-align:left; display:inline-block;font-weight: bold;text-shadow: 0 1px white;padding: 5px 0 5px 10px; border:1px solid transparent; border-radius:2px;}
 				aside .layer .controls h3:hover{ border-color:#bbb; background:#fff; }
 			aside .layer .controls a{ margin: 4px;display: inline-block; }
-			aside .layer .controls .button { float:right; padding:1px 6px; height:17px; margin-right:1px; margin-left:1px; }
+			aside .layer .controls .button { float:right; padding:1px 6px; height:16px; width:7px; margin-right:1px; margin-left:1px; text-align:center; }
 			aside .layer .controls .moveUp::after {
 				content: "";
 				float: right;
