@@ -169,7 +169,7 @@ aside {
 			aside .layer .controls h3{ width: 180px; text-align:left; display:inline-block;font-weight: bold;text-shadow: 0 1px white;padding: 5px 0 5px 10px; border:1px solid transparent; border-radius:2px;}
 				aside .layer .controls h3:hover{ border-color:#bbb; background:#fff; }
 			aside .layer .controls a{ margin: 4px;display: inline-block; }
-			aside .layer .controls .button { float:right; padding:1px 6px; height:16px; width:7px; margin-right:1px; margin-left:1px; text-align:center; }
+			aside .layer .controls .button { float:right; padding:1px 6px; height:17px; width:7px; margin-right:1px; margin-left:1px; text-align:center; }
 			aside .layer .controls .moveUp::after {
 				content: "";
 				float: right;
