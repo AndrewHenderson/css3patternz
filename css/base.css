@@ -188,6 +188,7 @@ aside {
 				border-top: 4px solid white;
 			}
 		aside .maniptool{ padding:10px; }
+			#layerTemplate{display:none;}
 			aside .maniptool .previewWrapper{float:left;font-size: 12px;margin: 0 5px;}
 			aside .maniptool .preview{ height: 100px; width:100px; border:1px solid black; margin: 5px 0; background: white; background: url(../img/empty-background.png);}
 			aside .maniptool .preview .layerOutput{width:100%; height:100%;}
