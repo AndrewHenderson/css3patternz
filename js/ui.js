@@ -10,6 +10,10 @@
  			ui.prefixChange();
  			ui.render();
  		});
+ 		$('.layersWrapper').sortable({
+ 			axis: 'y',
+ 			handle: '.sortHandle'
+ 		});
  		return this;
  	},
  	prefixChange: function(){
@@ -30,8 +34,9 @@
 		return this;
 	},
 	controlButtons: function() {
-		$(".minimize").click(function(){
-			$(this).parent().siblings(".maniptool").toggle(500);
+		$(".minimize").live('click', function(click){
+			click.preventDefault();
+			$(this).parents('.layer').toggleClass('minimized');
 		});
 		$(".remove").click(function(){
 			thisLayer = $(this).parents('.layer'),
@@ -63,7 +68,7 @@
 		read: function() {
 			for(var i=0; i<patternz.layers.length; i++){
 				if($('aside .layer[data-layer-index="' + i + '"]').length == 0){
-					$('aside').append($('#layerTemplate').clone().attr('data-layer-index', i).attr('id','').show());	
+					$('aside .layersWrapper').append($('#layerTemplate').clone().attr('data-layer-index', i).attr('id','').show());	
 				}
 				var domLayer = $($('.layer')[i]),
 					apiLayer = patternz.layers[i];

@@ -8,6 +8,7 @@
 <!-- schema.org -->
 <link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
 <title>CSS Patternz</title>
+<link rel="stylesheet" href="css/jquery-ui-1.8.16.custom.css" />
 <link rel="stylesheet" href="css/base.css" />
 <!-- <link rel="stylesheet" href="css/shCore.css" /> -->
 <script src="js/libs/modernizr.custom.js"></script>
@@ -59,29 +60,31 @@
 		</div>
 	</header>
 	<aside>
-		<div class="layer" data-layer-index="template" id="layerTemplate">
-			<div class="controls clearfix">
-				<div class="sortHandle"></div>
-				<h3 class="layerName" contenteditable>Layer1</h3>
-				<a href="#" title="Remove this layer" class="remove button alt">x</a>
-				<a href="#" title="Minimize layer" class="minimize button">-</a>
-			</div>
-			<div class="maniptool clearfix">
-				<div class="layerOptions">
-					<label>Width: <input class="layerOptions-width" type="number" min="10" max="250" value="100"/></label>
-					<label>Height: <input class="layerOptions-height" type="number" min="10" max="250" value="100"/></label>
-					<label>Angle: <input class="layerOptions-angle" type="number" min="-360" max="3600" value="0"/></label>
+		<div class="layersWrapper">
+			<div class="layer" data-layer-index="template" id="layerTemplate">
+				<div class="controls clearfix">
+					<div class="sortHandle"></div>
+					<h3 class="layerName" contenteditable>Layer1</h3>
+					<a href="#" title="Remove this layer" class="remove button alt">x</a>
+					<a href="#" title="Minimize layer" class="minimize button">_</a>
 				</div>
-				<div class="previewWrapper">
-					<label>Layer Preview:</label>
-					<div class="preview">
-						<div class="layerOutput"></div>
-				</div>
-				</div>
-				<div class="clearfix"></div>
-				<label>Inspectrum</label>
-				<div class="inspectrum">
-					<div class="view"></div>
+				<div class="maniptool clearfix">
+					<div class="layerOptions">
+						<label>Width: <input class="layerOptions-width" type="number" min="10" max="250" value="100"/></label>
+						<label>Height: <input class="layerOptions-height" type="number" min="10" max="250" value="100"/></label>
+						<label>Angle: <input class="layerOptions-angle" type="number" min="-360" max="3600" value="0"/></label>
+					</div>
+					<div class="previewWrapper">
+						<label>Layer Preview:</label>
+						<div class="preview">
+							<div class="layerOutput"></div>
+					</div>
+					</div>
+					<div class="clearfix"></div>
+					<label>Inspectrum</label>
+					<div class="inspectrum">
+						<div class="view"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -112,6 +115,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.4.min.js"><\/script>')</script> -->
 <script src="js/libs/jquery-1.6.4.min.js"></script>
+<script src="js/libs/jquery-ui-1.8.16.custom.min.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 <script src="js/ui.js"></script>

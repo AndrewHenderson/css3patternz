@@ -134,10 +134,10 @@ nav { margin: 0 0 0 5px; display:inline-block; }
 
 aside {
 	overflow-y:scroll; 
-	background: #eee;
+	background: #999;
 	border-right:1px solid #aaa;
 }
-	aside .layer{ }
+	aside .layer{background: #eee; }
 	aside .layer .sortHandle {height:10px; background: url(../img/sortHandleBg.png); cursor: move;}
 		aside .layer .controls {
 		  /* cursor: move; */
@@ -202,6 +202,8 @@ aside {
 	
 		aside #add{ width:96%; text-align: center; margin:10px 2% 20px; }
 
+		aside .minimized.layer .maniptool{padding:0 10px;}
+			aside .minimized.layer .layerOptions, aside .minimized.layer .previewWrapper, .minimized.layer label{display:none;}
 /* =Content
 -------------------------------------------------------------*/
 
