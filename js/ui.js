@@ -70,6 +70,7 @@
 				domLayer.find('.layerOptions-angle').val(apiLayer.angle);
 				domLayer.find('.layerName').text(apiLayer.name);
 				domLayer.find('.preview').width(apiLayer.width).height(apiLayer.height);
+				ui.strips.make(i);
 			}
 		},
 		bind: function(){
@@ -92,8 +93,16 @@
 		}
 	},
 	strips: {
-		make: function(){
-			
+		make: function(layerIndex){
+			var view = $('.layer[data-layer-index="' + layerIndex + '"] .inspectrum .view');
+			for(var i=0; i<patternz.layers[layerIndex].strips.length; i++){
+				view.append(
+					$('<div/>')
+						.addClass('strip')
+						.width(patternz.layers[layerIndex].strips[i].end - patternz.layers[layerIndex].strips[i].start)
+						.css('background', patternz.layers[layerIndex].strips[i].color)
+				);
+			}
 		}
 	},
 	init: function(){
