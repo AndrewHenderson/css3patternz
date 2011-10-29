@@ -10,6 +10,7 @@
  			ui.prefixChange();
  			ui.render();
  		});
+ 		return this;
  	},
  	prefixChange: function(){
  		patternz.prefixes.webkit = $('#prefixCheckbox-webkit')[0].checked;
@@ -22,9 +23,11 @@
 	render: function(){
 		$('#render').text('#pattern{'+ patternz.generate() + '}').attr('type','text/css');
 		$('#output').val( patternz.generate() );
+		return this;
 	},
 	setHeights: function(){
 		$('aside, #pattern').height(innerHeight - 60 - $('footer').height());
+		return this;
 	},
 	controlButtons: function() {
 		$(".minimize").click(function(){
@@ -38,6 +41,7 @@
 				$(this).remove();
 			});
 		});
+		return this;
 	},
 	footerHeight: function(){
 		$('footer .resize.handle').bind('mousedown', function(mde){
@@ -53,30 +57,31 @@
 				})
 			})
 		});
+		return this;
 	},
 	layers: {
 		read: function() {
-		for(var i=0; i<patternz.layers.length; i++){
-			var domLayer = $($('.layer')[i]),
-				apiLayer = patternz.layers[i];
-			domLayer.find('.layerOutput').css('background', patternz.outputLayerCode(i));
-			domLayer.find('.layerOptions-width').val(apiLayer.width);
-			domLayer.find('.layerOptions-height').val(apiLayer.height);
-			domLayer.find('.layerOptions-angle').val(apiLayer.angle);
-			domLayer.find('.layerName').text(apiLayer.name);
-			domLayer.find('.preview').width(apiLayer.width).height(apiLayer.height);
-		}
+			for(var i=0; i<patternz.layers.length; i++){
+				var domLayer = $($('.layer')[i]),
+					apiLayer = patternz.layers[i];
+				domLayer.find('.layerOutput').css('background', patternz.outputLayerCode(i));
+				domLayer.find('.layerOptions-width').val(apiLayer.width);
+				domLayer.find('.layerOptions-height').val(apiLayer.height);
+				domLayer.find('.layerOptions-angle').val(apiLayer.angle);
+				domLayer.find('.layerName').text(apiLayer.name);
+				domLayer.find('.preview').width(apiLayer.width).height(apiLayer.height);
+			}
 		},
 		bind: function(){
 					// Layer Options input bindings
-		$('.layerOptions-width').bind('change click scroll keyup',function(){
-			$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').width($(this).val());
-			patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].width = parseInt($(this).val());
-		});
-		$('.layerOptions-height').bind('change click scroll keyup',function(){
-			$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').height($(this).val());
-			patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].height = parseInt($(this).val());
-		});
+			$('.layerOptions-width').bind('change click scroll keyup',function(){
+				$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').width($(this).val());
+				patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].width = parseInt($(this).val());
+			});
+			$('.layerOptions-height').bind('change click scroll keyup',function(){
+				$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').height($(this).val());
+				patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].height = parseInt($(this).val());
+			});
 		},
 		write: function(){
 			
@@ -84,6 +89,11 @@
 		init: function(){
 			ui.layers.read();
 			ui.layers.bind();
+		}
+	},
+	strips: {
+		make: function(){
+			
 		}
 	},
 	init: function(){
