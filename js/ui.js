@@ -54,7 +54,8 @@
 			})
 		});
 	},
-	setLayersValues: function (){
+	layers: {
+		read: function() {
 		for(var i=0; i<patternz.layers.length; i++){
 			var domLayer = $($('.layer')[i]),
 				apiLayer = patternz.layers[i];
@@ -64,53 +65,34 @@
 			domLayer.find('.layerOptions-angle').val(apiLayer.angle);
 			domLayer.find('.layerName').text(apiLayer.name);
 			domLayer.find('.preview').width(apiLayer.width).height(apiLayer.height);
-			domLayer.attr('data-li', i);
-			domLayer.find('.inspectrum .view').css('background', patternz.generateInspectrum(i));
 		}
-	},
-	layers: function() {
-		// layers loading
-
-		/*
-		 * How I will create new layers:
-		 * 
-		 * We will have a hidden layer div that have default values on it
-		 * then we will clone it as a new layer.  
-		 * $('#defauleLayer').clone().show();
-		 * 
-		 * to load all layers from API we will first create all neccessery layer divs:
-		 * 
-		 * for(var i=0; i<patternz.layers.length; i++){
-		 * $('aside').append($('#defauleLayer').clone().show());
-		 * }
-		 * 
-		 * and then load them with API data:
-		 * 
-		 */
-
-		//temp layer binding
-
-
-		// Layer Options input bindings
+		},
+		bind: function(){
+					// Layer Options input bindings
 		$('.layerOptions-width').bind('change click scroll keyup',function(){
 			$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').width($(this).val());
 			patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].width = parseInt($(this).val());
-			bindLayersToAPI();
 		});
 		$('.layerOptions-height').bind('change click scroll keyup',function(){
 			$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').height($(this).val());
 			patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].height = parseInt($(this).val());
-			bindLayersToAPI();
 		});
+		},
+		write: function(){
+			
+		},
+		init: function(){
+			ui.layers.read();
+			ui.layers.bind();
+		}
 	},
 	init: function(){
 		this.bind();
 		this.render();
 		this.setHeights();
 		this.controlButtons();
-		this.layers();
+		this.layers.init();
 		this.footerHeight();
-		this.setLayersValues();
 	}
 };
 
