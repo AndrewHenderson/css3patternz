@@ -78,10 +78,17 @@
 			$('.layerOptions-width').bind('change click scroll keyup',function(){
 				$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').width($(this).val());
 				patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].width = parseInt($(this).val());
+				ui.render();
 			});
 			$('.layerOptions-height').bind('change click scroll keyup',function(){
 				$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').height($(this).val());
 				patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].height = parseInt($(this).val());
+				ui.render();
+			});
+			$('.layerOptions-angle').bind('change click scroll keyup',function(){
+				patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].angle = parseInt($(this).val());
+				ui.render();
+				ui.layers.read();
 			});
 		},
 		write: function(){
@@ -100,7 +107,10 @@
 					$('<div/>')
 						.addClass('strip')
 						.width(patternz.layers[layerIndex].strips[i].end - patternz.layers[layerIndex].strips[i].start)
-						.css('background', patternz.layers[layerIndex].strips[i].color)
+						.css({
+							'background': patternz.layers[layerIndex].strips[i].color,
+							'left' : patternz.layers[layerIndex].strips[i].start
+						})
 				);
 			}
 		}
