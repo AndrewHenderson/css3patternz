@@ -61,7 +61,7 @@ h2 { font-size:16px; line-height:30px; }
 -------------------------------------------------------------*/
 
 body, html { height: 100%; }
-header { height:50px; padding:3px 0 7px 15px; }
+header { padding:3px 0 7px 15px; overflow: hidden; }
 aside { width:350px; float:left; }
 footer { height:100px; width:100%; position:fixed; bottom:0; }
 
@@ -138,6 +138,7 @@ aside {
 	border-right:1px solid #aaa;
 }
 	aside .layer{ }
+	aside .layer .sortHandle {height:10px; background: url(../img/sortHandleBg.png); cursor: move;}
 		aside .layer .controls {
 		  /* cursor: move; */
 		  display: block;

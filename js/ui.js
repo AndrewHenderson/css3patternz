@@ -78,20 +78,20 @@
 		},
 		bind: function(){
 					// Layer Options input bindings
-			$('.layerOptions-width').bind('change click scroll keyup',function(){
+			$('.layerOptions-width').live('change click scroll keyup',function(){
 				$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').width($(this).val());
 				patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].width = parseInt($(this).val());
 				ui.render();
 			});
-			$('.layerOptions-height').bind('change click scroll keyup',function(){
+			$('.layerOptions-height').live('change click scroll keyup',function(){
 				$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').height($(this).val());
 				patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].height = parseInt($(this).val());
 				ui.render();
 			});
-			$('.layerOptions-angle').bind('change click scroll keyup',function(){
+			$('.layerOptions-angle').live('change click scroll keyup',function(){
 				patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].angle = parseInt($(this).val());
 				ui.render();
-				ui.layers.read();
+				//ui.layers.read();
 			});
 		},
 		write: function(){

@@ -158,7 +158,7 @@ var defaultPattern = [{
 	background: "transparent",
 	height: 140,
 	width: 80,
-	name: "Sample Layer 1",
+	name: "Sample Layer 0",
 	strips:[{
 			color: 'silver',
 			end: 40,
@@ -179,7 +179,7 @@ var defaultPattern = [{
 	background: "transparent",
 	height: 100,
 	width: 100,
-	name: "Sample Layer 2",
+	name: "Sample Layer 1",
 	strips:[{
 			color: 'green',
 			end: 40,
