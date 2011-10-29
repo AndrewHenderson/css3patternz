@@ -65,25 +65,6 @@ var patternz = {
 		}
 		return result += ')';
 	},
-	generateInspectrum: function(layerIndex){
-		var li = layerIndex || 0,
-			startStr = "-weblkit-linear-gradient(", //TODO
-			result;
-		result = startStr + '0deg';
-		for(var i = 0; i< this.layers[li].strips.length; i++){
-			result = result 
-			    + ' , '
-			    + this.layers[li].background + ' '
-			    + this.layers[li].strips[i].start + 'px, '
-			    + this.layers[li].strips[i].color + ' '
-				+ this.layers[li].strips[i].start + 'px, '
-				+ this.layers[li].strips[i].color + ' '
-				+ this.layers[li].strips[i].end + 'px, '
-				+ this.layers[li].background + ' '
-				+ this.layers[li].strips[i].end + 'px';
-		}
-		return result += ')';
-	},
 	generate : function(){
 		this.init();
 		var layersCode = [],
