@@ -62,7 +62,9 @@
 	layers: {
 		read: function() {
 			for(var i=0; i<patternz.layers.length; i++){
-				$('aside').append($('#layerTemplate').clone().attr('data-layer-index', i).attr('id','').show());
+				if($('aside .layer[data-layer-index="' + i + '"]').length == 0){
+					$('aside').append($('#layerTemplate').clone().attr('data-layer-index', i).attr('id','').show());	
+				}
 				var domLayer = $($('.layer')[i]),
 					apiLayer = patternz.layers[i];
 				domLayer.find('.layerOutput').css('background', patternz.outputLayerCode(i));
