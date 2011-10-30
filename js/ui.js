@@ -5,7 +5,7 @@
  */
  var ui = {
  	bind: function(){
- 		onresize = this.setHeight;
+ 		window.onresize = this.setHeight;
  		$('#output-header .options input[type="checkbox"]').bind('change click', function(){
  			ui.prefixChange();
  			ui.render();
@@ -70,7 +70,7 @@
 				if($('aside .layer[data-layer-index="' + i + '"]').length == 0){
 					$('aside .layersWrapper').append($('#layerTemplate').clone().attr('data-layer-index', i).attr('id','').show());	
 				}
-				var domLayer = $($('.layer')[i]),
+				var domLayer = $('aside .layer[data-layer-index="' + i + '"]'),
 					apiLayer = patternz.layers[i];
 				domLayer.find('.layerOutput').css('background', patternz.outputLayerCode(i));
 				domLayer.find('.layerOptions-width').val(apiLayer.width);
