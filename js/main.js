@@ -195,7 +195,28 @@ var defaultPattern = [{
 			end: 65,
 			start: 60
 		}]
-	}];
+	},
+	{
+	angle: 60,
+	background: "transparent",
+	height: 90,
+	width: 90,
+	name: "Sample Layer 2",
+	strips:[{
+			color: 'red',
+			end: 60,
+			start: 55
+		},
+		{
+			color: 'rgba(100, 215, 0, 0.5)',
+			end: 70,
+			start: 60
+		},
+		{
+			color: 'black',
+			end: 80,
+			start: 70
+		}]}];
 	
 // patternz loading
 patternz.load(defaultPattern); 
