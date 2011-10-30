@@ -46,6 +46,10 @@
 				$(this).remove();
 			});
 		});
+		$('.addLayer').bind('click', function(){
+			patternz.addLayer(0, 100, 100, 'New Layer');
+			ui.layers.add(patternz.layers.length +1); //TODO remove +1
+		});
 		return this;
 	},
 	footerHeight: function(){
@@ -65,10 +69,19 @@
 		return this;
 	},
 	layers: {
+		add: function(layerIndex){
+			$('aside .layersWrapper').append(
+				$('#layerTemplate')
+					.clone()
+					.attr('data-layer-index', layerIndex)
+					.attr('id','')
+					.show()
+				);
+		},
 		read: function() {
 			for(var i=0; i<patternz.layers.length; i++){
 				if($('aside .layer[data-layer-index="' + i + '"]').length == 0){
-					$('aside .layersWrapper').append($('#layerTemplate').clone().attr('data-layer-index', i).attr('id','').show());	
+					ui.layers.add(i);
 				}
 				var domLayer = $('aside .layer[data-layer-index="' + i + '"]'),
 					apiLayer = patternz.layers[i];

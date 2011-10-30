@@ -200,7 +200,7 @@ aside {
 				aside .maniptool .inspectrum .view{height:100%; overflow: hidden; background: url(../img/empty-background.png);position: relative;}
 					aside .maniptool .inspectrum .view .strip{height: 100%; position: absolute;}
 	
-		aside #add{ width:96%; text-align: center; margin:10px 2% 20px; }
+		aside .addLayer.button{ width:96%; text-align: center; margin:10px 2% 20px; }
 
 		aside .minimized.layer .maniptool{padding:0 10px;}
 			aside .minimized.layer .layerOptions, aside .minimized.layer .previewWrapper, .minimized.layer label{display:none;}
