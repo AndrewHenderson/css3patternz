@@ -138,7 +138,7 @@ aside {
 	border-right:1px solid #aaa;
 }
 	aside .layer{background: #eee; }
-	aside .layer .sortHandle {height:10px; background: url(../img/sortHandleBg.png); cursor: move;}
+	aside .layer .sortHandle {height:10px; background: url(../img/grippy.png); cursor: move;}
 		aside .layer .controls {
 		  /* cursor: move; */
 		  display: block;
@@ -171,23 +171,7 @@ aside {
 				aside .layer .controls h3:hover{ border-color:#bbb; background:#fff; }
 			aside .layer .controls a{ margin: 4px;display: inline-block; }
 			aside .layer .controls .button { float:right; padding:1px 6px; height:17px; width:7px; margin-right:1px; margin-left:1px; text-align:center; }
-			aside .layer .controls .moveUp::after {
-				content: "";
-				float: right;
-				margin-top: 7px;
-				border-width: 0 4px 4px;
-				border-style: solid;
-				border-color: white transparent;
-			}
-			aside .layer .controls .moveDown::after {
-				content: "";
-				float: right;
-				margin-top: 7px;
-				border-bottom: none;
-				border-left: 4px solid transparent;
-				border-right: 4px solid transparent;
-				border-top: 4px solid white;
-			}
+			aside .layer .controls .button.minimize { line-height:4px; }
 		aside .maniptool{ padding:10px; }
 			#layerTemplate{display:none;}
 			aside .maniptool .previewWrapper{float:left;font-size: 12px;margin: 0 5px;}

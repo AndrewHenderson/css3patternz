@@ -38,10 +38,11 @@
 			click.preventDefault();
 			$(this).parents('.layer').toggleClass('minimized');
 		});
-		$(".remove").click(function(){
-			thisLayer = $(this).parents('.layer'),
+		$(".remove").live('click', function(click){
+			click.preventDefault();
+			thisLayer = $(this).parents('.layer')
 		 	thisLayerIndex = parseInt(thisLayer.attr('data-layer-index'),10);
-		 	patternz.removeLayer(thisLayerIndex)
+		 	patternz.removeLayer(thisLayerIndex);
 			thisLayer.fadeOut(700, function(){
 				$(this).remove();
 			});
