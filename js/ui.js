@@ -49,7 +49,7 @@
 		});
 		$('.addLayer').bind('click', function(){
 			patternz.addLayer(0, 100, 100, 'New Layer');
-			ui.layers.add(patternz.layers.length +1); //TODO remove +1
+			ui.layers.add(patternz.layers.length); //TODO remove +1
 		});
 		return this;
 	},
