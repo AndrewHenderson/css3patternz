@@ -12,7 +12,15 @@
  		});
  		$('.layersWrapper').sortable({
  			axis: 'y',
- 			handle: '.sortHandle'
+ 			handle: '.sortHandle',
+			stop: function(event, ui){ 
+				var layerOrder = []
+				dataLayerIndex = $(".layer").not(".ui-sortable-placeholder, #layerTemplate").each(function(index){
+					layerOrder.push($(this).attr("data-layer-index"));
+				});
+				//console.log(layerOrder);
+				return layerOrder;
+			}
  		});
  		return this;
  	},
