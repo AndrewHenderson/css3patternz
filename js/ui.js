@@ -50,11 +50,14 @@
 			click.preventDefault();
 			thisLayer = $(this).parents('.layer')
 		 	thisLayerIndex = parseInt(thisLayer.attr('data-layer-index'),10);
-		 	patternz.removeLayer(thisLayerIndex);
-			thisLayer.fadeOut(300, function(){
-				$(this).remove();
-				ui.render();
-			});
+		 	if(patternz.layers.length != 1){
+			 	patternz.removeLayer(thisLayerIndex);
+				thisLayer.fadeOut(300, function(){
+					$(this).remove();
+					ui.render();
+					ui.layers.init();
+				});
+		    }
 		});
 		$('.addLayer').bind('click', function(){
 			patternz.addLayer(0, 100, 100, 'New Layer');
