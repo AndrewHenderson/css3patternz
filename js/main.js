@@ -160,72 +160,56 @@ var patternz = {
 };
 
 
-
-
 var defaultPattern = [{
-	angle: 90,
+	angle: -90,
 	background: "transparent",
-	height: 140,
-	width: 80,
+	height: 50,
+	width: 50,
 	name: "Sample Layer 0",
 	strips:[{
-			color: 'silver',
-			end: 40,
-			start: 35
-		},
-		{
-			color: 'rgba(255, 215, 0, 0.5)',
-			end: 60,
-			start: 40
-		},
-		{
-			color: 'gray',
-			end: 65,
-			start: 60
-		}]},
+			color: 'rgba(110,75,255,.8)',
+			end: 25,
+			start: 24
+		}
+		]},
 		{
 	angle: 0,
 	background: "transparent",
-	height: 100,
-	width: 100,
+	height: 50,
+	width: 50,
 	name: "Sample Layer 1",
 	strips:[{
-			color: 'green',
-			end: 40,
-			start: 25
-		},
-		{
-			color: "rgba(255, 215, 0, 0.5)",
-			end: 60,
-			start: 40
-		},
-		{
-			color: 'gray',
-			end: 65,
-			start: 60
+			color: 'rgba(110,75,255,.8)',
+			end: 25,
+			start: 24
 		}]
 	},
 	{
-	angle: 60,
+	angle: 45,
 	background: "transparent",
-	height: 90,
-	width: 90,
+	height: 100,
+	width: 100,
 	name: "Sample Layer 2",
-	strips:[{
-			color: 'red',
-			end: 60,
-			start: 55
-		},
+	strips:[
 		{
-			color: 'rgba(100, 215, 0, 0.5)',
-			end: 70,
-			start: 60
-		},
+			color: 'rgba(115,0,0,.5)',
+			end: 75,
+			start: 65
+		}
+		]},
+	{
+	angle: -45,
+	background: "transparent",
+	height: 100,
+	width: 100,
+	name: "Sample Layer 3",
+	strips:[
 		{
-			color: 'black',
-			end: 80,
-			start: 70
-		}]}];
+			color: 'rgba(115,0,0,.5)',
+			end: 75,
+			start: 65
+		}
+		]}];
 	
 // patternz loading
 patternz.load(defaultPattern); 
