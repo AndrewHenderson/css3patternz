@@ -51,8 +51,9 @@
 			thisLayer = $(this).parents('.layer')
 		 	thisLayerIndex = parseInt(thisLayer.attr('data-layer-index'),10);
 		 	patternz.removeLayer(thisLayerIndex);
-			thisLayer.fadeOut(700, function(){
+			thisLayer.fadeOut(300, function(){
 				$(this).remove();
+				ui.render();
 			});
 		});
 		$('.addLayer').bind('click', function(){

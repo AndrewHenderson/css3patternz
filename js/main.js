@@ -1,6 +1,14 @@
 /*
 main.js
 */
+//Plugins
+// Array Remove - By John Resig (MIT Licensed)
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};
+
 //API
 var patternz = {
 	layers : [],
@@ -21,7 +29,7 @@ var patternz = {
 		this.changeActiveLayer(this.activeLayerIndex++);
 	},
 	removeLayer : function(layerIndex){
-		this.layers.splice(layerIndex, 1);
+		this.layers.remove(layerIndex);
 	},
 	shiftLayer: function (index) {
 	  if(index == 'up'){
