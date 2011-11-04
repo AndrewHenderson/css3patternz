@@ -22,6 +22,18 @@
 				return layerOrder;
 			}
  		});
+ 		$('.strip').live('click', function(e){
+ 			$('.stripEditor').css({
+ 				left:e.pageX - 10,
+ 				top:e.pageY + 30
+ 			});
+ 			var currentStrip = patternz.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex];
+ 			$('.colorPreview').css('background', currentStrip.color);
+ 			$('.colorvalue').val(currentStrip.color);
+ 			$('.startend .start').val(currentStrip.start);
+ 			$('.startend .end').val(currentStrip.end);
+ 			//TODO bind input changes to currentStrip == write changes
+ 		})
  		return this;
  	},
  	prefixChange: function(){
@@ -147,6 +159,8 @@
 							'background': patternz.layers[layerIndex].strips[i].color,
 							'left' : patternz.layers[layerIndex].strips[i].start
 						})
+						.data('layerIndex', layerIndex)
+						.data('stripIndex', i)
 				);
 			}
 		}
