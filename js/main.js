@@ -80,9 +80,10 @@ var patternz = {
 			bgSize = [];
 		//for every layer 
 		for(var i=0; i<this.layers.length; i++){
-			 layersCode.push(this.generateLayerCode(i)); // 
+			if(this.layers[i].strips.length > 0){
+				layersCode.push(this.generateLayerCode(i));
+			}
 		}
-	   
 		//add prefixes
 		
 		for(var i=0; i<this.prefixes.length; i++){

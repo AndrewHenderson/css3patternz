@@ -61,7 +61,9 @@
 		});
 		$('.addLayer').bind('click', function(){
 			patternz.addLayer(0, 100, 100, 'New Layer');
-			ui.layers.add(patternz.layers.length); //TODO remove +1
+			//ui.layers.add(patternz.layers.length); 
+			ui.layers.init();
+			ui.render();
 		});
 		return this;
 	},
@@ -82,14 +84,14 @@
 		return this;
 	},
 	layers: {
-		add: function(layerIndex){
+		add: function(layerIndex){			
 			$('aside .layersWrapper').append(
 				$('#layerTemplate')
 					.clone()
 					.attr('data-layer-index', layerIndex)
 					.attr('id','')
 					.show()
-				);
+				);				
 		},
 		read: function() {
 			for(var i=0; i<patternz.layers.length; i++){
