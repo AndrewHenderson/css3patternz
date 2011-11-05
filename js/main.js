@@ -16,6 +16,12 @@ var patternz = {
 	activeLayer : null,
 	output : '',
 	prefixes: {webkit: true, moz: true, ms: true, o: true, w3c: true},
+	renderColor: {
+		hexgen: function(colorArray){return"#"+((256+colorArray[0]<<8|colorArray[1])<<8|colorArray[2]).toString(16).slice(1)},
+		rgbagen: function(colorArray){
+			return 'rgba('+colorArray.join(',')+')';
+		}
+	},
 	addLayer : function(degree, width, height, name){
 		var layer = {
 				width: width || 100,
@@ -44,7 +50,7 @@ var patternz = {
 	},
 	addStrip: function(stripColor, startPoint, endPoint){
 		var strip = {};
-		strip.color = stripColor || "#000";
+		strip.color = stripColor || [0,0,0,1];
 		strip.start = startPoint || 0;
 		strip.end = endPoint || 10;
 		this.activeLayer.strips.push(strip);
@@ -62,13 +68,13 @@ var patternz = {
 		for(var i = 0; i< this.layers[li].strips.length; i++){
 			result = result 
 			    + ' , '
-			    + this.layers[li].background + ' '
+			    + this.renderColor.rgbagen(this.layers[li].background) + ' '
 			    + this.layers[li].strips[i].start + 'px, '
-			    + this.layers[li].strips[i].color + ' '
+			    + this.renderColor.rgbagen(this.layers[li].strips[i].color) + ' '
 				+ this.layers[li].strips[i].start + 'px, '
-				+ this.layers[li].strips[i].color + ' '
+				+ this.renderColor.rgbagen(this.layers[li].strips[i].color) + ' '
 				+ this.layers[li].strips[i].end + 'px, '
-				+ this.layers[li].background + ' '
+				+ this.renderColor.rgbagen(this.layers[li].background) + ' '
 				+ this.layers[li].strips[i].end + 'px';
 		}
 		return result += ')';
@@ -162,50 +168,50 @@ var patternz = {
 
 var defaultPattern = [{
 	angle: -90,
-	background: "transparent",
+	background: [1,1,1,0],
 	height: 50,
 	width: 50,
 	name: "Sample Layer 0",
 	strips:[{
-			color: 'rgba(110,75,255,.8)',
+			color: [110,75,255,0.8],
 			end: 25,
 			start: 24
 		}
 		]},
 		{
 	angle: 0,
-	background: "transparent",
+	background: [1,1,1,0],
 	height: 50,
 	width: 50,
 	name: "Sample Layer 1",
 	strips:[{
-			color: 'rgba(110,75,255,.8)',
+			color: [110,75,255,0.8],
 			end: 25,
 			start: 24
 		}]
 	},
 	{
 	angle: 45,
-	background: "transparent",
+	background: [1,1,1,0],
 	height: 100,
 	width: 100,
 	name: "Sample Layer 2",
 	strips:[
 		{
-			color: 'rgba(115,0,0,.5)',
+			color: [115,0,0,0.5],
 			end: 75,
 			start: 65
 		}
 		]},
 	{
 	angle: -45,
-	background: "transparent",
+	background: [1,1,1,0],
 	height: 100,
 	width: 100,
 	name: "Sample Layer 3",
 	strips:[
 		{
-			color: 'rgba(115,0,0,.5)',
+			color: [115,0,0,0.5],
 			end: 75,
 			start: 65
 		}

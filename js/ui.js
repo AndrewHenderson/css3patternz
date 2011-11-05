@@ -23,13 +23,14 @@
 			}
  		});
  		$('.strip').live('click', function(e){
- 			$('.stripEditor').css({
+ 			$('.stripEditor').show().css({
  				left:e.pageX - 10,
  				top:e.pageY + 30
  			});
- 			var currentStrip = patternz.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex];
- 			$('.colorPreview').css('background', currentStrip.color);
- 			$('.colorvalue').val(currentStrip.color);
+ 			var currentStrip = patternz.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex],
+ 			    currentStripHexColor = patternz.renderColor.hexgen(currentStrip.color);
+ 			$('.colorPreview').css('background', currentStripHexColor);
+ 			$('.colorvalue').val(currentStripHexColor);
  			$('.startend .start').val(currentStrip.start);
  			$('.startend .end').val(currentStrip.end);
  			//TODO bind input changes to currentStrip == write changes
@@ -156,7 +157,7 @@
 						.addClass('strip')
 						.width(patternz.layers[layerIndex].strips[i].end - patternz.layers[layerIndex].strips[i].start)
 						.css({
-							'background': patternz.layers[layerIndex].strips[i].color,
+							'background': patternz.renderColor.rgbagen(patternz.layers[layerIndex].strips[i].color),
 							'left' : patternz.layers[layerIndex].strips[i].start
 						})
 						.data('layerIndex', layerIndex)
