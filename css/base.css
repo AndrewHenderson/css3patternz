@@ -181,28 +181,29 @@ aside {
 			aside .maniptool .layerOptions input{width:50px; margin:0 0 10px 0;}
 			aside .maniptool .layerOptions{width: 55px; float:left; margin:0 5px; font-size:10px;}
 			aside .maniptool .inspectrum{ height:30px; border: 1px solid #333; margin: 5px;}
-				aside .maniptool .inspectrum .view{height:100%; overflow: hidden; background: url(../img/empty-background.png);position: relative;}
+				aside .maniptool .inspectrum .view{float:left;height:100%; width:285px; overflow: hidden; background: url(../img/empty-background.png);position: relative;}
+				aside .maniptool .viewEditor{float:left; height: 100%; width:25px;}
 					aside .maniptool .inspectrum .view .strip{height: 100%; position: absolute;}
 	
 		aside .addLayer.button{ width:96%; text-align: center; margin:10px 2% 20px; }
 
 		aside .minimized.layer .maniptool{padding:0 10px;}
-			aside .minimized.layer .layerOptions, aside .minimized.layer .previewWrapper, .minimized.layer label{display:none;}
+			aside .minimized.layer .layerOptions, aside .minimized.layer .previewWrapper, .minimized.layer label, .minimized.layer .inspectrumEditor{display:none;}
 
 /*Popups*/
 .popup{position: absolute; border: 2px solid gray; box-shadow: 0 0 5px black; background: #ddd;display: none; z-index: 10; }
 	.popup .grip{height: 10px; text-align:right;}
-.stripEditor{width:100px; height:100px; }
-	.stripEditor .pointer{position: absolute; top:0; height:0;}
+.stripEditor{ font-size:10px; display:none;}
+	.stripEditor .pointer{}
 		.stripEditor .pointer .cursor{background: url(../img/pointer.gif);height: 20px;width: 20px;top: -20px;position: absolute;}
-	.stripEditor .color{height:30px;}
+	.stripEditor .color{}
 		.stripEditor .color .colorbox{display:inline-block; width:20px; height:20px; border:1px solid #444; background: url(../img/empty-background.png); margin: 3px; margin-bottom: -5px;}
 			.colorPreview{width:100%; height:100%;}
 		.stripEditor .color input{display:inline-block; width:60px;}
 	.stripEditor .startend{font-size:10px;}
 		.stripEditor .startend label{}
 		.stripEditor .startend input{width:50px;}
-	.stripEditor .nexprev{position:absolute; bottom: 0; height: 20px; width:100%; text-align: center;}
+	.stripEditor .nexprev{}
 		.stripEditor .nexprev input{}
 
 /* =Content

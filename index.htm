@@ -61,30 +61,7 @@
 	</header>
 	<aside>
 		<div class="popups">
-			<div class="stripEditor popup">
-				<div class="pointer">
-					<div class="cursor"></div>
-				</div>
-				<div class="grip controls">
-					<a href="#" class="remove">X</a>
-				</div>
-				<div class="body">
-					<div class="color">
-						<div class="colorbox">
-							<div class="colorPreview"></div>
-						</div>
-						<input class="colorvalue" type="text"/>
-					</div>
-					<div class="startend">
-						<label>Start: <input type="number" class="start"></label>
-						<label>End: <input type="number" class="end"></label>
-					</div>
-					<div class="nexprev">
-						<input type="button" value="Prev" class="prev" />
-						<input type="button" value="Next" class="next" />
-					</div>
-				</div>
-			</div>
+			
 		</div>
 		<div class="layersWrapper">
 			<div class="layer" data-layer-index="template" id="layerTemplate">
@@ -110,6 +87,37 @@
 					<label>Inspectrum</label>
 					<div class="inspectrum">
 						<div class="view"></div>
+						<div class="showEditor">
+							<a href="#">V</a>
+						</div>
+					</div>
+					<div class="inspectrumEditor">
+						<div class="stripEditor">
+							<div class="pointer">
+								<div class="cursor"></div>
+							</div>
+							<div class="nexprev">
+									<input type="button" value="Prev" class="prev" />
+									<input type="button" value="Next" class="next" />
+							</div>
+							<div class="body">
+								<div class="color">
+									<div class="colorbox">
+										<div class="colorPreview"></div>
+									</div>
+									<input class="colorvalue" type="text"/>
+								</div>
+								<div class="opacity">
+									<label>Opacity</label>
+									<input type="range" class="opacity" min="0" max="100" value="100"/>
+									<output>100</output>%
+								</div>
+								<div class="startend">
+									<label>Start: <input type="number" class="start"></label>
+									<label>End: <input type="number" class="end"></label>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

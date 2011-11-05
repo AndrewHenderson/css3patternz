@@ -172,10 +172,16 @@ var defaultPattern = [{
 	height: 50,
 	width: 50,
 	name: "Sample Layer 0",
-	strips:[{
-			color: [110,75,255,0.8],
+	strips:[
+		{
+			color: [115,40,250,0.9],
 			end: 25,
-			start: 24
+			start: 19
+		},
+		{
+			color: [115,40,100,0.9],
+			end: 30,
+			start: 26
 		}
 		]},
 		{

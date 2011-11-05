@@ -23,18 +23,37 @@
 			}
  		});
  		$('.strip').live('click', function(e){
- 			$('.stripEditor').show().css({
- 				left:e.pageX - 10,
- 				top:e.pageY + 30
- 			});
+ 			$(this).parents('.layer').find('.stripEditor').show();
  			var currentStrip = patternz.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex],
  			    currentStripHexColor = patternz.renderColor.hexgen(currentStrip.color);
- 			$('.colorPreview').css('background', currentStripHexColor);
- 			$('.colorvalue').val(currentStripHexColor);
- 			$('.startend .start').val(currentStrip.start);
- 			$('.startend .end').val(currentStrip.end);
+ 			$(this).parents('.layer').find('.colorPreview').css('background', currentStripHexColor);
+ 			$(this).parents('.layer').find('.colorvalue').val(currentStripHexColor);
+ 			$(this).parents('.layer').find('.startend .start').val(currentStrip.start);
+ 			$(this).parents('.layer').find('.startend .end').val(currentStrip.end);
+ 			$(this).parents('.layer').find('input.opacity').val(currentStrip.color[3]*100);
+ 			$(this).parents('.layer').find('output').val(currentStrip.color[3]*100);
+ 			$(this).parents('.layer').find('.stripEditor').data($(this).data());
  			//TODO bind input changes to currentStrip == write changes
- 		})
+ 		});
+ 		$('input.opacity').live('click change', function(){
+ 			var currentStrip = patternz.layers[$(this).parents('.stripEditor').data().layerIndex].strips[$(this).parents('.stripEditor').data().stripIndex];
+ 			currentStrip.color[3] = $(this).val()/100;
+ 			$(this).next().val($(this).val());
+ 			ui.layers.read();
+ 			ui.render();
+ 		});
+ 		$('input.start').live('click change', function(){
+ 			var currentStrip = patternz.layers[$(this).parents('.stripEditor').data().layerIndex].strips[$(this).parents('.stripEditor').data().stripIndex];
+ 			currentStrip.start = $(this).val();
+ 			ui.layers.read();
+ 			ui.render();
+ 		});
+ 	    $('input.end').live('click change', function(){
+ 			var currentStrip = patternz.layers[$(this).parents('.stripEditor').data().layerIndex].strips[$(this).parents('.stripEditor').data().stripIndex];
+ 			currentStrip.end = $(this).val();
+ 			ui.layers.read();
+ 			ui.render();
+ 		});
  		return this;
  	},
  	prefixChange: function(){
