@@ -16,25 +16,32 @@
 			stop: function(event, ui){ 
 				var layerOrder = []
 				dataLayerIndex = $(".layer").not(".ui-sortable-placeholder, #layerTemplate").each(function(index){
-					layerOrder.push($(this).attr("data-layer-index"));
+					layerOrder.push($(this).data('layerIndex'));
 				});
 				//console.log(layerOrder);
 				return layerOrder;
 			}
  		});
- 		$('.strip').live('click', function(e){
- 			$(this).parents('.layer').find('.stripEditor').show();
- 			var currentStrip = patternz.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex],
- 			    currentStripHexColor = patternz.renderColor.hexgen(currentStrip.color);
- 			$(this).parents('.layer').find('.colorPreview').css('background', currentStripHexColor);
- 			$(this).parents('.layer').find('.colorvalue').val(currentStripHexColor);
- 			$(this).parents('.layer').find('.startend .start').val(currentStrip.start);
- 			$(this).parents('.layer').find('.startend .end').val(currentStrip.end);
- 			$(this).parents('.layer').find('input.opacity').val(currentStrip.color[3]*100);
- 			$(this).parents('.layer').find('output').val(currentStrip.color[3]*100);
- 			$(this).parents('.layer').find('.stripEditor').data($(this).data());
- 			//TODO bind input changes to currentStrip == write changes
+ 		$('.view').live('click', function(e){
+			//Show strip editor toolbox
+ 			$(this).parents('.layer').find('.stripEditor').toggle();
+			
+			//trigger click on first strip
+			$(this).parents('.layer').find('.pointers .pointer:data(stripIndex=0)').click();
  		});
+		$('.pointer').live('click', function(){
+			var currentLayer = $(this).parents('.layer'),
+				currentStrip = patternz.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex],
+ 			    currentStripHexColor = patternz.renderColor.hexgen(currentStrip.color);
+ 			currentLayer.find('.colorPreview').css('background', currentStripHexColor);
+ 			currentLayer.find('.colorvalue').val(currentStripHexColor);
+ 			currentLayer.find('.startend .start').val(currentStrip.start);
+ 			currentLayer.find('.startend .end').val(currentStrip.end);
+ 			currentLayer.find('input.opacity').val(currentStrip.color[3]*100);
+ 			currentLayer.find('output').val(currentStrip.color[3]*100);
+ 			currentLayer.find('.stripEditor').data($(this).data());
+ 			//TODO bind input changes to currentStrip == write changes
+		});
  		$('input.opacity').live('click change', function(){
  			var currentStrip = patternz.layers[$(this).parents('.stripEditor').data().layerIndex].strips[$(this).parents('.stripEditor').data().stripIndex];
  			currentStrip.color[3] = $(this).val()/100;
@@ -48,6 +55,10 @@
  			ui.layers.read();
  			ui.render();
  		});
+		$('.layerName').live('blur change', function(){
+			var layer = $(this).parents('.layer').data();
+			patternz.layers[layer.layerIndex].name = $(this).val();
+		});
  	    $('input.end').live('click change', function(){
  			var currentStrip = patternz.layers[$(this).parents('.stripEditor').data().layerIndex].strips[$(this).parents('.stripEditor').data().stripIndex];
  			currentStrip.end = $(this).val();
@@ -81,7 +92,7 @@
 		$(".remove").live('click', function(click){
 			click.preventDefault();
 			thisLayer = $(this).parents('.layer')
-		 	thisLayerIndex = parseInt(thisLayer.attr('data-layer-index'),10);
+		 	thisLayerIndex = thisLayer.data().layerIndex;
 		 	if(patternz.layers.length != 1){
 			 	patternz.removeLayer(thisLayerIndex);
 				thisLayer.fadeOut(300, function(){
@@ -120,23 +131,23 @@
 			$('aside .layersWrapper').append(
 				$('#layerTemplate')
 					.clone()
-					.attr('data-layer-index', layerIndex)
+					.data('layerIndex', layerIndex)
 					.attr('id','')
 					.show()
 				);				
 		},
 		read: function() {
 			for(var i=0; i<patternz.layers.length; i++){
-				if($('aside .layer[data-layer-index="' + i + '"]').length == 0){
+				if($('aside .layer:data(layerIndex=' + i + ')').length == 0){
 					ui.layers.add(i);
 				}
-				var domLayer = $('aside .layer[data-layer-index="' + i + '"]'),
+				var domLayer = $('aside .layer:data(layerIndex=' + i + ')'),
 					apiLayer = patternz.layers[i];
 				domLayer.find('.layerOutput').css('background', patternz.outputLayerCode(i));
 				domLayer.find('.layerOptions-width').val(apiLayer.width);
 				domLayer.find('.layerOptions-height').val(apiLayer.height);
 				domLayer.find('.layerOptions-angle').val(apiLayer.angle);
-				domLayer.find('.layerName').text(apiLayer.name);
+				domLayer.find('.layerName').val(apiLayer.name);
 				domLayer.find('.preview').width(apiLayer.width).height(apiLayer.height);
 				ui.strips.make(i);
 			}
@@ -145,16 +156,16 @@
 					// Layer Options input bindings
 			$('.layerOptions-width').live('change click scroll keyup',function(){
 				$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').width($(this).val());
-				patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].width = parseInt($(this).val());
+				patternz.layers[$(this).data().layerIndex].width = parseInt($(this).val());
 				ui.render();
 			});
 			$('.layerOptions-height').live('change click scroll keyup',function(){
 				$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').height($(this).val());
-				patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].height = parseInt($(this).val());
+				patternz.layers[$(this).data().layerIndex].height = parseInt($(this).val());
 				ui.render();
 			});
 			$('.layerOptions-angle').live('change click scroll keyup',function(){
-				patternz.layers[parseInt($(this).parents(".layer").attr('data-layer-index'))].angle = parseInt($(this).val());
+				patternz.layers[$(this).data().layerIndex].angle = parseInt($(this).val());
 				ui.render();
 				//ui.layers.read();
 			});
@@ -169,19 +180,39 @@
 	},
 	strips: {
 		make: function(layerIndex){
-			var view = $('.layer[data-layer-index="' + layerIndex + '"] .inspectrum .view');
+			//Find view and pointers in DOM based on given Layer Index
+			var view = $('.layer:data(layerIndex=' + layerIndex + ') .inspectrum .view'),
+				pointers = $('.layer:data(layerIndex=' + layerIndex + ') .stripEditor .pointers'),
+				templatePointer = pointers.find('.template'),
+				strip,
+				viewStrip,
+				pointer;
 			for(var i=0; i<patternz.layers[layerIndex].strips.length; i++){
-				view.append(
-					$('<div/>')
-						.addClass('strip')
-						.width(patternz.layers[layerIndex].strips[i].end - patternz.layers[layerIndex].strips[i].start)
-						.css({
-							'background': patternz.renderColor.rgbagen(patternz.layers[layerIndex].strips[i].color),
-							'left' : patternz.layers[layerIndex].strips[i].start
-						})
-						.data('layerIndex', layerIndex)
-						.data('stripIndex', i)
-				);
+				
+				//Point to api strip
+				strip = patternz.layers[layerIndex].strips[i];
+				
+				//Make a pointer
+				pointer = templatePointer
+							.clone()
+							.removeClass('template hidden')
+							.css('left', strip.start + ( (strip.end - strip.start) / 2 ) - 5) // calculate center of the strip -5 is half of pointer width
+							.data({layerIndex: layerIndex, stripIndex: i, strip: strip});
+				pointer.find('.abstract').css('background', patternz.renderColor.hexgen(strip.color));
+				//Make an strip to put in .view
+				viewStrip = $('<div/>')
+							.addClass('strip')
+							.width(strip.end - strip.start)
+							.css({
+								'background': patternz.renderColor.rgbagen(strip.color),
+								'left' : strip.start
+							})
+							.data('layerIndex', layerIndex)
+							.data('stripIndex', i);
+				
+				//Append pointer and view strip
+				view.append(viewStrip);
+				pointers.append(pointer);
 			}
 		}
 	},

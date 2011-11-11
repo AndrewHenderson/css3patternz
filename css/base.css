@@ -67,7 +67,7 @@ footer { height:100px; width:100%; position:fixed; bottom:0; }
 
 /* =UI
 -------------------------------------------------------------*/
-
+.s{background:url(../img/sprite.png);}
 .button {
 	color: white;
 	background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
@@ -176,8 +176,8 @@ aside {
 		  -o-transition: 0.1s linear all;
 		  transition: 0.1s linear all;
 		}
-			aside .layer .controls h3{ width: 180px; text-align:left; display:inline-block;font-weight: bold;text-shadow: 0 1px white;padding: 5px 0 5px 10px; border:1px solid transparent; border-radius:2px;}
-				aside .layer .controls h3:hover{ border-color:#bbb; background:#fff; }
+			aside .layer .controls .layerName{ width: 180px; text-align:left; display:inline-block;font-weight: bold;text-shadow: 0 1px white;padding: 5px 0 5px 10px; border:1px solid #ddd; border-radius:2px; background:transparent;}
+				aside .layer .controls .layerName:focus{ border-color:#bbb; background:#fff; }
 			aside .layer .controls a{ margin: 4px;display: inline-block; }
 			aside .layer .controls .button { float:right; padding:1px 6px; height:17px; width:7px; margin-right:1px; margin-left:1px; text-align:center; }
 			aside .layer .controls .button.minimize { line-height:4px; }
@@ -188,9 +188,9 @@ aside {
 			aside .maniptool .preview .layerOutput{width:100%; height:100%;}
 			aside .maniptool .layerOptions label{display:inline-block; width: 55px;}
 			aside .maniptool .layerOptions input{width:50px; margin:0 0 10px 0;}
-			aside .maniptool .layerOptions{width: 55px; float:left; margin:0 5px; font-size:10px;}
-			aside .maniptool .inspectrum{ height:30px; border: 1px solid #333; margin: 5px;}
-				aside .maniptool .inspectrum .view{float:left;height:100%; width:285px; overflow: hidden; background: url(../img/empty-background.png);position: relative;}
+			aside .maniptool .layerOptions{width: 55px; float:left; margin:0 50 5px; font-size:10px;}
+			aside .maniptool .inspectrum{ height:30px; border: 1px solid #333;}
+				aside .maniptool .inspectrum .view{float:left;height:100%; width:100%; overflow: hidden; background: url(../img/empty-background.png);position: relative; cursor:pointer;}
 				aside .maniptool .viewEditor{float:left; height: 100%; width:25px;}
 					aside .maniptool .inspectrum .view .strip{height: 100%; position: absolute;}
 	
@@ -203,8 +203,11 @@ aside {
 .popup{position: absolute; border: 2px solid gray; box-shadow: 0 0 5px black; background: #ddd;display: none; z-index: 10; }
 	.popup .grip{height: 10px; text-align:right;}
 .stripEditor{ font-size:10px; display:none;}
-	.stripEditor .pointer{}
-		.stripEditor .pointer .cursor{background: url(../img/pointer.gif);height: 20px;width: 20px;top: -20px;position: absolute;}
+	.stripEditor .pointers{height:20px; overflow:hidden; position:relative;}
+		.stripEditor .pointers .pointer{width:10px; height:18px; position:absolute; cursor:pointer;}
+		.stripEditor .pointers .hidden.pointer{display:none;}
+		.stripEditor .pointers .arrow{width:10px; height:8px; float:left;}
+		.stripEditor .pointers .abstract{width:9px; height:9px; float:left; border:1px solid #000;}
 	.stripEditor .color{}
 		.stripEditor .color .colorbox{display:inline-block; width:20px; height:20px; border:1px solid #444; background: url(../img/empty-background.png); margin: 3px; margin-bottom: -5px;}
 			.colorPreview{width:100%; height:100%;}

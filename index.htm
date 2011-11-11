@@ -64,10 +64,10 @@
 			
 		</div>
 		<div class="layersWrapper">
-			<div class="layer" data-layer-index="template" id="layerTemplate">
+			<div class="layer"  id="layerTemplate">
 				<div class="controls clearfix">
 					<div class="sortHandle" title="Drag to sort layers"></div>
-					<h3 class="layerName" contenteditable>Template Layer</h3>
+					<input  class="layerName" />
 					<a href="#" title="Remove layer" class="remove button alt">x</a>
 					<a href="#" title="Minimize layer" class="minimize button">_</a>
 				</div>
@@ -87,18 +87,19 @@
 					<label>Inspectrum</label>
 					<div class="inspectrum">
 						<div class="view"></div>
-						<div class="showEditor">
-							<a href="#">V</a>
-						</div>
 					</div>
 					<div class="inspectrumEditor">
 						<div class="stripEditor">
-							<div class="pointer">
-								<div class="cursor"></div>
+							<div class="pointers">
+								<div class="template hidden pointer">
+									<div class="arrow s"></div>
+									<div class="abstract"></div>
+								</div>
 							</div>
 							<div class="nexprev">
 									<input type="button" value="Prev" class="prev" />
 									<input type="button" value="Next" class="next" />
+									<input type="button" value="X" class="remove" />
 							</div>
 							<div class="body">
 								<div class="color">
