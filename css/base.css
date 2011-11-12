@@ -258,16 +258,17 @@ footer { background: rgb(245,245,245); /* Old browsers */
 
 /* About us page*/
 
-.aboutus{padding: 20px;}
-	.aboutus h1, .aboutus h2{margin:10px 0; font-family: 'Michroma' sans-serif;}
+.aboutus{padding: 20px; background:#fafaff}
+	.aboutus h1, .aboutus h2{margin:10px 0; font-family: 'Michroma' sans-serif; color:#444; text-shadow: 0 1px 1px white;}
 	.aboutus h1{line-height: 2em; font-size:1.5em}
 	.aboutus h2{line-height:1.5em; font-size:1.3em;}
 	.aboutus p{line-height:24px; font-size:16px; margin:10px 0; color:#666;}
 	.aboutus a{color:#88f; text-decoration: none;}
-	.aboutus table{width:100%;}
+	.aboutus code{font-family: monospace; background:#eee; color:black; padding:0 5px;}
+	.aboutus table{width:100%; border:1px solid blue;}
 		.aboutus td{padding:5px;}
-		.aboutus tr:nth-child(odd){background: #eef;}
-		.aboutus tr:first-child{background:#99f;}
+		.aboutus tr:nth-child(odd){background: #9999ff;}
+		.aboutus tr:first-child{background:#44f; color:white;}
 
 
 /* =Non-semantic helper classes
