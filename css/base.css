@@ -255,6 +255,21 @@ footer { background: rgb(245,245,245); /* Old browsers */
 #github { position: absolute; top: 0; right: 0; border: 0; }
 
 
+
+/* About us page*/
+
+.aboutus{padding: 20px;}
+	.aboutus h1, .aboutus h2{margin:10px 0; font-family: 'Michroma' sans-serif;}
+	.aboutus h1{line-height: 2em; font-size:1.5em}
+	.aboutus h2{line-height:1.5em; font-size:1.3em;}
+	.aboutus p{line-height:24px; font-size:16px; margin:10px 0; color:#666;}
+	.aboutus a{color:#88f; text-decoration: none;}
+	.aboutus table{width:100%;}
+		.aboutus td{padding:5px;}
+		.aboutus tr:nth-child(odd){background: #eef;}
+		.aboutus tr:first-child{background:#99f;}
+
+
 /* =Non-semantic helper classes
 -------------------------------------------------------------*/
 
