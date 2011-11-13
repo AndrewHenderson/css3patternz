@@ -228,6 +228,7 @@
 
 (function(){
 	ui.init();
+	$(".layer:eq(1)").removeClass("minimized");
 })();
 
 
