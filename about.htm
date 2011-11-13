@@ -15,7 +15,7 @@
 </head>
 <body>
 	
-	<div id="fb-root"></div>
+	<!-- <div id="fb-root"></div>
 	<script>
 	  window.fbAsyncInit = function() {
 	    FB.init({
@@ -37,16 +37,17 @@
 	     js.src = "//connect.facebook.net/en_US/all.js";
 	     d.getElementsByTagName('head')[0].appendChild(js);
 	   }(document));
-	</script>
+	</script> -->
 	
-	<header class="clearfix">
+	<header>
 		<h1><a href="index.htm" title="Back to Pattern Generator"><span>CSS</span>patternz</a></h1>
-		<nav class="clearfix">
-			<a href="about.htm" class="button active">About</a>
-			<a href="#" class="button">Presets</a>
-			<a href="https://github.com/ahendy/css3patternz" class="button">GitHub</a>
+		<nav>
+			<a href="index.htm">Generator</a>
+			<a href="about.htm" class="current">About</a>
+			<a href="#">Presets</a>
 		</nav>
-		<div id="social" class="clearfix">
+		<a id="github" href="https://github.com/ahendy/css3patternz">Visit on GitHub</a>
+		<!-- <div id="social">
 			<div class="facebook-button">
 				<div class="fb-like" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div>
 			</div>
@@ -56,7 +57,7 @@
 			<div class="googleplus-button">
 				<g:plusone size="tall" annotation="inline"></g:plusone>
 			</div>
-		</div>
+		</div> -->
 	</header>
 	<div id="content" class="aboutus">
 		<h1>About the tool</h1>
@@ -67,7 +68,7 @@
 		<h1>How it works?</h1>
 		<p>developing...</p>
 		<h1>Browser Support</h1>
-		<p>We even didn't tried to support older IEs! This tool is for generating code for modern websites. So we just support modern browsers. 
+		<p>This tool is for generating code for modern websites. So we just support modern browsers. With that we chose not to even try to support older versions of IE! 
 		   CSS <code>background-size</code> propery is something new (As now Nov 2011) and not even all modern browsers supporting that properly. Caniuse.com have an up to date 
 		   <a href="http://caniuse.com/#search=background-size" >browser support table</a> for that. <code>background-image:-prefix-linear-gradient()</code> have wider browser support.
 		   But <code>background-image:-prefix-radial-gradient()</code> supported in less browsers.

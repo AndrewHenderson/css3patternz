@@ -14,7 +14,7 @@
 <script src="js/libs/modernizr.custom.js"></script>
 <style type="text/css" id="render"></style>
 </head>
-<body>
+<body id="home">
 	
 	<!-- <div id="fb-root"></div>
 	<script>
@@ -43,10 +43,11 @@
 	<header>
 		<h1><a href="index.htm" title="Back to Pattern Generator"><span>CSS</span>patternz</a></h1>
 		<nav>
+			<a href="index.htm" class="current">Generator</a>
 			<a href="about.htm">About</a>
 			<a href="#">Presets</a>
-			<a href="https://github.com/ahendy/css3patternz">GitHub</a>
 		</nav>
+		<a id="github" href="https://github.com/ahendy/css3patternz">Visit on GitHub</a>
 		<!-- <div id="social">
 			<div class="facebook-button">
 				<div class="fb-like" data-send="false" data-layout="button_count" data-width="80" data-show-faces="false"></div>
@@ -64,7 +65,7 @@
 			
 		</div>
 		<div class="layersWrapper">
-			<div class="layer"  id="layerTemplate">
+			<div class="layer minimized"  id="layerTemplate">
 				<div class="controls clearfix">
 					<div class="sortHandle" title="Drag to sort layers"></div>
 					<input  class="layerName" />
@@ -72,15 +73,15 @@
 					<a href="#" title="Minimize layer" class="minimize button">_</a>
 				</div>
 				<div class="maniptool clearfix">
-					<div class="layerOptions">
-						<label>Width: <input class="layerOptions-width" type="number" min="10" max="250" value="100"/></label>
-						<label>Height: <input class="layerOptions-height" type="number" min="10" max="250" value="100"/></label>
-						<label>Angle: <input class="layerOptions-angle" type="number" min="-360" max="3600" value="0"/></label>
-					</div>
 					<div class="previewWrapper">
 						<label>Layer Preview:</label>
 						<div class="preview">
 							<div class="layerOutput"></div>
+					</div>
+					<div class="layerOptions">
+						<label>Width: <input class="layerOptions-width" type="number" min="10" max="250" value="100"/></label>
+						<label>Height: <input class="layerOptions-height" type="number" min="10" max="250" value="100"/></label>
+						<label>Angle: <input class="layerOptions-angle" type="number" min="-360" max="3600" value="0"/></label>
 					</div>
 					</div>
 					<div class="clearfix"></div>
@@ -154,6 +155,12 @@
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 <script src="js/ui.js"></script>
+
+<script>
+$(document).ready(function(){
+	$(".layer:eq(1)").removeClass("minimized");
+});
+</script>
 
 <!--[if lt IE 9 ]>
   <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
