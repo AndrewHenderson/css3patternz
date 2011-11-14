@@ -102,6 +102,14 @@
 				});
 		    }
 		});
+		$(".duplicate").live("click", function(click){
+			click.preventDefault();
+			thisLayer = $(this).parents(".layer")
+			thisLayerIndex = thisLayer.data().layerIndex;
+			thisLayer.clone().insertAfter(thisLayer);
+			ui.render();
+			ui.layers.init();
+		});
 		$('.addLayer').bind('click', function(){
 			patternz.addLayer(0, 100, 100, 'New Layer');
 			//ui.layers.add(patternz.layers.length); 

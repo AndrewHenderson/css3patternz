@@ -114,6 +114,7 @@ footer { height:100px; width:100%; position:fixed; bottom:0; }
 		background: -ms-linear-gradient(top, rgb(255,0,0) 0%,rgb(214,0,0) 40%,rgb(188,5,5) 100%); /* IE10+ */
 		background: linear-gradient(top, rgb(255,0,0) 0%,rgb(214,0,0) 40%,rgb(188,5,5) 100%); /* W3C */
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0000', endColorstr='#bc0505',GradientType=0 ); /* IE6-9 */
+		border:1px solid #5f0000;
 	}
 
 /* =Header
@@ -144,7 +145,7 @@ nav { margin: 0 0 0 15px; float:left; overflow:hidden; border-left:1px solid #99
 	background: linear-gradient(top, rgb(73,192,240) 0%,rgb(44,175,227) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49c0f0', endColorstr='#2cafe3',GradientType=0 ); /* IE6-9 */ }
 #github { float:left;margin-left:15px; text-decoration:none; background:#222; border-radius:100px; color:white; padding:7px 15px; margin-top:10px; }
-	#github:hover { background:#7cbc0a; box-shadow:inset 0 0 10px rgba(106,166,0,0.5); }
+	#github:hover { background:#7cbc0a; box-shadow:inset 0 0 10px rgba(0,0,0,0.4); }
 #social { margin:10px 0 0 13px; display:inline-block; }
   #social > div { display:inline-block; }
 
@@ -191,6 +192,7 @@ aside {
 			aside .layer .controls a{ margin: 4px;display: inline-block; }
 			aside .layer .controls .button { float:right; padding:1px 6px; height:17px; width:7px; margin-right:1px; margin-left:1px; text-align:center; }
 			aside .layer .controls .button.minimize { line-height:4px; }
+			aside .layer .controls .button.duplicate { height:14px; padding:2px 6.5px 3px 5.5px; }
 		aside .maniptool{ padding:10px; }
 			#layerTemplate{display:none;}
 			aside .maniptool .previewWrapper{float:left;font-size: 12px;margin: 0 5px;}
