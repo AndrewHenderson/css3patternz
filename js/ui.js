@@ -33,8 +33,8 @@
 			var currentLayer = $(this).parents('.layer'),
 				currentStrip = patternz.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex],
  			    currentStripHexColor = patternz.renderColor.hexgen(currentStrip.color);
- 			currentLayer.find('.colorPreview').css('background', currentStripHexColor);
- 			currentLayer.find('.colorvalue').val(currentStripHexColor);
+ 			currentLayer.find('.colorbox input, .jPicker .Icon span.Color').css('background', currentStripHexColor);
+ 			currentLayer.find('.colorbox input').val(currentStripHexColor);
  			currentLayer.find('.startend .start').val(currentStrip.start);
  			currentLayer.find('.startend .end').val(currentStrip.end);
  			currentLayer.find('input.opacity').val(currentStrip.color[3]*100);
@@ -237,6 +237,7 @@
 (function(){
 	ui.init();
 	$(".layer:eq(1)").removeClass("minimized");
+	$('.colorPreview').jPicker({ window: { expandable: true } });
 })();
 
 
