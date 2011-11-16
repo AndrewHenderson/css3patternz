@@ -221,14 +221,20 @@ aside {
 		.stripEditor .pointers .hidden.pointer{display:none;}
 		.stripEditor .pointers .arrow{width:10px; height:8px; float:left;}
 		.stripEditor .pointers .abstract{width:9px; height:9px; float:left; border:1px solid #000;}
-	.stripEditor .color{overflow:hidden;}
+	.stripEditor #manipulate { padding: 0 5px 5px 5px;border: 1px solid #CCC;background: #E5E5E5;margin: 5px 0 0 0; }
+		.stripEditor #manipulate .topSection { overflow:hidden; }
+		.stripEditor #manipulate .opacity { margin: 5px 0;overflow:hidden; }
+			.stripEditor #manipulate .opacity label { float:left;margin:4px 5px 0 0; }
+			.stripEditor #manipulate .opacity input { float:left; }
+			.stripEditor #manipulate .opacity output { float:left; margin:4px 0 0 5px; }
+	.stripEditor .color {float:left;overflow:hidden;margin-left:10px;}
 		.stripEditor .color .colorbox, .colorPreview {float:left;margin:5px 5px 0 0;}
 			.colorPreview{width:100%; height:100%;}
 		.stripEditor .color input{display:inline-block; width:60px;} */
 	.stripEditor .startend{font-size:10px;}
 		.stripEditor .startend label{}
 		.stripEditor .startend input{width:50px;}
-	.stripEditor .nexprev{}
+	.stripEditor .nexprev{ float:left;padding:9px 0 0 0; }
 		.stripEditor .nexprev input{}
 
 /* =Content
