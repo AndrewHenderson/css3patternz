@@ -81,7 +81,7 @@
 		return this;
 	},
 	setHeights: function(){
-		$('aside, #pattern').height(innerHeight - 60 - $('footer').height());
+		$('aside, #pattern').height(innerHeight - 50 - $('footer').height());
 		return this;
 	},
 	controlButtons: function() {
@@ -117,6 +117,37 @@
 			ui.render();
 		});
 		return this;
+	},
+	toolTips: function() {
+
+		//Tooltips
+		var tip;
+		$(".tip-trigger").hover(function(e){
+
+			//Caching the tooltip and removing it from container; then appending it to the body
+			tip = $(this).find('.tip').remove();
+			$('body').append(tip);
+			
+			var triggerWidth = $(this).width();
+			var tipWidth = tip.width(); //Find width of tooltip
+			var tipHeight = tip.height(); //Find height of tooltip
+
+			//Distance of element from the right edge of viewport
+			var tipOffset = $(this).offset();
+			var posX = tipOffset.left - (triggerWidth / 2);
+			var posY = tipOffset.top - 32;
+
+			tip.css({  top: posY, left: posX });
+
+			tip.show(); //Show tooltip
+
+		}, function() {
+
+			tip.hide().remove(); //Hide and remove tooltip appended to the body
+			$(this).append(tip); //Return the tooltip to its original position
+
+		});
+
 	},
 	footerHeight: function(){
 		$('footer .resize.handle').bind('mousedown', function(mde){
@@ -230,6 +261,7 @@
 		this.setHeights();
 		this.controlButtons();
 		this.layers.init();
+		this.toolTips();
 		this.footerHeight();
 	}
 };

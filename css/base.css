@@ -114,7 +114,7 @@ footer { height:100px; width:100%; position:fixed; bottom:0; }
 		background: -ms-linear-gradient(top, rgb(255,0,0) 0%,rgb(214,0,0) 40%,rgb(188,5,5) 100%); /* IE10+ */
 		background: linear-gradient(top, rgb(255,0,0) 0%,rgb(214,0,0) 40%,rgb(188,5,5) 100%); /* W3C */
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0000', endColorstr='#bc0505',GradientType=0 ); /* IE6-9 */
-		border:1px solid #5f0000;
+		border:1px solid #ce0000;
 	}
 
 /* =Header
@@ -136,16 +136,16 @@ header h1, header h1 a { color:#7cbc0a; display:inline-block; text-decoration:no
   header h1 span { color:#555; }
 nav { margin: 0 0 0 15px; float:left; overflow:hidden; border-left:1px solid #999; }
   nav a { float:left;vertical-align:middle; padding:17px 20px; margin:0; color:#049cdb; text-decoration:none; border-right:1px solid #999;border-left:1px solid #fff; }
-	nav a:hover, nav a.current { color:#fff; border-left:1px solid #86d0ff; border-right:1px solid #008ae1; background: rgb(73,192,240); /* Old browsers */
-	background: -moz-linear-gradient(top, rgb(73,192,240) 0%, rgb(44,175,227) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(73,192,240)), color-stop(100%,rgb(44,175,227))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, rgb(73,192,240) 0%,rgb(44,175,227) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, rgb(73,192,240) 0%,rgb(44,175,227) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, rgb(73,192,240) 0%,rgb(44,175,227) 100%); /* IE10+ */
-	background: linear-gradient(top, rgb(73,192,240) 0%,rgb(44,175,227) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#49c0f0', endColorstr='#2cafe3',GradientType=0 ); /* IE6-9 */ }
-#github { float:left;margin-left:15px; text-decoration:none; background:#222; border-radius:100px; color:white; padding:7px 15px; margin-top:10px; }
-	#github:hover { background:#7cbc0a; box-shadow:inset 0 0 10px rgba(0,0,0,0.4); }
+	nav a:hover, nav a.current { color:#fff; border-left:1px solid #70aae5; border-right:1px solid #008ae1; background: rgb(73,192,240); /* Old browsers */
+		background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
+		background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
+		background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
+		background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
+		background-image: -o-linear-gradient(top, #049cdb, #0064cd);
+		background-image: linear-gradient(top, #049cdb, #0064cd);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#049cdb', endColorstr='#0064cd', GradientType=0); }
+#github { float:left;margin-left:15px; text-decoration:none; background:#555; border-radius:100px; color:white; padding:7px 15px; margin-top:10px; }
+	#github:hover { background:#7cbc0a; }
 #social { margin:10px 0 0 13px; display:inline-block; }
   #social > div { display:inline-block; }
 
@@ -153,9 +153,9 @@ nav { margin: 0 0 0 15px; float:left; overflow:hidden; border-left:1px solid #99
 -------------------------------------------------------------*/
 
 aside {
-	overflow-y:scroll; 
 	background: #999;
 	border-right:1px solid #aaa;
+	overflow-y:scroll;
 }
 	aside .layer{background: #eee; }
 	aside .layer .sortHandle {height:10px; background: url(../img/grippy.png); cursor: move; margin-bottom:5px; }
@@ -192,6 +192,7 @@ aside {
 			aside .layer .controls a{ margin: 4px;display: inline-block; }
 			aside .layer .controls .button { float:right; padding:1px 6px; height:17px; width:7px; margin-right:1px; margin-left:1px; text-align:center; }
 			aside .layer .controls .button.minimize { line-height:4px; }
+				aside .layer .controls .button.minimize .tip { line-height:20px; }
 			aside .layer .controls .button.duplicate { height:14px; padding:2px 6.5px 3px 5.5px; }
 		aside .maniptool{ padding:10px; }
 			#layerTemplate{display:none;}
@@ -223,7 +224,7 @@ aside {
 		.stripEditor .pointers .abstract{width:9px; height:9px; float:left; border:1px solid #000;}
 	.stripEditor #manipulate { padding: 0 5px 5px 5px;border: 1px solid #CCC;background: #E5E5E5;margin: 5px 0 0 0; }
 		.stripEditor #manipulate .topSection { overflow:hidden; }
-		.stripEditor #manipulate .topSection input[type="button"] { background-color: transparent;
+		.stripEditor #manipulate .topSection input[type="button"], .manipButton { background-color: transparent;
 		background-image: linear-gradient(top,#f5f5f5,#f1f1f1);
 		background-image: -moz-linear-gradient(top,#f5f5f5,#f1f1f1);
 		background-image: -o-linear-gradient(top,#f5f5f5,#f1f1f1);
@@ -231,10 +232,11 @@ aside {
 		background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
 		border: 1px solid rgba(0, 0, 0, 0.1);
 		color: #444;
-		padding:2px 5px 3px;
+		padding:3px 7px 4px;
 		border-radius:4px;
+		text-decoration:none;
 		}
-		.stripEditor #manipulate .topSection input[type="button"]:hover {
+		.stripEditor #manipulate .topSection input[type="button"]:hover, .manipButton:hover {
 		background: rgb(238,238,238); /* Old browsers */
 		background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(224,224,224,1) 100%); /* FF3.6+ */
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(224,224,224,1))); /* Chrome,Safari4+ */
@@ -258,8 +260,8 @@ aside {
 	.stripEditor .startend{font-size:10px;}
 		.stripEditor .startend label{}
 		.stripEditor .startend input{width:50px;}
-	.stripEditor .nexprev{ float:left;padding:9px 0 0 0; }
-		.stripEditor .nexprev input{}
+	.stripEditor .nextprev{ float:left;padding:9px 0 0 0; }
+		.stripEditor .nextprev input{cursor:pointer;}
 
 /* =Content
 -------------------------------------------------------------*/
@@ -323,6 +325,41 @@ footer { background: rgb(245,245,245); /* Old browsers */
 
 /* =jQuery Plugins
 -------------------------------------------------------------*/
+
+/*--- :[ Tooltip ]: ---*/
+
+.tip-trigger {
+	position:relative;
+}
+.tip {
+	color: #fff;
+	background:#1d1d1d;
+	display:none; /*--Hides by default--*/
+	padding:5px;
+	font-size:10px;
+	position:absolute;
+	z-index:1000;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	top:-32px;
+	left:-5px;
+	width:94px;
+	text-align:center;
+	line-height:16px;
+	}
+	.tip-arrow {
+		background:url(../img/sprite.png) -33px 0 no-repeat;
+		width:7px;
+		height:5px;
+		display:block;
+		position:absolute;
+		top:26px;
+		left:10px;
+	}
+		.avatar-holder .tip-arrow {
+			top:34px;
+		}
 
 /*--- :[ jPicker ]: ---*/
 
@@ -561,3 +598,130 @@ table.jPicker {
   width: 17px;
 }
 
+/*
+ * CSS Styles that are needed by jScrollPane for it to operate correctly.
+ *
+ * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+ * may not operate correctly without them.
+ */
+
+.jspContainer
+{
+	overflow: hidden;
+	position: relative;
+}
+
+.jspPane
+{
+	position: absolute;
+}
+
+.jspVerticalBar
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 16px;
+	height: 100%;
+	background: transparent;
+}
+
+.jspHorizontalBar
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 16px;
+	background: transparent;
+}
+
+.jspVerticalBar *,
+.jspHorizontalBar *
+{
+	margin: 0;
+	padding: 0;
+}
+
+.jspCap
+{
+	display: none;
+}
+
+.jspHorizontalBar .jspCap
+{
+	float: left;
+}
+
+.jspTrack
+{
+	background: transparent;
+    width: 9px;
+	position: relative;
+}
+
+.jspDrag
+{
+    background:#a18ca6;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b2a0b3', endColorstr='#533d5d');
+    background-image: -moz-linear-gradient(top, #b2a0b3, #a18ca6, #a17ca6, #533d5d);
+    background-image: -webkit-linear-gradient(top, #b2a0b3, #a18ca6, #a17ca6, #533d5d);
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+	border-radius:100px;
+	-moz-border-radius:100px;
+    -webkit-border-radius:100px;
+}
+
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+	float: left;
+	height: 100%;
+}
+
+.jspArrow
+{
+	background: #50506d;
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+}
+
+.jspArrow.jspDisabled
+{
+	cursor: default;
+	background: #80808d;
+}
+
+.jspVerticalBar .jspArrow
+{
+	height: 16px;
+}
+
+.jspHorizontalBar .jspArrow
+{
+	width: 16px;
+	float: left;
+	height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus
+{
+	outline: none;
+}
+
+.jspCorner
+{
+	background: #eeeef4;
+	float: left;
+	height: 100%;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner
+{
+	margin: 0 -3px 0 0;
+}
