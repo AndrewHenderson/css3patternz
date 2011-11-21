@@ -22,7 +22,7 @@
 				return layerOrder;
 			}
  		});
- 		$('.view').live('click', function(e){
+ 		$('.view, .inspectrum').live('click', function(e){
 			//Show strip editor toolbox
  			$(this).parents('.layer').find('.stripEditor').toggle();
 			
@@ -64,6 +64,18 @@
  			currentStrip.end = $(this).val();
  			ui.layers.read();
  			ui.render();
+ 		});
+ 		$('.pointer').live('mousedown',function(mde){ //TODO buggy
+ 			var currentStrip =  patternz.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex],
+ 			elemLeft = $(this).offset().left;
+ 			$(this).bind('mousemove', function(mme){
+ 				var dist = mme.pageX -  mde.pageX - mde.offsetX; // distance changed
+ 					 //start left
+ 				$(this).css('left', elemLeft + dist);
+ 				currentStrip.start = currentStrip.start + dist;
+ 				currentStrip.end = currentStrip.end + dist;
+ 				ui.render(); 
+ 			});
  		});
  		return this;
  	},
