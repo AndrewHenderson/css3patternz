@@ -58,23 +58,48 @@ var api = {
 	removeStrip: function(stripIndex){
 
 	},
-	changeStripSize: function(stripIndex, start, end){},
-	changeStripColor: function(stripIndex, color){},
+	sortStrips : function(layerIndex){
+		var layer = this.layers[layerIndex],
+			strips = layer.strips,
+			temp,
+			isSorted = false,
+			sorted = [];
+			while(!isSorted){
+				for(var i=0; i > strips.length-1; i++){
+					if(strips[i].start < strips[i+1].start){
+						console.log('sorting...');
+						temp = strips[i];
+						strips[i] = strips[i+1];
+						strips[i+1] = temp;
+					}
+				}
+				isSorted = true;
+				for(var i=0; i > strips.length-1; i++){
+					if(strips[i].start < strips[i+1].start){
+						isSorted = false;
+					}
+				}
+			}
+	},
 	generateLayerCode: function(layerIndex){
-		var li = layerIndex || 0,
+		var li = layerIndex || 0, // layer index
+			layer = this.layers[li],
 			startStr = "linear-gradient(",
+			strip,
 			result;
-		result = startStr + this.layers[li].angle + 'deg';
-		for(var i = 0; i< this.layers[li].strips.length; i++){
-			result = result 
+		this.sortStrips(layerIndex);
+		result = startStr + layer.angle + 'deg';
+		for(var i = 0; i< layer.strips.length; i++){
+			strip = layer.strips[i]; // select the strip to generate code for
+			result = result
 			    + ' , '
-			    + this.renderColor.rgbagen(this.layers[li].background) + ' '
-			    + this.layers[li].strips[i].start + 'px, '
-			    + this.renderColor.rgbagen(this.layers[li].strips[i].color) + ' '
-				+ this.layers[li].strips[i].start + 'px, '
-				+ this.renderColor.rgbagen(this.layers[li].strips[i].color) + ' '
-				+ this.layers[li].strips[i].end + 'px, '
-				+ this.renderColor.rgbagen(this.layers[li].background) + ' '
+			    + this.renderColor.rgbagen(layer.background) + ' '
+			    + strip.start + 'px, '
+			    + this.renderColor.rgbagen(strip.color) + ' '
+				+ strip.start + 'px, '
+				+ this.renderColor.rgbagen(strip.color) + ' '
+				+ strip.end + 'px, '
+				+ this.renderColor.rgbagen(layer.background) + ' '
 				+ this.layers[li].strips[i].end + 'px';
 		}
 		return result += ')';
@@ -180,8 +205,8 @@ var defaultPattern = [{
 		},
 		{
 			color: [115,40,100,0.9],
-			end: 30,
-			start: 26
+			end: 15,
+			start: 10
 		}
 		]},
 		{
@@ -459,12 +484,15 @@ api.load(defaultPattern);
 	strips: {
 		make: function(layerIndex){
 			//Find view and pointers in DOM based on given Layer Index
-			var view = $('.layer:data(layerIndex=' + layerIndex + ') .inspectrum .view'),
+			var layer = api.layers[layerIndex],
+				view = $('.layer:data(layerIndex=' + layerIndex + ') .inspectrum .view'),
 				pointers = $('.layer:data(layerIndex=' + layerIndex + ') .stripEditor .pointers'),
 				templatePointer = pointers.find('.template'),
 				strip,
 				viewStrip,
 				pointer;
+			//Make view's width equal to maximum possible length
+			view.width( Math.sqrt( layer.width*layer.width + layer.height * layer.height ) );
 			for(var i=0; i<api.layers[layerIndex].strips.length; i++){
 				
 				//Point to api strip
