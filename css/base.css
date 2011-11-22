@@ -211,7 +211,7 @@ aside {
 		aside .addLayer.button{ width:96%; text-align: center; margin:10px 2% 20px; }
 
 		/* aside .minimized.layer .maniptool{padding:0 10px;} */
-			aside .minimized.layer .layerOptions, aside .minimized.layer .previewWrapper, .minimized.layer label, .minimized.layer .inspectrumEditor{display:none;}
+			aside .minimized.layer .layerOptions, aside .minimized.layer .previewWrapper, .minimized.layer .inspectrumEditor{display:none;}
 
 /*Popups*/
 .popup{position: absolute; border: 2px solid gray; box-shadow: 0 0 5px black; background: #ddd;display: none; z-index: 10; }
