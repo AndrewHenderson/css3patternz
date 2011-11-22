@@ -291,14 +291,13 @@ api.load(defaultPattern);
  		});
  		$('.pointer').live('mousedown',function(mde){ //TODO buggy
  			var currentStrip =  api.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex],
- 			elem = $(this),
- 			elemLeft = $(this).offset().left;
+ 			mdss = currentStrip.start, // mouse down strip start
+ 			mdse= currentStrip.end;    // mouse down strip end
  			$(window.document).bind('mousemove', function(mme){
- 				var dist = mme.pageX -  mde.pageX - mde.offsetX; // distance changed
- 					 //start left
- 				elem.css('left', elemLeft + dist);
- 				currentStrip.start = currentStrip.start + dist;
- 				currentStrip.end = currentStrip.end + dist;
+ 				var dist =   mme.pageX- mde.pageX; // distance moved 
+ 	
+ 				currentStrip.start = mdss + dist;
+ 				currentStrip.end = mdse + dist;
  				ui.render(); 
  				$(window.document).bind('mouseup', function(){
  					$(this).unbind('mousemove');
