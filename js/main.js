@@ -10,7 +10,7 @@ Array.prototype.remove = function(from, to) {
 };
 
 //API
-var patternz = {
+var api = {
 	layers : [],
 	activeLayerIndex : 0,
 	activeLayer : null,
@@ -223,8 +223,8 @@ var defaultPattern = [{
 		}
 		]}];
 	
-// patternz loading
-patternz.load(defaultPattern); 
+// api loading
+api.load(defaultPattern); 
 
 
 
@@ -255,8 +255,8 @@ patternz.load(defaultPattern);
  		});
 		$('.pointer').live('click', function(){
 			var currentLayer = $(this).parents('.layer'),
-				currentStrip = patternz.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex],
- 			    currentStripHexColor = patternz.renderColor.hexgen(currentStrip.color);
+				currentStrip = api.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex],
+ 			    currentStripHexColor = api.renderColor.hexgen(currentStrip.color);
  			currentLayer.find('.colorbox input, .jPicker .Icon span.Color').css('background', currentStripHexColor);
  			currentLayer.find('.colorbox input').val(currentStripHexColor);
  			currentLayer.find('.startend .start').val(currentStrip.start);
@@ -267,30 +267,30 @@ patternz.load(defaultPattern);
  			//TODO bind input changes to currentStrip == write changes
 		});
  		$('input.opacity').live('click change', function(){
- 			var currentStrip = patternz.layers[$(this).parents('.stripEditor').data().layerIndex].strips[$(this).parents('.stripEditor').data().stripIndex];
+ 			var currentStrip = api.layers[$(this).parents('.stripEditor').data().layerIndex].strips[$(this).parents('.stripEditor').data().stripIndex];
  			currentStrip.color[3] = $(this).val()/100;
  			$(this).next().val($(this).val());
  			ui.layers.read();
  			ui.render();
  		});
  		$('input.start').live('click change', function(){
- 			var currentStrip = patternz.layers[$(this).parents('.stripEditor').data().layerIndex].strips[$(this).parents('.stripEditor').data().stripIndex];
+ 			var currentStrip = api.layers[$(this).parents('.stripEditor').data().layerIndex].strips[$(this).parents('.stripEditor').data().stripIndex];
  			currentStrip.start = $(this).val();
  			ui.layers.read();
  			ui.render();
  		});
 		$('.layerName').live('blur change', function(){
 			var layer = $(this).parents('.layer').data();
-			patternz.layers[layer.layerIndex].name = $(this).val();
+			api.layers[layer.layerIndex].name = $(this).val();
 		});
  	    $('input.end').live('click change', function(){
- 			var currentStrip = patternz.layers[$(this).parents('.stripEditor').data().layerIndex].strips[$(this).parents('.stripEditor').data().stripIndex];
+ 			var currentStrip = api.layers[$(this).parents('.stripEditor').data().layerIndex].strips[$(this).parents('.stripEditor').data().stripIndex];
  			currentStrip.end = $(this).val();
  			ui.layers.read();
  			ui.render();
  		});
  		$('.pointer').live('mousedown',function(mde){ //TODO buggy
- 			var currentStrip =  patternz.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex],
+ 			var currentStrip =  api.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex],
  			elem = $(this),
  			elemLeft = $(this).offset().left;
  			$(window.document).bind('mousemove', function(mme){
@@ -308,16 +308,16 @@ patternz.load(defaultPattern);
  		return this;
  	},
  	prefixChange: function(){
- 		patternz.prefixes.webkit = $('#prefixCheckbox-webkit')[0].checked;
- 		patternz.prefixes.moz = $('#prefixCheckbox-moz')[0].checked;
- 		patternz.prefixes.ms = $('#prefixCheckbox-ms')[0].checked;
- 		patternz.prefixes.o = $('#prefixCheckbox-o')[0].checked;
- 		patternz.prefixes.w3c = $('#prefixCheckbox-w3c')[0].checked;
- 		return patternz.prefixes;
+ 		api.prefixes.webkit = $('#prefixCheckbox-webkit')[0].checked;
+ 		api.prefixes.moz = $('#prefixCheckbox-moz')[0].checked;
+ 		api.prefixes.ms = $('#prefixCheckbox-ms')[0].checked;
+ 		api.prefixes.o = $('#prefixCheckbox-o')[0].checked;
+ 		api.prefixes.w3c = $('#prefixCheckbox-w3c')[0].checked;
+ 		return api.prefixes;
  	},
 	render: function(){
-		$('#render').text('#pattern{'+ patternz.generate() + '}').attr('type','text/css');
-		$('#output').val( patternz.generate() );
+		$('#render').text('#pattern{'+ api.generate() + '}').attr('type','text/css');
+		$('#output').val( api.generate() );
 		ui.strips.readAll();
 		return this;
 	},
@@ -334,8 +334,8 @@ patternz.load(defaultPattern);
 			click.preventDefault();
 			thisLayer = $(this).parents('.layer')
 		 	thisLayerIndex = thisLayer.data().layerIndex;
-		 	if(patternz.layers.length != 1){
-			 	patternz.removeLayer(thisLayerIndex);
+		 	if(api.layers.length != 1){
+			 	api.removeLayer(thisLayerIndex);
 				thisLayer.fadeOut(300, function(){
 					$(this).remove();
 					ui.render();
@@ -352,8 +352,8 @@ patternz.load(defaultPattern);
 			ui.layers.init();
 		});
 		$('.addLayer').bind('click', function(){
-			patternz.addLayer(0, 100, 100, 'New Layer');
-			//ui.layers.add(patternz.layers.length); 
+			api.addLayer(0, 100, 100, 'New Layer');
+			//ui.layers.add(api.layers.length); 
 			ui.layers.init();
 			ui.render();
 		});
@@ -416,13 +416,13 @@ patternz.load(defaultPattern);
 				);				
 		},
 		read: function() {
-			for(var i=0; i<patternz.layers.length; i++){
+			for(var i=0; i<api.layers.length; i++){
 				if($('aside .layer:data(layerIndex=' + i + ')').length == 0){
 					ui.layers.add(i);
 				}
 				var domLayer = $('aside .layer:data(layerIndex=' + i + ')'),
-					apiLayer = patternz.layers[i];
-				domLayer.find('.layerOutput').css('background', patternz.outputLayerCode(i));
+					apiLayer = api.layers[i];
+				domLayer.find('.layerOutput').css('background', api.outputLayerCode(i));
 				domLayer.find('.layerOptions-width').val(apiLayer.width);
 				domLayer.find('.layerOptions-height').val(apiLayer.height);
 				domLayer.find('.layerOptions-angle').val(apiLayer.angle);
@@ -435,16 +435,16 @@ patternz.load(defaultPattern);
 					// Layer Options input bindings
 			$('.layerOptions-width').live('change click scroll keyup',function(){
 				$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').width($(this).val());
-				patternz.layers[$(this).data().layerIndex].width = parseInt($(this).val());
+				api.layers[$(this).data().layerIndex].width = parseInt($(this).val());
 				ui.render();
 			});
 			$('.layerOptions-height').live('change click scroll keyup',function(){
 				$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').height($(this).val());
-				patternz.layers[$(this).data().layerIndex].height = parseInt($(this).val());
+				api.layers[$(this).data().layerIndex].height = parseInt($(this).val());
 				ui.render();
 			});
 			$('.layerOptions-angle').live('change click scroll keyup',function(){
-				patternz.layers[$(this).data().layerIndex].angle = parseInt($(this).val());
+				api.layers[$(this).data().layerIndex].angle = parseInt($(this).val());
 				ui.render();
 				//ui.layers.read();
 			});
@@ -466,10 +466,10 @@ patternz.load(defaultPattern);
 				strip,
 				viewStrip,
 				pointer;
-			for(var i=0; i<patternz.layers[layerIndex].strips.length; i++){
+			for(var i=0; i<api.layers[layerIndex].strips.length; i++){
 				
 				//Point to api strip
-				strip = patternz.layers[layerIndex].strips[i];
+				strip = api.layers[layerIndex].strips[i];
 				
 				//Make a pointer
 				pointer = templatePointer
@@ -477,13 +477,13 @@ patternz.load(defaultPattern);
 							.removeClass('template hidden')
 							.css('left', strip.start + ( (strip.end - strip.start) / 2 ) - 5) // calculate center of the strip -5 is half of pointer width
 							.data({layerIndex: layerIndex, stripIndex: i, strip: strip});
-				pointer.find('.abstract').css('background', patternz.renderColor.hexgen(strip.color));
+				pointer.find('.abstract').css('background', api.renderColor.hexgen(strip.color));
 				//Make an strip to put in .view
 				viewStrip = $('<div/>')
 							.addClass('strip')
 							.width(strip.end - strip.start)
 							.css({
-								'background': patternz.renderColor.rgbagen(strip.color),
+								'background': api.renderColor.rgbagen(strip.color),
 								'left' : strip.start
 							})
 							.data('layerIndex', layerIndex)
@@ -503,26 +503,26 @@ patternz.load(defaultPattern);
 				stripElem,
 				viewStrip,
 				pointer;
-			for(var i=0; i<patternz.layers[layerIndex].strips.length; i++){
+			for(var i=0; i<api.layers[layerIndex].strips.length; i++){
 				//Point to api strip
-				strip = patternz.layers[layerIndex].strips[i];
+				strip = api.layers[layerIndex].strips[i];
 				
 				//Find the right pointer and make css changes
 				pointer =  $('.layer:data(layerIndex=' + layerIndex + ') .stripEditor .pointers .pointer:data(stripIndex=' + i + ')');
 				pointer.css('left', strip.start + ( (strip.end - strip.start) / 2 ) - 5) // calculate center of the strip -5 is half of pointer width
-					   .find('.abstract').css('background', patternz.renderColor.hexgen(strip.color));
+					   .find('.abstract').css('background', api.renderColor.hexgen(strip.color));
 				
 				//Find the strip and make css changes
 				stripElem = $('.layer:data(layerIndex=' + layerIndex + ') .view .strip:data(stripIndex=' + i + ')');
 				stripElem.width(strip.end - strip.start)
 						 .css({
-							'background': patternz.renderColor.rgbagen(strip.color),
+							'background': api.renderColor.rgbagen(strip.color),
 							'left' : strip.start
 						 });
 			}
 		},
 		readAll: function(){
-			for(var i=0; i< patternz.layers.length; i++){
+			for(var i=0; i< api.layers.length; i++){
 				ui.strips.read(i);
 			
 			}
