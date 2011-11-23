@@ -349,7 +349,8 @@ api.load(defaultPattern);
 		winHeight = $(window).height();
 		winWidth = $(window).width();
 		asideWidth = $('aside').width();
-		$('aside, #pattern').height(winHeight);
+		headerHeight = $('header').height();
+		$('aside, #pattern').height(winHeight - headerHeight);
 		$('footer').width(winWidth - asideWidth).css("left", asideWidth + 1);
 		return this;
 	},
