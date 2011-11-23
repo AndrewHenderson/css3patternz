@@ -61,6 +61,7 @@ h2 { font-size:16px; line-height:30px; }
 -------------------------------------------------------------*/
 
 body, html { height: 100%; }
+body#home { overflow:hidden; }
 header { padding:0 0 0 15px; overflow: hidden; }
 aside { width:350px; float:left; }
 footer { height:250px; width:100%; position:fixed; bottom:0; }
