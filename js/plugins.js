@@ -1687,7 +1687,7 @@
                         win.position.x == 'right' ? (popup.offset().left - 10 + (win.position.y == 'center' ? 25 : 0)) + 'px' :
                         win.position.x == 'screenCenter' ? (($(document).width() >> 1) - 260) + 'px' : (popup.offset().left + parseInt(win.position.x)) + 'px',
                       position: 'absolute',
-                      top: win.position.y == 'top' ? (popup.offset().top - 312) + 'px' :
+                      top: win.position.y == 'top' ? 100 + 'px' :
                            win.position.y == 'center' ? (popup.offset().top - 156) + 'px' :
                            win.position.y == 'bottom' ? (popup.offset().top + 25) + 'px' : (popup.offset().top + parseInt(win.position.y)) + 'px'
                     });

@@ -307,12 +307,12 @@ footer { background: rgb(245,245,245); /* Old browsers */
 	.aboutus h1{line-height: 2em; font-size:1.5em}
 	.aboutus h2{line-height:1.5em; font-size:1.3em;}
 	.aboutus p{line-height:24px; font-size:16px; margin:10px 0; color:#666;}
-	.aboutus a{color:#88f; text-decoration: none;}
+	.aboutus a{color:#049CDB; text-decoration: none;}
 	.aboutus code{font-family: monospace; background:#eee; color:black; padding:0 5px;}
-	.aboutus table{width:100%; border:1px solid blue;}
+	.aboutus table{width:100%; border:1px solid #4f7b02;}
 		.aboutus td{padding:5px;}
-		.aboutus tr:nth-child(odd){background: #9999ff;}
-		.aboutus tr:first-child{background:#44f; color:white;}
+		.aboutus tr:nth-child(odd){background: #7CBC0A; color:white; }
+		.aboutus tr:first-child{background:#4f7b02; color:white;}
 
 
 /* =Non-semantic helper classes
