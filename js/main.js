@@ -56,7 +56,7 @@ var api = {
 		this.activeLayer.strips.push(strip);
 	},
 	removeStrip: function(stripIndex){
-
+	
 	},
 	sortStrips : function(layerIndex){
 		var layer = this.layers[layerIndex],
@@ -345,8 +345,12 @@ api.load(defaultPattern);
 		ui.strips.readAll();
 		return this;
 	},
-	setHeights: function(){
-		$('aside, #pattern').height(innerHeight - 50 - $('footer').height());
+	setLayout: function(){
+		winHeight = $(window).height();
+		winWidth = $(window).width();
+		asideWidth = $('aside').width();
+		$('aside, #pattern').height(winHeight);
+		$('footer').width(winWidth - asideWidth).css("left", asideWidth + 1);
 		return this;
 	},
 	controlButtons: function() {
@@ -398,7 +402,7 @@ api.load(defaultPattern);
 
 			//Distance of element from the right edge of viewport
 			var tipOffset = $(this).offset();
-			var posX = tipOffset.left - (triggerWidth / 2);
+			var posX = tipOffset.left;
 			var posY = tipOffset.top - 32;
 
 			tip.css({  top: posY, left: posX });
@@ -420,7 +424,7 @@ api.load(defaultPattern);
 				if(mme.pageY < innerHeight - 100 && mme.pageY > 150){
 					$('footer').height(currentHeight + mde.pageY - mme.pageY);
 					$('#output').height($('footer').height() - 40);
-					ui.setHeights();
+					ui.setLayout();
 			    }
 				$(window).bind('mouseup', function(){
 					$(window).unbind('mousemove');
@@ -559,7 +563,7 @@ api.load(defaultPattern);
 	init: function(){
 		this.bind();
 		this.render();
-		this.setHeights();
+		this.setLayout();
 		this.controlButtons();
 		this.layers.init();
 		this.toolTips();
