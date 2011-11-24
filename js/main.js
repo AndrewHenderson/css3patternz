@@ -238,7 +238,7 @@ api.load(defaultPattern);
 
  var ui = {
  	bind: function(){
- 		window.onresize = this.setHeight;
+ 		window.onresize = this.setLayout;
  		$('#output-header .options input[type="checkbox"]').bind('change click', function(){
  			ui.prefixChange();
  			ui.render();
@@ -372,9 +372,11 @@ api.load(defaultPattern);
 		return this;
 	},
 	toolTips: function() {
-		//Tooltips
+		
+		//Tooltip Static
 		var tip;
-		$(".tip-trigger").hover(function(e){
+		
+		$(".tip-trigger.static").hover(function(e){
 
 			//Caching the tooltip and removing it from container; then appending it to the body
 			tip = $(this).find('.tip').remove();
@@ -398,6 +400,43 @@ api.load(defaultPattern);
 			tip.hide().remove(); //Hide and remove tooltip appended to the body
 			$(this).append(tip); //Return the tooltip to its original position
 
+		});
+	
+		
+		//Tooltip Mobile
+		$(".tip-trigger.mobile").hover(function(){
+
+			//Caching the tooltip and removing it from container; then appending it to the body
+			tip = $(this).find('.tip').remove();
+			$('body').append(tip);
+
+			tip.show(); //Show tooltip
+
+		}, function() {
+
+			tip.hide().remove(); //Hide and remove tooltip appended to the body
+			$(this).append(tip); //Return the tooltip to its original position
+
+		}).mousemove(function(e) {
+		//console.log(e.pageX)
+			  var mousex = e.pageX - 11; //Get X coodrinates
+			  var mousey = e.pageY - 39; //Get Y coordinates
+			  var tipWidth = tip.width(); //Find width of tooltip
+			  var tipHeight = tip.height(); //Find height of tooltip
+
+			 //Distance of element from the right edge of viewport
+			  var tipVisX = $(window).width() - (mousex + tipWidth);
+			  var tipVisY = $(window).height() - (mousey + tipHeight);
+
+			if ( tipVisX < 20 ) { //If tooltip exceeds the X coordinate of viewport
+				mousex = e.pageX - tipWidth - 20;
+				$(this).find('.tip').css({  top: mousey, left: mousex });
+			} if ( tipVisY < 20 ) { //If tooltip exceeds the Y coordinate of viewport
+				mousey = e.pageY - tipHeight - 20;
+				tip.css({  top: mousey, left: mousex });
+			} else {
+				tip.css({  top: mousey, left: mousex });
+			}
 		});
 
 	},
@@ -444,18 +483,18 @@ api.load(defaultPattern);
 			}
 		},
 		bind: function(){
-					// Layer Options input bindings
-			$('.layerOptions-width').live('change click scroll keyup',function(){
+			// Layer Options input bindings
+			$('.layerOptions-width').live('change click scroll keyup', function(){
 				$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').width($(this).val());
 				api.layers[$(this).data().layerIndex].width = parseInt($(this).val());
 				ui.render();
 			});
-			$('.layerOptions-height').live('change click scroll keyup',function(){
+			$('.layerOptions-height').live('change click scroll keyup', function(){
 				$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').height($(this).val());
 				api.layers[$(this).data().layerIndex].height = parseInt($(this).val());
 				ui.render();
 			});
-			$('.layerOptions-angle').live('change click scroll keyup',function(){
+			$('.layerOptions-angle').live('change click scroll keyup', function(){
 				api.layers[$(this).data().layerIndex].angle = parseInt($(this).val());
 				ui.render();
 				//ui.layers.read();
