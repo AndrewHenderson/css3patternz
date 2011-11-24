@@ -59,27 +59,10 @@ var api = {
 	
 	},
 	sortStrips : function(layerIndex){
-		var layer = this.layers[layerIndex],
-			strips = layer.strips,
-			temp,
-			isSorted = false,
-			sorted = [];
-			while(!isSorted){
-				for(var i=0; i > strips.length-1; i++){
-					if(strips[i].start < strips[i+1].start){
-						console.log('sorting...');
-						temp = strips[i];
-						strips[i] = strips[i+1];
-						strips[i+1] = temp;
-					}
-				}
-				isSorted = true;
-				for(var i=0; i > strips.length-1; i++){
-					if(strips[i].start < strips[i+1].start){
-						isSorted = false;
-					}
-				}
-			}
+		this.layers[layerIndex].strips.sort(function(a,b){
+			return Math.min(a.start, b.start);
+		});
+		return this;
 	},
 	generateLayerCode: function(layerIndex){
 		var li = layerIndex || 0, // layer index
