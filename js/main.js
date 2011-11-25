@@ -326,6 +326,7 @@ api.load(defaultPattern);
 		$('#render').text('#pattern{'+ api.generate() + '}').attr('type','text/css');
 		$('#output').val( api.generate() );
 		ui.strips.readAll();
+		ui.layers.readAll();
 		return this;
 	},
 	setLayout: function(){
@@ -466,20 +467,27 @@ api.load(defaultPattern);
 					.show()
 				);				
 		},
-		read: function() {
-			for(var i=0; i<api.layers.length; i++){
-				if($('aside .layer:data(layerIndex=' + i + ')').length == 0){
-					ui.layers.add(i);
-				}
-				var domLayer = $('aside .layer:data(layerIndex=' + i + ')'),
-					apiLayer = api.layers[i];
+		read: function(layerIndex) {
+			var domLayer = $('aside .layer:data(layerIndex=' + layerIndex+ ')'),
+					apiLayer = api.layers[layerIndex];
 				domLayer.find('.layerOutput').css('background', api.outputLayerCode(i));
 				domLayer.find('.layerOptions-width').val(apiLayer.width);
 				domLayer.find('.layerOptions-height').val(apiLayer.height);
 				domLayer.find('.layerOptions-angle').val(apiLayer.angle);
 				domLayer.find('.layerName').val(apiLayer.name);
 				domLayer.find('.preview').width(apiLayer.width).height(apiLayer.height);
-				ui.strips.make(i);
+				ui.strips.make(layerIndex);
+			for(var i=0; i<api.layers.length; i++){
+				
+				
+			}
+		},
+		readAll: function(){
+			for(var i=0; i<api.layers.length; i++){
+				if($('aside .layer:data(layerIndex=' + i + ')').length == 0){
+					ui.layers.add(i);
+				}
+				ui.layers.read(i);
 			}
 		},
 		bind: function(){
