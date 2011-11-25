@@ -486,16 +486,16 @@ api.load(defaultPattern);
 			// Layer Options input bindings
 			$('.layerOptions-width').live('change click scroll keyup', function(){
 				$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').width($(this).val());
-				api.layers[$(this).data().layerIndex].width = parseInt($(this).val());
+				api.layers[$(this).parents('.layer').data().layerIndex].width = parseInt($(this).val());
 				ui.render();
 			});
 			$('.layerOptions-height').live('change click scroll keyup', function(){
 				$(this).parents(".layerOptions").siblings(".previewWrapper").children('.preview').height($(this).val());
-				api.layers[$(this).data().layerIndex].height = parseInt($(this).val());
+				api.layers[$(this).parents('.layer').data().layerIndex].height = parseInt($(this).val());
 				ui.render();
 			});
 			$('.layerOptions-angle').live('change click scroll keyup', function(){
-				api.layers[$(this).data().layerIndex].angle = parseInt($(this).val());
+				api.layers[$(this).parents('.layer').data().layerIndex].angle = parseInt($(this).val());
 				ui.render();
 				//ui.layers.read();
 			});
