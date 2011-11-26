@@ -59,7 +59,7 @@ var api = {
 	
 	},
 	sortStrips : function(layerIndex){
-		this.layers[layerIndex].strips.sort(function(a,b){
+		api.layers[layerIndex].strips.sort(function(a,b){
 			return Math.min(a.start, b.start);
 		});
 		return this;
