@@ -470,7 +470,7 @@ api.load(defaultPattern);
 		read: function(layerIndex) {
 			var domLayer = $('aside .layer:data(layerIndex=' + layerIndex+ ')'),
 					apiLayer = api.layers[layerIndex];
-				domLayer.find('.layerOutput').css('background', api.outputLayerCode(i));
+				domLayer.find('.layerOutput').css('background', api.outputLayerCode(layerIndex));
 				domLayer.find('.layerOptions-width').val(apiLayer.width);
 				domLayer.find('.layerOptions-height').val(apiLayer.height);
 				domLayer.find('.layerOptions-angle').val(apiLayer.angle);
@@ -512,7 +512,8 @@ api.load(defaultPattern);
 			
 		},
 		init: function(){
-			ui.layers.read();
+			
+			ui.layers.readAll();
 			ui.layers.bind();
 		}
 	},
