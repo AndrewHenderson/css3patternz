@@ -269,7 +269,7 @@ api.load(defaultPattern);
 					}
 				},
 				close: function() {
-					allFields.val( "" ).removeClass( "ui-state-error" );
+					// allFields.val( "" ).removeClass( "ui-state-error" );
 				}
 			});
 		});
