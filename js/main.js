@@ -255,6 +255,30 @@ api.load(defaultPattern);
 				return layerOrder;
 			}
  		});
+		$("#save").click(function(){
+			$( "#dialog-form" ).dialog({
+						height: 200,
+						width: 350,
+						modal: true,
+						buttons: {
+							"Save": function() {
+								console.log('Saved!');
+							},
+							Cancel: function() {
+								$( this ).dialog( "close" );
+							}
+						},
+						close: function() {
+							allFields.val( "" ).removeClass( "ui-state-error" );
+						}
+					});
+
+					$( "#create-user" )
+						.button()
+						.click(function() {
+							$( "#dialog-form" ).dialog( "open" );
+						});
+		});
  		$('.inspectrum').live('click', function(e){
 			//Show strip editor toolbox
  			$(this).parents('.layer').find('.inspectrumEditor').toggle();
