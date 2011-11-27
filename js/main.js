@@ -257,27 +257,21 @@ api.load(defaultPattern);
  		});
 		$("#save").click(function(){
 			$( "#dialog-form" ).dialog({
-						height: 200,
-						width: 350,
-						modal: true,
-						buttons: {
-							"Save": function() {
-								console.log('Saved!');
-							},
-							Cancel: function() {
-								$( this ).dialog( "close" );
-							}
-						},
-						close: function() {
-							allFields.val( "" ).removeClass( "ui-state-error" );
-						}
-					});
-
-					$( "#create-user" )
-						.button()
-						.click(function() {
-							$( "#dialog-form" ).dialog( "open" );
-						});
+				height: 200,
+				width: 350,
+				modal: true,
+				buttons: {
+					"Save": function() {
+						console.log('Saved!');
+					},
+					Cancel: function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				close: function() {
+					allFields.val( "" ).removeClass( "ui-state-error" );
+				}
+			});
 		});
  		$('.inspectrum').live('click', function(e){
 			//Show strip editor toolbox
