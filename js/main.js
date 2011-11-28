@@ -388,6 +388,10 @@ api.load(defaultPattern);
 			ui.layers.init();
 			ui.render();
 		});
+		$('.jPicker.Container').bind('mousemove, mousedown', function(){
+			
+			
+		})
 		return this;
 	},
 	toolTips: function() {
