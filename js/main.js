@@ -359,7 +359,16 @@ api.load(defaultPattern);
 	controlButtons: function() {
 		$(".minimize").live('click', function(click){
 			click.preventDefault();
-			$(this).parents('.layer').toggleClass('minimized');
+			var e = $(this);
+			e.parents('.layer').toggleClass('minimized');
+			if (e.is(".open")) {
+				e.removeClass("open");
+				e.find(".toggle-word").text("Maximize");
+			}
+			else {
+				e.addClass("open");
+				e.find(".toggle-word").text("Minimize");
+			}
 		});
 		$(".remove").live('click', function(click){
 			click.preventDefault();
