@@ -295,7 +295,7 @@ footer { background: rgb(245,245,245); /* Old browsers */
 		footer .options h5 { display: inline-block; font-weight: bold; }
 		footer .options label { cursor: default; }
 			footer .options label input { height: 10px; }
-	footer .outputWrapper{padding-right: 15px;}
+	footer .outputWrapper{padding:0 15px 0 5px;}
 	footer .outputWrapper textarea { width:100%; height: 220px; margin:0; border:none; resize:none; background:black; color:silver; padding:5px; overflow:scroll; }
 
 
