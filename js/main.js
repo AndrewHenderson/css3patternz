@@ -362,11 +362,11 @@ api.load(defaultPattern);
 			var e = $(this);
 			e.parents('.layer').toggleClass('minimized');
 			if (e.is(".open")) {
-				e.removeClass("open");
+				e.removeClass("open").find(".arrow").text("∨");
 				e.find(".toggle-word").text("Maximize");
 			}
 			else {
-				e.addClass("open");
+				e.addClass("open").find(".arrow").text("∧");
 				e.find(".toggle-word").text("Minimize");
 			}
 		});

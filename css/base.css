@@ -192,7 +192,7 @@ aside {
 				aside .layer .controls .layerName:focus{ border-color:#bbb; background:#fff; }
 			aside .layer .controls a{ margin: 4px;display: inline-block; }
 			aside .layer .controls .button { float:right; padding:1px 6px; height:17px; width:7px; margin-right:1px; margin-left:1px; text-align:center; }
-			aside .layer .controls .button.minimize { line-height:4px; }
+			aside .layer .controls .button.minimize { padding:1px 7px 1px 5px }
 				aside .layer .controls .button.minimize .tip { line-height:20px; }
 			aside .layer .controls .button.duplicate { height:14px; padding:2px 6.5px 3px 5.5px; }
 		aside .maniptool{ padding:10px; }

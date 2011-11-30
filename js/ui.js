@@ -7,7 +7,9 @@
 
 (function(){
 	ui.init();
-	$(".layer:eq(1)").removeClass("minimized").find(".minimize").addClass("open").find(".toggle-word").text("Minimize");
+	var minMax = $(".layer:eq(1)").removeClass("minimized").find(".minimize").addClass("open");
+	minMax.find(".arrow").text("∧")
+	minMax.find(".toggle-word").text("Minimize");
 	$('.colorPreview').jPicker({ window: { expandable: true } });
 })();
 
