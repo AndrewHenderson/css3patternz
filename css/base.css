@@ -300,19 +300,19 @@ footer { background: rgb(245,245,245); /* Old browsers */
 
 
 
-/* About us page*/
+/* Pages */
 
-.aboutus{padding: 20px; background:#fafaff}
-	.aboutus h1, .aboutus h2{margin:10px 0; font-family: 'Michroma' sans-serif; color:#444; text-shadow: 0 1px 1px white;}
-	.aboutus h1{line-height: 2em; font-size:1.5em}
-	.aboutus h2{line-height:1.5em; font-size:1.3em;}
-	.aboutus p{line-height:24px; font-size:16px; margin:10px 0; color:#666;}
-	.aboutus a{color:#049CDB; text-decoration: none;}
-	.aboutus code{font-family: monospace; background:#eee; color:black; padding:0 5px;}
-	.aboutus table{width:100%; border:1px solid #7CBC0A;}
-		.aboutus td{padding:5px;}
-		.aboutus tr:nth-child(odd){background: #888; color:white; }
-		.aboutus tr:first-child{background:#7CBC0A; color:white;}
+.page{padding: 20px; background:#fafaff}
+	.page h1, .page h2{margin:10px 0; font-family: 'Michroma' sans-serif; color:#444; text-shadow: 0 1px 1px white;}
+	.page h1{line-height: 2em; font-size:1.5em}
+	.page h2{line-height:1.5em; font-size:1.3em;}
+	.page p{line-height:24px; font-size:16px; margin:10px 0; color:#666;}
+	.page a{color:#049CDB; text-decoration: none;}
+	.page code{font-family: monospace; background:#eee; color:black; padding:0 5px;}
+	.page table{width:100%; border:1px solid #7CBC0A;}
+		.page td{padding:5px;}
+		.page tr:nth-child(odd){background: #888; color:white; }
+		.page tr:first-child{background:#7CBC0A; color:white;}
 
 
 /* =Non-semantic helper classes
