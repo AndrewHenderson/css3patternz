@@ -195,6 +195,7 @@ aside {
 			aside .layer .controls .button.minimize { padding:1px 7px 1px 5px }
 				aside .layer .controls .button.minimize .tip { line-height:20px; }
 			aside .layer .controls .button.duplicate { height:14px; padding:2px 6.5px 3px 5.5px; }
+			.layer .sortHandle{height:10px; background:url(../img/grippy.png); cursor:-webkit-grab; cursor:-moz-grab;}
 		aside .maniptool{ padding:10px; }
 			#layerTemplate{display:none;}
 			aside .maniptool .previewWrapper{float:left;font-size: 12px;margin: 0 5px;}

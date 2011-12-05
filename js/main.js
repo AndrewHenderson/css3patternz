@@ -221,7 +221,7 @@ api.load(defaultPattern);
 				dataLayerIndex = $(".layer").not(".ui-sortable-placeholder, #layerTemplate").each(function(index){
 					layerOrder.push($(this).data('layerIndex'));
 				});
-				//console.log(layerOrder);
+				console.log(layerOrder);
 				return layerOrder;
 			}
  		});
@@ -243,25 +243,15 @@ api.load(defaultPattern);
 				}
 			});
 		});
+		/*
+		//we don't need it anymore
  		$('.inspectrum').live('click', function(e){
 			//Show strip editor toolbox
- 			$(this).parents('.layer').find('.inspectrumEditor').toggle();
+ 			$(this).parents('.layer').find('.inspectrumEditor').slideToggle(100);
 			//trigger click on first strip
-			$(this).parents('.layer').find('.pointers .pointer:data(stripIndex=0)').click();
+			$(this).parents('.layer').find('.pointers .pointer:data(stripIndex=0)').trigger('mousedown');
  		});
-		$('.pointer').live('click', function(){
-			var currentLayer = $(this).parents('.layer'),
-				currentStrip = api.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex],
- 			    currentStripHexColor = api.renderColor.hexgen(currentStrip.color);
- 			currentLayer.find('.colorbox input, .jPicker .Icon span.Color').css('background', currentStripHexColor);
- 			currentLayer.find('.colorbox input').val(currentStripHexColor);
- 			currentLayer.find('.startend .start').val(currentStrip.start);
- 			currentLayer.find('.startend .end').val(currentStrip.end);
- 			currentLayer.find('input.opacity').val(currentStrip.color[3]*100);
- 			currentLayer.find('output').val(currentStrip.color[3]*100);
- 			currentLayer.find('.stripEditor').data($(this).data());
- 			//TODO bind input changes to currentStrip == write changes
-		});
+		*/
  		$('input.opacity').live('click change', function(){
  			var currentStrip = api.layers[$(this).parents('.stripEditor').data().layerIndex].strips[$(this).parents('.stripEditor').data().stripIndex];
  			currentStrip.color[3] = $(this).val()/100;
@@ -286,7 +276,17 @@ api.load(defaultPattern);
  			ui.render();
  		});
  		$('.pointer').live('mousedown',function(mde){ //TODO buggy
- 			var currentStrip =  api.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex],
+			var currentLayer = $(this).parents('.layer'),
+					currentStrip = api.layers[$(this).data().layerIndex].strips[$(this).data().stripIndex],
+					currentStripHexColor = api.renderColor.hexgen(currentStrip.color);
+				currentLayer.find('.colorbox input, .jPicker .Icon span.Color').css('background', currentStripHexColor);
+				currentLayer.find('.colorbox input').val(currentStripHexColor);
+				currentLayer.find('.startend .start').val(currentStrip.start);
+				currentLayer.find('.startend .end').val(currentStrip.end);
+				currentLayer.find('input.opacity').val(currentStrip.color[3]*100);
+				currentLayer.find('output').val(currentStrip.color[3]*100);
+				currentLayer.find('.stripEditor').data($(this).data());
+			
  			mdss = currentStrip.start, // mouse down strip start
  			mdse= currentStrip.end;    // mouse down strip end
  			$(window.document).bind('mousemove', function(mme){
@@ -294,7 +294,7 @@ api.load(defaultPattern);
  	
  				currentStrip.start = mdss + dist;
  				currentStrip.end = mdse + dist;
- 				ui.render(); 
+				ui.render();
  				$(window.document).bind('mouseup', function(){
  					$(this).unbind('mousemove');
  				});
