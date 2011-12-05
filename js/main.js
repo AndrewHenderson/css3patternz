@@ -141,6 +141,7 @@ var api = {
 
 
 var defaultPattern = [{
+	type: 'linear',
 	angle: -90,
 	background: [1,1,1,0],
 	height: 50,
@@ -159,6 +160,7 @@ var defaultPattern = [{
 		}
 		]},
 		{
+	type: 'linear',
 	angle: 0,
 	background: [1,1,1,0],
 	height: 50,
@@ -171,6 +173,7 @@ var defaultPattern = [{
 		}]
 	},
 	{
+	type: 'linear',
 	angle: 45,
 	background: [1,1,1,0],
 	height: 100,
@@ -184,6 +187,7 @@ var defaultPattern = [{
 		}
 		]},
 	{
+	type: 'linear',
 	angle: -45,
 	background: [1,1,1,0],
 	height: 100,
