@@ -19,6 +19,8 @@
 			lineWrapping: true,
 			theme: 'night'
 		});
+		
+	$('#output, .CodeMirror-scroll').height($('footer').height() - 40);
 })();
 
 
