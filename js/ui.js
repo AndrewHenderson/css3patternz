@@ -11,6 +11,14 @@
 	minMax.find(".arrow").text("∧")
 	minMax.find(".toggle-word").text("Minimize");
 	$('.colorPreview').jPicker({ window: { expandable: true } });
+	
+	//Code Mirror 
+	
+	window.editor = CodeMirror.fromTextArea(document.getElementById("output"), {
+			mode: 'css',
+			lineWrapping: true,
+			theme: 'night'
+		});
 })();
 
 

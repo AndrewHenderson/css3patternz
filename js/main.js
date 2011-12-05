@@ -91,7 +91,8 @@ var api = {
 		this.init();
 		var layersCode = [],
 			result = [],
-			bgSize = [];
+			bgSize = [],
+			prefixesArray = ['webkit', 'moz', 'ms', 'o', 'w3c'];
 		//for every layer 
 		for(var i=0; i<this.layers.length; i++){
 			if(this.layers[i].strips.length > 0){
@@ -99,59 +100,24 @@ var api = {
 			}
 		}
 		//add prefixes
-		
-		for(var i=0; i<this.prefixes.length; i++){
-			//TODO try to figure out if it is possble to do *add prefixes* with a loop
-		}
-		if(this.prefixes.webkit){
+		prefixesArray.forEach( function(prefix){
 			var layer = [];
-			for(var i=0; i<layersCode.length; i++){
-				layer.push('-webkit-' + layersCode[i]);
+			if(api.prefixes[prefix]){
+				for(var i=0; i<layersCode.length; i++){
+					if(prefix != 'w3c') { layer.push('-' + prefix + '-' + layersCode[i]);}
+					else{ layer.push(layersCode[i]);}
+					
+				}
+				layer.join(', ');
+				result.push('background-image:\n ' + layer );	
 			}
-			layer.join(', ');
-			result.push('background-image: ' + layer);
-		}
-		
-		if(this.prefixes.moz){
-			var layer = [];
-			for(var i=0; i<layersCode.length; i++){
-				layer.push('-moz-' + layersCode[i]);
-			}
-			layer.join(', ');
-			result.push('background-image: ' +layer);
-		}
-		if(this.prefixes.ms){
-			var layer = [];
-			for(var i=0; i<layersCode.length; i++){
-				layer.push('-ms-' + layersCode[i]);
-			}
-			layer.join(', ');
-			result.push('background-image: ' +layer);
-		}
-		if(this.prefixes.o){
-			var layer = [];
-			for(var i=0; i<layersCode.length; i++){
-				layer.push('-o-' + layersCode[i]);
-			}
-			layer.join(', ');
-			result.push('background-image: ' +layer);
-		}
-		if(this.prefixes.w3c){
-			var layer = [];
-			for(var i=0; i<layersCode.length; i++){
-				layer.push('' + layersCode[i]);
-			}
-			layer.join(', ');
-			result.push('background-image: ' +layer);
-		}
-		result = result.join(';\n');
-		
+		});
+		result = result.join(';\n \n');
 		
 		for(var i=0; i<this.layers.length; i++){
 			bgSize.push(this.layers[i].width + 'px ' + this.layers[i].height + 'px ')
 		}
-		//TODO add vendor prefix background-size properties aka -moz-background-size and -webkit-background-size
-		bgSize = ';\nbackground-size:' + bgSize.join() + ';\n';
+		bgSize = ';\n\nbackground-size:' + bgSize.join() + ';\n';
 		return result + bgSize;
 	},
 	outputLayerCode: function(layerIndex){
@@ -213,8 +179,8 @@ var defaultPattern = [{
 	strips:[
 		{
 			color: [115,0,0,0.5],
-			end: 75,
-			start: 65
+			end: 95,
+			start: 45
 		}
 		]},
 	{
@@ -226,8 +192,8 @@ var defaultPattern = [{
 	strips:[
 		{
 			color: [115,0,0,0.5],
-			end: 75,
-			start: 65
+			end: 95,
+			start: 45
 		}
 		]}];
 	
@@ -330,6 +296,7 @@ api.load(defaultPattern);
  				});
  			});
  		});
+		$('.CodeMirror').live('keydown, keyup', ui.readFromEditor);
  		return this;
  	},
  	prefixChange: function(){
@@ -338,13 +305,18 @@ api.load(defaultPattern);
  		api.prefixes.ms = $('#prefixCheckbox-ms')[0].checked;
  		api.prefixes.o = $('#prefixCheckbox-o')[0].checked;
  		api.prefixes.w3c = $('#prefixCheckbox-w3c')[0].checked;
+		ui.readFromEditor();
  		return api.prefixes;
  	},
+	readFromEditor: function(){
+			$('#render').text('#pattern{'+ editor.getValue() + '}').attr('type','text/css');
+	},
 	render: function(){
 		$('#render').text('#pattern{'+ api.generate() + '}').attr('type','text/css');
 		$('#output').val( api.generate() );
 		ui.strips.readAll();
 		ui.layers.readAll();
+		if(window.editor) window.editor.setValue( $('#output').val() );
 		return this;
 	},
 	setLayout: function(){
@@ -492,7 +464,6 @@ api.load(defaultPattern);
 				} else {
 					tip.css({  top: mousey, left: mousex });
 				}
-				
 			}
 		});
 
@@ -503,7 +474,7 @@ api.load(defaultPattern);
 			$(window).bind('mousemove', function(mme){
 				if(mme.pageY < innerHeight - 100 && mme.pageY > 150){
 					$('footer').height(currentHeight + mde.pageY - mme.pageY);
-					$('#output').height($('footer').height() - 40);
+					$('#output, .CodeMirror-scroll').height($('footer').height() - 40);
 					ui.setLayout();
 			    }
 				$(window).bind('mouseup', function(){
