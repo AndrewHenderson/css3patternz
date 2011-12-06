@@ -8,6 +8,15 @@ Array.prototype.remove = function(from, to) {
   this.length = from < 0 ? this.length + from : from;
   return this.push.apply(this, rest);
 };
+// Array reorder - By Mohsen
+Array.prototype.reorder = function (a){
+	  var o = [], _ = this, i = 0;
+	  _.forEach(function(){
+		o.push(_[a[i]] ? _[a[i]] : _[i]);
+		i++;
+	  });
+	  return o;
+	};
 
 //API
 var api = {
@@ -216,13 +225,13 @@ api.load(defaultPattern);
  		$('.layersWrapper').sortable({
  			axis: 'y',
  			handle: '.sortHandle',
-			stop: function(event, ui){ 
+			stop: function(event){ 
 				var layerOrder = []
 				dataLayerIndex = $(".layer").not(".ui-sortable-placeholder, #layerTemplate").each(function(index){
 					layerOrder.push($(this).data('layerIndex'));
 				});
-				console.log(layerOrder);
-				return layerOrder;
+				api.layers = api.layers.reorder(layerOrder);
+				ui.render();
 			}
  		});
 		$("#save").click(function(){
