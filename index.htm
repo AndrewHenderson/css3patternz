@@ -72,11 +72,11 @@
 					<div class="sortHandle tip-trigger mobile clearfix"><span class="tip"><span class="tip-arrow"></span>Drag to sort layers</span></div>
 					<input  class="layerName" />
 					<a href="#" class="suggest"></a>
-					<a href="#" class="remove button alt tip-trigger static">x<span class="tip"><span class="tip-arrow"></span>Remove Layer</span></a>
+					<a href="#" class="remove button alt tip-trigger static"><span class="icon"></span><span class="tip"><span class="tip-arrow"></span>Remove Layer</span></a>
 					<!-- Temporary disabled. Too buggy to go to production
                     <a href="#" class="s duplicate button tip-trigger static">+<span class="tip"><span class="tip-arrow"></span>Duplicate Layer</span></a>
 					-->
-                    <a href="#" class="minimize button tip-trigger static"><span class="arrow">∨</span><span class="tip"><span class="tip-arrow"></span><span class="toggle-word">Maximize</span> Layer</span></a>
+                    <a href="#" class="minimize button tip-trigger static"><span class="icon"></span><span class="tip"><span class="tip-arrow"></span><span class="toggle-word">Maximize</span> Layer</span></a>
 				</div>
 				<div class="maniptool clearfix">
 					<div class="previewWrapper">
@@ -85,7 +85,7 @@
 							<div class="layerOutput"></div>
 					</div>
 					<div class="layerOptions">
-                    	<label>Type: <select><option>Linear</option><option>Radial</option></select></label>
+                    	<label class="type">Type: <select><option>Linear</option><option>Radial</option></select></label>
 						<label>Width: <input class="layerOptions-width" type="number" min="10" max="250" value="100"/></label>
 						<label>Height: <input class="layerOptions-height" type="number" min="10" max="250" value="100"/></label>
 						<label>Angle: <input class="layerOptions-angle" type="number" min="-360" max="3600" value="0"/></label>
@@ -154,7 +154,6 @@
 		<div class="outputWrapper">
 			<textarea id="output"></textarea>
 		</div>
-		</textarea>
 	</footer>
 	
 <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline

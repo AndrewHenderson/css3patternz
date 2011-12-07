@@ -189,14 +189,18 @@ aside {
 		  transition: 0.1s linear all;
 		}
 			aside .layer .controls .layerName{ width: 180px; text-align:left; display:inline-block;font-weight: bold;text-shadow: 0 1px white;padding: 5px 0 5px 10px; border:1px solid #ddd; border-radius:2px; background:transparent;}
+				aside .layer .controls .layerName:hover{ border-color:#bbb; }
 				aside .layer .controls .layerName:focus{ border-color:#bbb; background:#fff; }
 			aside .layer .controls a{ margin: 4px;display: inline-block; }
-			aside .layer .controls .button { float:right; padding:1px 6px; height:17px; width:7px; margin-right:1px; margin-left:1px; text-align:center; }
-			aside .layer .controls .button.minimize { padding:1px 7px 1px 5px }
+			aside .layer .controls .button { float:right; padding:0; height:19px; width:19px; margin-right:1px; margin-left:1px; text-align:center; }
+				aside .layer .controls .button .icon { display:block; width:21px;height:21px; background: url("images/ui-icons_ffffff_256x240.png") no-repeat; }
+					aside .layer .controls .button.remove .icon { background-position: -79px -127px; }
+					aside .layer.minimized .controls .button.minimize .icon { background-position: 2px -14px; }
+						aside .layer .controls .button.minimize .icon { background-position: -63px -14px; }
 			.layer .inspectrumLabel{font-size:10px;}
 				aside .layer .controls .button.minimize .tip { line-height:20px; }
 			aside .layer .controls .button.duplicate { height:14px; padding:2px 6.5px 3px 5.5px; }
-			.layer .sortHandle{height:10px; background:url(../img/grippy.png); cursor:-webkit-grab; cursor:-moz-grab;}
+			.layer .sortHandle{height:10px; background:url(../img/grippy.png); cursor:-webkit-grab; cursor:-moz-grab; margin-bottom:5px; }
 		aside .maniptool{ padding:10px; }
 			#layerTemplate{display:none;}
 			aside .maniptool .previewWrapper{float:left;font-size: 12px;margin: 0 5px;}
@@ -204,6 +208,8 @@ aside {
 			aside .maniptool .preview .layerOutput{width:100%; height:100%;}
 			aside .maniptool .layerOptions { overflow: hidden; float:left; }
 			aside .maniptool .layerOptions label{display:inline-block; float:left; width: 55px; margin-right:5px; }
+			aside .maniptool .layerOptions label.type{width:70px}
+				aside .maniptool .layerOptions label.type select {width:70px}
 			aside .maniptool .layerOptions input, select{width:50px; margin:0 0 10px 0;}
 			aside .maniptool .layerOptions{float:left; margin:10px 0 5px; font-size:10px;}
 			aside .maniptool .inspectrum{ height:30px; border: 1px solid #333;}
@@ -297,7 +303,7 @@ footer { background: rgb(245,245,245); /* Old browsers */
 		footer .options h5 { display: inline-block; font-weight: bold; }
 		footer .options label { cursor: default; }
 			footer .options label input { height: 10px; }
-	footer .outputWrapper{padding:0 15px 0 5px;}
+	footer .outputWrapper{padding:0 5px;}
 	footer .outputWrapper textarea { width:100%; height: 220px; margin:0; border:none; resize:none; background:black; color:silver; padding:5px; overflow:scroll; }
 
 
@@ -316,6 +322,44 @@ footer { background: rgb(245,245,245); /* Old browsers */
 		.page tr:nth-child(odd){background: #888; color:white; }
 		.page tr:first-child{background:#7CBC0A; color:white;}
 
+/* Presets */
+
+.preset {
+	background: rgb(245,245,245);
+	border: 1px solid #ccc;
+	overflow:hidden;
+	width:100%;
+}
+	.preset .title {
+		padding: 5px;
+		text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+		color: #333;
+		font-size: 13px;
+		line-height: normal;
+		-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+		-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+		float:left;
+		width:89%;
+	}
+		.preset .title h2 { margin:0 }
+		
+	.preset .preview {
+		height:100px;
+		width:10%;
+		border-right:1px solid #ccc;
+		float:left;
+		display:block;
+		background-image:-webkit-linear-gradient(-90deg , rgba(1,1,1,0) 19px, rgba(115,40,250,0.9) 19px, rgba(115,40,250,0.9) 25px, rgba(1,1,1,0) 25px , rgba(1,1,1,0) 10px, rgba(115,40,100,0.9) 10px, rgba(115,40,100,0.9) 15px, rgba(1,1,1,0) 15px),-webkit-linear-gradient(0deg , rgba(1,1,1,0) 24px, rgba(110,75,255,0.8) 24px, rgba(110,75,255,0.8) 25px, rgba(1,1,1,0) 25px),-webkit-linear-gradient(45deg , rgba(1,1,1,0) 45px, rgba(115,0,0,0.5) 45px, rgba(115,0,0,0.5) 95px, rgba(1,1,1,0) 95px),-webkit-linear-gradient(-45deg , rgba(1,1,1,0) 45px, rgba(115,0,0,0.5) 45px, rgba(115,0,0,0.5) 95px, rgba(1,1,1,0) 95px);
+		background-image:-moz-linear-gradient(-90deg , rgba(1,1,1,0) 19px, rgba(115,40,250,0.9) 19px, rgba(115,40,250,0.9) 25px, rgba(1,1,1,0) 25px , rgba(1,1,1,0) 10px, rgba(115,40,100,0.9) 10px, rgba(115,40,100,0.9) 15px, rgba(1,1,1,0) 15px),-moz-linear-gradient(0deg , rgba(1,1,1,0) 24px, rgba(110,75,255,0.8) 24px, rgba(110,75,255,0.8) 25px, rgba(1,1,1,0) 25px),-moz-linear-gradient(45deg , rgba(1,1,1,0) 45px, rgba(115,0,0,0.5) 45px, rgba(115,0,0,0.5) 95px, rgba(1,1,1,0) 95px),-moz-linear-gradient(-45deg , rgba(1,1,1,0) 45px, rgba(115,0,0,0.5) 45px, rgba(115,0,0,0.5) 95px, rgba(1,1,1,0) 95px);
+		background-image:-ms-linear-gradient(-90deg , rgba(1,1,1,0) 19px, rgba(115,40,250,0.9) 19px, rgba(115,40,250,0.9) 25px, rgba(1,1,1,0) 25px , rgba(1,1,1,0) 10px, rgba(115,40,100,0.9) 10px, rgba(115,40,100,0.9) 15px, rgba(1,1,1,0) 15px),-ms-linear-gradient(0deg , rgba(1,1,1,0) 24px, rgba(110,75,255,0.8) 24px, rgba(110,75,255,0.8) 25px, rgba(1,1,1,0) 25px),-ms-linear-gradient(45deg , rgba(1,1,1,0) 45px, rgba(115,0,0,0.5) 45px, rgba(115,0,0,0.5) 95px, rgba(1,1,1,0) 95px),-ms-linear-gradient(-45deg , rgba(1,1,1,0) 45px, rgba(115,0,0,0.5) 45px, rgba(115,0,0,0.5) 95px, rgba(1,1,1,0) 95px);
+		background-image:-o-linear-gradient(-90deg , rgba(1,1,1,0) 19px, rgba(115,40,250,0.9) 19px, rgba(115,40,250,0.9) 25px, rgba(1,1,1,0) 25px , rgba(1,1,1,0) 10px, rgba(115,40,100,0.9) 10px, rgba(115,40,100,0.9) 15px, rgba(1,1,1,0) 15px),-o-linear-gradient(0deg , rgba(1,1,1,0) 24px, rgba(110,75,255,0.8) 24px, rgba(110,75,255,0.8) 25px, rgba(1,1,1,0) 25px),-o-linear-gradient(45deg , rgba(1,1,1,0) 45px, rgba(115,0,0,0.5) 45px, rgba(115,0,0,0.5) 95px, rgba(1,1,1,0) 95px),-o-linear-gradient(-45deg , rgba(1,1,1,0) 45px, rgba(115,0,0,0.5) 45px, rgba(115,0,0,0.5) 95px, rgba(1,1,1,0) 95px);
+		background-image:linear-gradient(-90deg , rgba(1,1,1,0) 19px, rgba(115,40,250,0.9) 19px, rgba(115,40,250,0.9) 25px, rgba(1,1,1,0) 25px , rgba(1,1,1,0) 10px, rgba(115,40,100,0.9) 10px, rgba(115,40,100,0.9) 15px, rgba(1,1,1,0) 15px),linear-gradient(0deg , rgba(1,1,1,0) 24px, rgba(110,75,255,0.8) 24px, rgba(110,75,255,0.8) 25px, rgba(1,1,1,0) 25px),linear-gradient(45deg , rgba(1,1,1,0) 45px, rgba(115,0,0,0.5) 45px, rgba(115,0,0,0.5) 95px, rgba(1,1,1,0) 95px),linear-gradient(-45deg , rgba(1,1,1,0) 45px, rgba(115,0,0,0.5) 45px, rgba(115,0,0,0.5) 95px, rgba(1,1,1,0) 95px);
+		background-size:50px 50px ,50px 50px ,100px 100px ,100px 100px ;
+	}
+	
+	.preset textarea { float:left;width:89%; height: 80px; margin:0; border:none; resize:vertical; background:black; color:silver; padding:5px; overflow:scroll; }
+	
 
 /* =Non-semantic helper classes
 -------------------------------------------------------------*/
@@ -324,6 +368,10 @@ footer { background: rgb(245,245,245); /* Old browsers */
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { *zoom: 1; }
+
+/* Floats */
+.fltLt { float:left; }
+.fltRt { float:right; }
 
 
 /* =jQuery Plugins
@@ -845,7 +893,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 
 /*Night Theme*/
 .cm-s-night { background: #0a001f; color: #f8f8f8; }
-.cm-s-night span.CodeMirror-selected { background: #a8f !important; }
+.cm-s-night span.CodeMirror-selected { background: #a8f !important; color:#000 !important; }
 .cm-s-night .CodeMirror-gutter { background: #0a001f; border-right: 1px solid #aaa; }
 .cm-s-night .CodeMirror-gutter-text { color: #f8f8f8; }
 .cm-s-night .CodeMirror-cursor { border-left: 1px solid white !important; }
