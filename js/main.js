@@ -57,11 +57,11 @@ var api = {
 	changeActiveLayer : function (layerIndex) {
 	  this.activeLayer = this.layers[layerIndex];
 	},
-	addStrip: function(stripColor, startPoint, endPoint){
+	addStrip: function(stripColor, startPoint, width){
 		var strip = {};
 		strip.color = stripColor || [0,0,0,1];
 		strip.start = startPoint || 0;
-		strip.end = endPoint || 10;
+		strip.width = width || 10;
 		this.activeLayer.strips.push(strip);
 	},
 	removeStrip: function(stripIndex){
@@ -90,9 +90,9 @@ var api = {
 			    + this.renderColor.rgbagen(strip.color) + ' '
 				+ strip.start + 'px, '
 				+ this.renderColor.rgbagen(strip.color) + ' '
-				+ strip.end + 'px, '
+				+ (strip.start + strip.width) + 'px, '
 				+ this.renderColor.rgbagen(layer.background) + ' '
-				+ this.layers[li].strips[i].end + 'px';
+				+ (this.layers[li].strips[i].start + this.layers[li].strips[i].width) + 'px';
 		}
 		return result += ')';
 	},
@@ -159,13 +159,13 @@ var defaultPattern = [{
 	strips:[
 		{
 			color: [115,40,250,0.9],
-			end: 25,
-			start: 19
+			start: 19,
+			width: 6
 		},
 		{
 			color: [115,40,100,0.9],
-			end: 15,
-			start: 10
+			start: 10,
+			width: 5
 		}
 		]},
 		{
@@ -177,8 +177,8 @@ var defaultPattern = [{
 	name: "Sample Layer 1",
 	strips:[{
 			color: [110,75,255,0.8],
-			end: 25,
-			start: 24
+			start: 24,
+			width:1
 		}]
 	},
 	{
@@ -191,8 +191,8 @@ var defaultPattern = [{
 	strips:[
 		{
 			color: [115,0,0,0.5],
-			end: 95,
-			start: 45
+			start: 45,
+			width: 50
 		}
 		]},
 	{
@@ -205,8 +205,8 @@ var defaultPattern = [{
 	strips:[
 		{
 			color: [115,0,0,0.5],
-			end: 95,
-			start: 45
+			start: 45,
+			width: 50
 		}
 		]}];
 	
@@ -278,9 +278,9 @@ api.load(defaultPattern);
 			var layer = $(this).parents('.layer').data();
 			api.layers[layer.layerIndex].name = $(this).val();
 		});
- 	    $('input.end').live('click change', function(){
+ 	    $('input.width').live('click change', function(){
  			var currentStrip = api.layers[$(this).parents('.stripEditor').data().layerIndex].strips[$(this).parents('.stripEditor').data().stripIndex];
- 			currentStrip.end = $(this).val();
+			currentStrip.width = parseInt($(this).val()); // Convert to number
  			ui.layers.read();
  			ui.render();
  		});
@@ -291,18 +291,18 @@ api.load(defaultPattern);
 				currentLayer.find('.colorbox input, .jPicker .Icon span.Color').css('background', currentStripHexColor);
 				currentLayer.find('.colorbox input').val(currentStripHexColor);
 				currentLayer.find('.startend .start').val(currentStrip.start);
-				currentLayer.find('.startend .end').val(currentStrip.end);
+				currentLayer.find('.startend .width').val(currentStrip.width);
 				currentLayer.find('input.opacity').val(currentStrip.color[3]*100);
 				currentLayer.find('output').val(currentStrip.color[3]*100);
 				currentLayer.find('.stripEditor').data($(this).data());
 			
  			mdss = currentStrip.start, // mouse down strip start
- 			mdse= currentStrip.end;    // mouse down strip end
+ 			mdse = currentStrip.width; // mouse down strip end
  			$(window.document).bind('mousemove', function(mme){
- 				var dist =   mme.pageX- mde.pageX; // distance moved 
+ 				var dist = mme.pageX - mde.pageX; // distance moved 
  	
  				currentStrip.start = mdss + dist;
- 				currentStrip.end = mdse + dist;
+ 				currentStrip.width = mdse;
 				ui.render();
  				$(window.document).bind('mouseup', function(){
  					$(this).unbind('mousemove');
@@ -561,14 +561,15 @@ api.load(defaultPattern);
 		make: function(layerIndex){
 			//Find view and pointers in DOM based on given Layer Index
 			var layer = api.layers[layerIndex],
-				view = $('.layer:data(layerIndex=' + layerIndex + ') .inspectrum .view'),
+				view = $('.layer:data(layerIndex=' + layerIndex + ') .inspectrum .view, .layer:data(layerIndex=' + layerIndex + ') .inspectrum'),
+				sqRt = Math.sqrt( layer.width*layer.width + layer.height * layer.height ),
 				pointers = $('.layer:data(layerIndex=' + layerIndex + ') .stripEditor .pointers'),
 				templatePointer = pointers.find('.template'),
 				strip,
 				viewStrip,
 				pointer;
 			//Make view's width equal to maximum possible length
-			view.width( Math.sqrt( layer.width*layer.width + layer.height * layer.height ) );
+			view.width(sqRt);
 			for(var i=0; i<api.layers[layerIndex].strips.length; i++){
 				
 				//Point to api strip
@@ -578,13 +579,13 @@ api.load(defaultPattern);
 				pointer = templatePointer
 							.clone()
 							.removeClass('template hidden')
-							.css('left', strip.start + ( (strip.end - strip.start) / 2 ) - 5) // calculate center of the strip -5 is half of pointer width
+							.css('left', strip.start + ( strip.width / 2 ) - 5) // calculate center of the strip -5 is half of pointer width
 							.data({layerIndex: layerIndex, stripIndex: i, strip: strip});
 				pointer.find('.abstract').css('background', api.renderColor.hexgen(strip.color));
 				//Make an strip to put in .view
 				viewStrip = $('<div/>')
 							.addClass('strip')
-							.width(strip.end - strip.start)
+							.width(strip.width)
 							.css({
 								'background': api.renderColor.rgbagen(strip.color),
 								'left' : strip.start
@@ -612,12 +613,12 @@ api.load(defaultPattern);
 				
 				//Find the right pointer and make css changes
 				pointer =  $('.layer:data(layerIndex=' + layerIndex + ') .stripEditor .pointers .pointer:data(stripIndex=' + i + ')');
-				pointer.css('left', strip.start + ( (strip.end - strip.start) / 2 ) - 5) // calculate center of the strip -5 is half of pointer width
+				pointer.css('left', strip.start + ( strip.width / 2 ) - 5) // calculate center of the strip -5 is half of pointer width
 					   .find('.abstract').css('background', api.renderColor.hexgen(strip.color));
 				
 				//Find the strip and make css changes
 				stripElem = $('.layer:data(layerIndex=' + layerIndex + ') .view .strip:data(stripIndex=' + i + ')');
-				stripElem.width(strip.end - strip.start)
+				stripElem.width(strip.width)
 						 .css({
 							'background': api.renderColor.rgbagen(strip.color),
 							'left' : strip.start
