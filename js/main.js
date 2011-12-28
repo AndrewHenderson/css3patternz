@@ -262,7 +262,7 @@ api.load(defaultPattern);
  		});
 		*/
  		$('input.opacity').live('click change', function(){
- 			var currentStrip = api.layers[$(this).parents('.stripEditor').data().layerIndex].strips[$(this).parents('.stripEditor').data().stripIndex];
+			var currentStrip = api.layers[$(this).parents('.stripEditor').data().layerIndex].strips[$(this).parents('.stripEditor').data().stripIndex];
  			currentStrip.color[3] = $(this).val()/100;
  			$(this).next().val($(this).val());
  			ui.layers.read();
@@ -295,6 +295,7 @@ api.load(defaultPattern);
 				currentLayer.find('input.opacity').val(currentStrip.color[3]*100);
 				currentLayer.find('output').val(currentStrip.color[3]*100);
 				currentLayer.find('.stripEditor').data($(this).data());
+				currentLayer.find('.manipulate-overlay').hide();
 			
  			mdss = currentStrip.start, // mouse down strip start
  			mdse = currentStrip.width; // mouse down strip end
