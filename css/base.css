@@ -232,8 +232,8 @@ aside {
 		.stripEditor .pointers .arrow{width:10px; height:8px; float:left;}
 		.stripEditor .pointers .abstract{width:9px; height:9px; float:left; border:1px solid #000;}
 	.stripEditor .manipulate { padding: 0 5px 5px 5px;border: 1px solid #CCC;background: #E5E5E5;margin: 5px 0 0 0; position:relative; }
-		.stripEditor .manipulate .manipulate-overlay { background:rgba(255,255,255,0.5); position:absolute; width: 328px; height: 86px; margin: 0 0 0 -5px; z-index: 1; }
-			.stripEditor .manipulate .manipulate-overlay p { color:#444; font-size:20px; margin:30px 65px;}
+		.stripEditor .manipulate .manipulate-overlay { background: rgba(0, 0, 0, 0.7); position:absolute; width: 328px; height: 86px; margin: 0 0 0 -5px; z-index: 1; color: wheat;}
+			.stripEditor .manipulate .manipulate-overlay p { color: white; font-size:20px; margin:30px 65px;}
 			.stripEditor .manipulate .topSection { overflow:hidden; }
 		.stripEditor .manipulate .topSection input[type="button"], .manipButton { background-color: transparent;
 		background-image: linear-gradient(top,#f5f5f5,#f1f1f1);
